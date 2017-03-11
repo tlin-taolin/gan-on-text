@@ -2,3 +2,4 @@
 code.egg-info
 *.pyc
 build
+data
