@@ -11,6 +11,7 @@ import tensorflow as tf
 
 import code.utils.auxiliary as auxi
 from code.utils.logger import log
+from code.model.beamSearch import BeamSearch
 
 
 class BasicModel(object):
@@ -336,7 +337,7 @@ class BasicModel(object):
             logits = tf.nn.xw_plus_b(output, W, b)
         return logits, tf.nn.sigmoid(logits)
 
-    def define_generator_as_LSTMV1(self, z=None, x=None, pretrain=False):
+    def define_generator_as_LSTM(self, z=None, x=None, pretrain=False):
         """define the generator."""
         logits, probs, outputs, embedded_outputs = [], [], [], []
         state = self.G_cell_init_state
@@ -352,6 +353,7 @@ class BasicModel(object):
                 if time_step > 0 or not pretrain:
                     scope_rnn.reuse_variables()
                 cell_output, state = self.G_cell(input, state)
+
             # feed the current cell output to a language model.
             logit, prob, soft_prob, output = self.language_model(
                 cell_output, reuse=True)
@@ -367,6 +369,7 @@ class BasicModel(object):
             outputs.append(output)
             embedded_outputs.append(input)
 
+        self.G_final_state = state
         logits = tf.reshape(
             tf.concat(logits, 0),
             [-1, self.loader.sentence_length, self.loader.vocab_size])
@@ -588,3 +591,17 @@ class BasicModel(object):
             scope.reuse_variables()
             embedding = tf.get_variable("embedding")
         return tf.matmul(soft_prob, embedding)
+
+    def weighted_pick(self, weights):
+        t = np.cumsum(weights)
+        s = np.sum(weights)
+        return(int(np.searchsorted(t, np.random.rand(1)*s)))
+
+    def beam_search_pick(self, probs, weights):
+        probs[0] = weights
+        samples, scores = BeamSearch(probs).beamsearch(
+            None, '<go>', None, k=2, maxsample=len(weights), use_unk=False)
+        sampleweights = samples[np.argmax(scores)]
+        t = np.cumsum(sampleweights)
+        s = np.sum(sampleweights)
+        return(int(np.searchsorted(t, np.random.rand(1)*s)))

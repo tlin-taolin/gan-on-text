@@ -51,9 +51,9 @@ class TextGANV1(BasicModel):
             self.language_model()
 
             self.yhat_logit, self.yhat_prob, self.yhat_out, _ \
-                = self.define_generator_as_LSTMV1(x=self.x, pretrain=True)
+                = self.define_generator_as_LSTM(x=self.x, pretrain=True)
             self.G_logit, self.G_prob, self.G_out, self.G_embedded_out \
-                = self.define_generator_as_LSTMV1(z=self.z, pretrain=False)
+                = self.define_generator_as_LSTM(z=self.z, pretrain=False)
             embedded_x = self.embedding(self.x, reuse=True)
 
         with tf.variable_scope('discriminator'):

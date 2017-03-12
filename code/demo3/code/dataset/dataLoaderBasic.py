@@ -16,7 +16,7 @@ class BasicLoader(object):
     def __init__(self):
         """init."""
         # system define.
-        self.search_replacement = self.defind_search_replacement()
+        self.search_replacement = self.define_search_replacement()
 
     def load_data(self, force=False):
         """Check if the raw data and processed data exist.
@@ -101,7 +101,7 @@ class BasicLoader(object):
         string = re.sub(r'"', '', string)
         return string
 
-    def defind_search_replacement(self):
+    def define_search_replacement(self):
         """define a dictionary for search replacement."""
         return {
               'è': 'e', 'ł': 'l', 'á': 'a', 'Á': 'A', 'â': 'a', 'â': 'a',
@@ -124,12 +124,16 @@ class BasicLoader(object):
 
     def create_batches(self):
         """create batches for the dataset."""
-        self.num_batches = int(self.tensor.shape[0] / self.para.BATCH_SIZE)
+        if not self.para.DEBUG:
+            self.num_batches = int(self.tensor.shape[0] / self.para.BATCH_SIZE)
+        else:
+            self.num_batches = int(self.para.DEBUG_SIZE / self.para.BATCH_SIZE)
+
         num_samples = self.num_batches * self.para.BATCH_SIZE
 
         self.tensor = self.tensor[: num_samples, :]
         self.mask = self.mask[: num_samples, :]
-        self.z = self.para.Z_PRIOR((num_samples, self.para.Z_DIM))
+        self.z = self.para.Z_PRIOR(size=(num_samples, self.para.Z_DIM))
 
         x = self.tensor
         y = np.copy(self.tensor)
@@ -137,7 +141,7 @@ class BasicLoader(object):
         y[:, :-1] = x[:, 1:]
         y[:, -1] = self.vocab['<pad>'] * np.ones(num_samples)
 
-        if self.para.IF_SHUFFLE_DATA:
+        if self.para.SHUFFLE_DATA:
             shuffle_indices = np.random.permutation(num_samples)
             shuffled_x = x[shuffle_indices]
             shuffled_y = y[shuffle_indices]

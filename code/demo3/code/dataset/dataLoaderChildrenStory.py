@@ -32,7 +32,7 @@ class DataLoaderChildrenStory(BasicLoader):
         self.path_data_out_string = join(self.path_data_out_dir, 'data.txt')
 
         # load the data, potentially need to do the preprocessing.
-        self.load_data(para.IF_REBUILD_DATA)
+        self.load_data(para.REBUILD_DATA)
         log('the sample size is {}, the vocab size is {}'.format(
             self.sentence_size, self.vocab_size))
 

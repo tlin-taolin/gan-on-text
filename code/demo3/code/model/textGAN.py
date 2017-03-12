@@ -27,9 +27,9 @@ class TextGAN(BasicModel):
             self.language_model()
 
             self.yhat_logit, self.yhat_prob, self.yhat_out, _ \
-                = self.define_generator_as_LSTMV1(x=self.x, pretrain=True)
+                = self.define_generator_as_LSTM(x=self.x, pretrain=True)
             self.G_logit, self.G_prob, self.G_out, self.G_embedded_out \
-                = self.define_generator_as_LSTMV1(z=self.z, pretrain=False)
+                = self.define_generator_as_LSTM(z=self.z, pretrain=False)
             embedded_x = self.embedding(self.x, reuse=True)
 
         with tf.variable_scope('discriminator') as discriminator_scope:
@@ -90,3 +90,17 @@ class TextGAN(BasicModel):
                 tf.nn.sigmoid_cross_entropy_with_logits(
                     logits=self.D_fake_logit,
                     labels=tf.ones_like(self.D_fake_logit)))
+
+    def sample_from_latent_space(self, sess, sampling_type=1, pick=0):
+        """generate sentence from latent space.."""
+        state = sess.run(self.G_cell.zero_state(1, tf.float32))
+        z = self.para.Z_PRIOR(size=(1, self.para.Z_DIM))
+        input = z
+
+        for n in range(self.loader.sentence_length):
+            feed = {
+                self.z: input,
+                self.dropout_val: self.para.DROPOUT_RATE,
+                self.G_cell_init_state: state}
+            probs, state = sess.run([self.G_prob, self.G_final_state], feed)
+            break

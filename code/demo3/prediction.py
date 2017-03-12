@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 import datetime
+from os.path import join
 
 import tensorflow as tf
 
 import parameters as para
 from code.utils.logger import log
+import code.utils.opfiles as opfile
 from code.dataset.dataLoaderChildrenStory import DataLoaderChildrenStory
 
 from code.model.textGAN import TextGAN
@@ -42,7 +44,7 @@ def main(data_loader_fn, MODEL):
             model.define_keep_tracking(sess)
 
             # define the model saving.
-            best_model = 0
+            best_model_index = 0
 
             # Initialize all variables
             sess.run(tf.global_variables_initializer())
@@ -55,8 +57,9 @@ def main(data_loader_fn, MODEL):
                     execution speed:{} second/batch'.format(
                     avg_l_d, avg_l_g, duration))
 
+            best_model = model.best_model + '-' + str(best_model_index)
             model.saver.save(sess, best_model)
-            best_model += 1
+            best_model_index += 1
             log("save best model to: {}.\n".format(best_model))
 
             log('------ do the standard GAN training ------ \n')
@@ -67,17 +70,29 @@ def main(data_loader_fn, MODEL):
                     avg_l_d, avg_l_g, duration))
 
                 if cur_epoch % para.CHECKPOINT_EVERY:
+                    best_model_index += 1
+                    best_model = model.best_model + '-' + str(best_model_index)
                     model.saver.save(sess, best_model)
-                    best_model += 1
                     log("save best model to: {}.\n".format(best_model))
+
+            log('------ generate sentence from latent space / noice ------ \n')
+            generated_sentences = []
+            for cur_epoch in range(para.EPOCH_SENTENCE_GENERATION):
+                generated_sentence = model.sample_from_latent_space(sess)
+                generated_sentences.append(generated_sentence)
+
+            generated_sentences_string = '\n\n'.join(
+                [' '.join(s) for s in generated_sentences])
+            opfile.write_txt(
+                generated_sentences_string,
+                join(model.out_dir, 'sentence_generation'))
 
     end_time = datetime.datetime.now()
     log('total execution time: {}'.format((end_time - start_time).seconds))
 
 if __name__ == '__main__':
     data_loader = DataLoaderChildrenStory
-    model = TextGAN
-    # model = TextGANV1
-    model = TextGANV2
+
+    model = [TextGAN, TextGANV1, TextGANV2][0]
 
     main(data_loader, model)
