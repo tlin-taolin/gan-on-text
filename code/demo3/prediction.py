@@ -57,10 +57,11 @@ def main(data_loader_fn, MODEL):
                     execution speed:{} second/batch'.format(
                     avg_l_d, avg_l_g, duration))
 
-            best_model = model.best_model + '-' + str(best_model_index)
-            model.saver.save(sess, best_model)
+            model.saver.save(
+                sess, model.best_model,
+                global_step=best_model_index)
             best_model_index += 1
-            log("save best model to: {}.\n".format(best_model))
+            log("save bestmodel:{}.\n".format(best_model_index))
 
             log('------ do the standard GAN training ------ \n')
             for cur_epoch in range(para.EPOCH_TRAIN):
@@ -71,21 +72,10 @@ def main(data_loader_fn, MODEL):
 
                 if cur_epoch % para.CHECKPOINT_EVERY:
                     best_model_index += 1
-                    best_model = model.best_model + '-' + str(best_model_index)
-                    model.saver.save(sess, best_model)
-                    log("save best model to: {}.\n".format(best_model))
-
-            log('------ generate sentence from latent space / noice ------ \n')
-            generated_sentences = []
-            for cur_epoch in range(para.EPOCH_SENTENCE_GENERATION):
-                generated_sentence = model.sample_from_latent_space(sess)
-                generated_sentences.append(generated_sentence)
-
-            generated_sentences_string = '\n\n'.join(
-                [' '.join(s) for s in generated_sentences])
-            opfile.write_txt(
-                generated_sentences_string,
-                join(model.out_dir, 'sentence_generation'))
+                    model.saver.save(
+                        sess, model.best_model,
+                        global_step=best_model_index)
+                    log("save bestmodel:{}.\n".format(best_model_index))
 
     end_time = datetime.datetime.now()
     log('total execution time: {}'.format((end_time - start_time).seconds))

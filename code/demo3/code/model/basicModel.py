@@ -17,11 +17,16 @@ from code.model.beamSearch import BeamSearch
 class BasicModel(object):
     """a base model for any subsequent implementation."""
 
-    def __init__(self, para, loader):
+    def __init__(self, para, loader, training):
         """init."""
         # system define.
         self.para = para
         self.loader = loader
+        self.training = training
+
+        if not training:
+            self.para.BATCH_SIZE = 1
+            self.loader.sentence_length = 1
 
     # define optimiaer for training
     def define_optimizer(self, learning_rate):
@@ -271,6 +276,7 @@ class BasicModel(object):
                         1,
                         conv_depth])
                 b = self.bias_variable(shape=[conv_depth])
+
                 conv = self.conv2d(
                     input,
                     W,
@@ -369,7 +375,6 @@ class BasicModel(object):
             outputs.append(output)
             embedded_outputs.append(input)
 
-        self.G_final_state = state
         logits = tf.reshape(
             tf.concat(logits, 0),
             [-1, self.loader.sentence_length, self.loader.vocab_size])
@@ -379,7 +384,7 @@ class BasicModel(object):
         embedded_outputs = tf.reshape(
             tf.concat(embedded_outputs, 0),
             [-1, self.loader.sentence_length, self.para.EMBEDDING_SIZE])
-        return logits, probs, outputs, embedded_outputs
+        return logits, probs, outputs, embedded_outputs, state
 
     # tracking status.
     def define_keep_tracking(self, sess):
@@ -525,12 +530,12 @@ class BasicModel(object):
         """use tanh as the activation function."""
         return tf.tanh(tf.nn.bias_add(conv, b), name=name)
 
-    def define_rnn_cell(self):
-        if self.para.MODEL_TYPE == 'rnn':
+    def define_rnn_cell(self, model_type):
+        if model_type == 'rnn':
             cell_fn = tf.contrib.rnn.BasicRNNCell
-        elif self.para.MODEL_TYPE == 'gru':
+        elif model_type == 'gru':
             cell_fn = tf.contrib.rnn.GRUCell
-        elif self.para.MODEL_TYPE == 'lstm':
+        elif model_type == 'lstm':
             cell_fn = tf.contrib.rnn.BasicLSTMCell
         else:
             raise Exception("model type not supported: {}".format(
@@ -595,13 +600,57 @@ class BasicModel(object):
     def weighted_pick(self, weights):
         t = np.cumsum(weights)
         s = np.sum(weights)
-        return(int(np.searchsorted(t, np.random.rand(1)*s)))
+        return int(np.searchsorted(t, np.random.rand(1) * s))
 
-    def beam_search_pick(self, probs, weights):
-        probs[0] = weights
+    def beam_search_pick(self, probs):
         samples, scores = BeamSearch(probs).beamsearch(
-            None, '<go>', None, k=2, maxsample=len(weights), use_unk=False)
+            None, '<go>', None, k=2, maxsample=len(probs), use_unk=False)
         sampleweights = samples[np.argmax(scores)]
         t = np.cumsum(sampleweights)
         s = np.sum(sampleweights)
-        return(int(np.searchsorted(t, np.random.rand(1)*s)))
+        return int(np.searchsorted(t, np.random.rand(1) * s))
+
+    # add function to generate sentence.
+    def sample_from_latent_space(
+            self, sess, vocab_word2index, vocab_index2word,
+            sampling_type=1, pick=1):
+        """generate sentence from latent space.."""
+        state = sess.run(self.G_cell.zero_state(1, tf.float32))
+        z = self.para.Z_PRIOR(size=(1, self.para.Z_DIM))
+        input = z
+
+        generated = []
+        word = ''
+
+        for n in range(self.para.SENTENCE_LENGTH_TO_GENERATE):
+            if n == 0:
+                probs, state = sess.run(
+                    [self.G_prob, self.G_state],
+                    {self.z: input, self.dropout_val: 1.0,
+                     self.G_cell_init_state: state})
+            else:
+                probs, state = sess.run(
+                    [self.yhat_prob, self.yhat_state],
+                    {self.x: input, self.dropout_val: 1.0,
+                     self.G_cell_init_state: state})
+
+            p = probs[0, 0]
+
+            if pick == 1:
+                if sampling_type == 0:
+                    sample_index = np.argmax(p)
+                else:
+                    sample_index = self.weighted_pick(p)
+            elif pick == 2:
+                raise NotImplementedError
+                sample_index = self.beam_search_pick(p)
+
+            pred = vocab_index2word[sample_index]
+            word = pred
+            generated.append(word)
+
+            if word == '<eos>':
+                break
+            else:
+                input = [[sample_index]]
+        return generated

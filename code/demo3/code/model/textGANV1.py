@@ -9,13 +9,19 @@ class TextGANV1(BasicModel):
     It uses an RNN network as the generator, an CNN as the discriminator.
     """
 
-    def __init__(self, para, loader):
+    def __init__(self, para, loader, training=True):
         """init parameters."""
-        super(TextGANV1, self).__init__(para, loader)
+        super(TextGANV1, self).__init__(para, loader, training)
 
         # init the basic model..
-        self.define_rnn_cell()
         self.define_placeholder()
+
+        self.G_cell = self.define_rnn_cell('lstm')
+        self.D_cell = self.define_rnn_cell('lstm')
+        self.G_cell_init_state = self.G_cell.zero_state(
+            self.para.BATCH_SIZE, tf.float32)
+        self.D_cell_init_state = self.D_cell.zero_state(
+            self.para.BATCH_SIZE, tf.float32)
 
     def define_placeholder(self):
         """define the placeholders."""
@@ -39,13 +45,6 @@ class TextGANV1(BasicModel):
 
     def define_inference(self):
         """"define the inference procedure in training phase."""
-        self.G_cell = self.define_rnn_cell()
-        self.D_cell = self.define_rnn_cell()
-        self.G_cell_init_state = self.G_cell.zero_state(
-            self.para.BATCH_SIZE, tf.float32)
-        self.D_cell_init_state = self.D_cell.zero_state(
-            self.para.BATCH_SIZE, tf.float32)
-
         with tf.variable_scope('generator'):
             self.embedding()
             self.language_model()
