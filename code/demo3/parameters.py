@@ -7,7 +7,7 @@ import numpy as np
 """system part."""
 ROOT_DIRECTORY = '/home/tlin/notebooks'
 RAW_DATA_DIRECTORY = join(ROOT_DIRECTORY, 'data')
-WORK_DIRECTORY = '/home/tlin/notebooks/code/demo3'
+WORK_DIRECTORY = join(ROOT_DIRECTORY, 'code/demo3')
 DATA_DIRECTORY = join(WORK_DIRECTORY, 'data')
 TRAINING_DIRECTORY = join(DATA_DIRECTORY, 'training')
 

@@ -52,6 +52,7 @@ def main(data_loader_fn, MODEL):
             # pretrain the model a bit.
             log('------ do the pretrain ------ \n')
             for cur_epoch in range(para.EPOCH_PRETRAIN):
+                log('pretrain epoch {}'.format(cur_epoch))
                 avg_l_d, avg_l_g, duration = model.run_pretrain_epoch(sess)
                 log('pretrain loss d:{}, pretrain loss g:{}, \
                     execution speed:{} second/batch'.format(
@@ -65,9 +66,11 @@ def main(data_loader_fn, MODEL):
 
             log('------ do the standard GAN training ------ \n')
             for cur_epoch in range(para.EPOCH_TRAIN):
+                log('train epoch {}'.format(cur_epoch))
+
                 avg_l_d, avg_l_g, duration = model.run_train_epoch(sess)
                 log('train loss d:{}, train loss g:{}, \
-                    execution speed:{} second/batch'.format(
+                    execution speed:{} second/batch\n'.format(
                     avg_l_d, avg_l_g, duration))
 
                 if cur_epoch % para.CHECKPOINT_EVERY:

@@ -153,8 +153,8 @@ class BasicModel(object):
             = optimizer_G.compute_gradients(self.loss_G, var_list=vars_G)
 
         # get training operation of G and D.
-        self.op_D = optimizer_D.apply_gradients(self.grads_and_vars_D)
-        self.op_G = optimizer_G.apply_gradients(self.grads_and_vars_G)
+        self.op_train_D = optimizer_D.apply_gradients(self.grads_and_vars_D)
+        self.op_train_G = optimizer_G.apply_gradients(self.grads_and_vars_G)
 
     def train_step(self, sess, batch_x, batch_z, losses):
         """do the training step."""
@@ -169,7 +169,7 @@ class BasicModel(object):
         for _ in range(self.para.D_ITERS_PER_BATCH):
             _, summary_D, loss_real_D, loss_fake_D, loss_D,\
                     predict_D_real, predict_D_fake = sess.run(
-                        [self.op_D, self.train_summary_D_op,
+                        [self.op_train_D, self.train_summary_D_op,
                          self.loss_real_D, self.loss_fake_D, self.loss_D,
                          self.D_real, self.D_fake],
                         feed_dict=feed_dict_D)
@@ -190,7 +190,7 @@ class BasicModel(object):
         # train G.
         for _ in range(self.para.G_ITERS_PER_BATCH):
             _, summary_G, loss_G = sess.run(
-                [self.op_G, self.train_summary_G_op, self.loss_G],
+                [self.op_train_G, self.train_summary_G_op, self.loss_G],
                 feed_dict=feed_dict_G)
 
         # record loss.
@@ -448,9 +448,9 @@ class BasicModel(object):
         loss_summary_G = tf.summary.scalar("loss_G", self.loss_G)
 
         # Train Summaries
-        self.summary_D_op = tf.summary.merge(
+        self.train_summary_D_op = tf.summary.merge(
             [loss_summary_D, grad_summaries_merged_D])
-        self.summary_G_op = tf.summary.merge(
+        self.train_summary_G_op = tf.summary.merge(
             [loss_summary_G, grad_summaries_merged_G])
 
         train_summary_dir = join(self.out_dir, "summaries", "train")
