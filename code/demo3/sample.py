@@ -41,8 +41,7 @@ def main(data_loader_fn, MODEL, checkpoint_dir):
         saver = tf.train.import_meta_graph(
             "{}.meta".format(checkpoint_file))
         saver.restore(sess, checkpoint_file)
-
-        # define the model and do the inference.
+        log('restore checkpoint_file from path: {}'.format(checkpoint_file))
 
         # define vocab that from word to index and that from index to word.
         vocab_word2index = data_loader.vocab
@@ -51,17 +50,20 @@ def main(data_loader_fn, MODEL, checkpoint_dir):
         generated_sentences = []
         for cur_epoch in range(para.EPOCH_SENTENCE_GENERATION):
             generated_sentence = model.sample_from_latent_space(
-                sess, vocab_word2index, vocab_index2word)
+                sess, vocab_word2index, vocab_index2word,
+                sampling_type=2, pick=1)
             generated_sentences.append(generated_sentence)
 
-        generated_sentences_string = '\n\n'.join(
-            [' '.join(s) for s in generated_sentences])
+        log('generate sentence and write to path: {}'.format(checkpoint_dir))
+        generated_sentences_string = '\n'.join(
+            [' '.join(s) for s in generated_sentences]) + '\n\n'
         opfile.write_txt(
             generated_sentences_string,
-            os.path.join('..', checkpoint_dir, 'generated_sentences'))
-
+            os.path.join('..', checkpoint_dir, 'generated_sentences'),
+            type='a')
 
 if __name__ == '__main__':
+    # change the execution path here!
     execution = os.path.join(
         para.TRAINING_DIRECTORY,
         'runs', 'code.model.textGAN.TextGAN',

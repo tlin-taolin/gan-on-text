@@ -2227,3 +2227,253 @@
 2017:03:13 11:27:02	use DataLoaderChildrenStory to init data.
 2017:03:13 11:27:02	loading preprocessed files.
 2017:03:13 11:27:10	the sample size is 97314, the vocab size is 18739
+2017:03:13 14:06:27	use DataLoaderChildrenStory to init data.
+2017:03:13 14:06:27	loading preprocessed files.
+2017:03:13 14:06:35	the sample size is 97314, the vocab size is 18739
+2017:03:13 14:06:42	writing to /home/tlin/notebooks/code/demo3/data/training/runs/code.model.textGAN.TextGAN/1489414002
+
+2017:03:13 14:06:46	------ do the pretrain ------ 
+
+2017:03:13 14:06:46	save bestmodel:1.
+
+2017:03:13 14:06:46	------ do the standard GAN training ------ 
+
+2017:03:13 14:06:46	total execution time: 19
+2017:03:13 14:07:05	use DataLoaderChildrenStory to init data.
+2017:03:13 14:07:05	loading preprocessed files.
+2017:03:13 14:07:12	the sample size is 97314, the vocab size is 18739
+2017:03:13 14:07:19	writing to /home/tlin/notebooks/code/demo3/data/training/runs/code.model.textGAN.TextGAN/1489414038
+
+2017:03:13 14:07:22	------ do the pretrain ------ 
+
+2017:03:13 14:07:22	pretrain epoch 0
+2017:03:13 14:58:07	use DataLoaderChildrenStory to init data.
+2017:03:13 14:58:07	loading preprocessed files.
+2017:03:13 14:58:15	the sample size is 97314, the vocab size is 18739
+2017:03:13 14:59:09	use DataLoaderChildrenStory to init data.
+2017:03:13 14:59:09	loading preprocessed files.
+2017:03:13 14:59:16	the sample size is 97314, the vocab size is 18739
+2017:03:13 14:59:49	use DataLoaderChildrenStory to init data.
+2017:03:13 14:59:49	loading preprocessed files.
+2017:03:13 14:59:56	the sample size is 97314, the vocab size is 18739
+2017:03:13 15:00:04	use DataLoaderChildrenStory to init data.
+2017:03:13 15:00:04	loading preprocessed files.
+2017:03:13 15:00:11	the sample size is 97314, the vocab size is 18739
+2017:03:13 15:00:34	use DataLoaderChildrenStory to init data.
+2017:03:13 15:00:34	loading preprocessed files.
+2017:03:13 15:00:41	the sample size is 97314, the vocab size is 18739
+2017:03:13 15:01:23	use DataLoaderChildrenStory to init data.
+2017:03:13 15:01:23	loading preprocessed files.
+2017:03:13 15:01:30	the sample size is 97314, the vocab size is 18739
+2017:03:13 15:02:59	use DataLoaderChildrenStory to init data.
+2017:03:13 15:02:59	loading preprocessed files.
+2017:03:13 15:03:05	the sample size is 97314, the vocab size is 18739
+2017:03:13 15:03:30	use DataLoaderChildrenStory to init data.
+2017:03:13 15:03:30	loading preprocessed files.
+2017:03:13 15:03:37	the sample size is 97314, the vocab size is 18739
+2017:03:13 15:04:00	use DataLoaderChildrenStory to init data.
+2017:03:13 15:04:00	loading preprocessed files.
+2017:03:13 15:04:07	the sample size is 97314, the vocab size is 18739
+2017:03:13 15:06:46	use DataLoaderChildrenStory to init data.
+2017:03:13 15:06:46	loading preprocessed files.
+2017:03:13 15:06:53	the sample size is 97314, the vocab size is 18739
+2017:03:13 15:07:50	use DataLoaderChildrenStory to init data.
+2017:03:13 15:07:50	loading preprocessed files.
+2017:03:13 15:07:56	the sample size is 97314, the vocab size is 18739
+2017:03:13 15:08:03	restore checkpoint_file from path: /home/tlin/notebooks/code/demo3/data/training/runs/code.model.textGAN.TextGAN/1489361968/checkpoints/bestmodel-0
+2017:03:13 15:09:05	use DataLoaderChildrenStory to init data.
+2017:03:13 15:09:05	loading preprocessed files.
+2017:03:13 15:09:12	the sample size is 97314, the vocab size is 18739
+2017:03:13 15:09:18	restore checkpoint_file from path: /home/tlin/notebooks/code/demo3/data/training/runs/code.model.textGAN.TextGAN/1489361968/checkpoints/bestmodel-0
+2017:03:13 15:09:19	generate sentence and write to path: /home/tlin/notebooks/code/demo3/data/training/runs/code.model.textGAN.TextGAN/1489361968/checkpoints
+2017:03:13 15:09:23	use DataLoaderChildrenStory to init data.
+2017:03:13 15:09:23	loading preprocessed files.
+2017:03:13 15:09:30	the sample size is 97314, the vocab size is 18739
+2017:03:13 15:09:36	restore checkpoint_file from path: /home/tlin/notebooks/code/demo3/data/training/runs/code.model.textGAN.TextGAN/1489361968/checkpoints/bestmodel-0
+2017:03:13 15:09:37	generate sentence and write to path: /home/tlin/notebooks/code/demo3/data/training/runs/code.model.textGAN.TextGAN/1489361968/checkpoints
+2017:03:13 15:53:32	use DataLoaderChildrenStory to init data.
+2017:03:13 15:53:32	loading preprocessed files.
+2017:03:13 15:53:40	the sample size is 97314, the vocab size is 18739
+2017:03:13 15:53:46	writing to /home/tlin/notebooks/code/demo3/data/training/runs/code.model.textGAN.TextGAN/1489420426
+
+2017:03:13 15:54:33	use DataLoaderChildrenStory to init data.
+2017:03:13 15:54:33	loading preprocessed files.
+2017:03:13 15:54:40	the sample size is 97314, the vocab size is 18739
+2017:03:13 15:54:47	writing to /home/tlin/notebooks/code/demo3/data/training/runs/code.model.textGAN.TextGAN/1489420487
+
+2017:03:13 15:54:50	------ do the pretrain ------ 
+
+2017:03:13 15:54:50	pretrain epoch 0
+2017:03:13 16:13:18	use DataLoaderChildrenStory to init data.
+2017:03:13 16:13:18	loading preprocessed files.
+2017:03:13 16:13:25	the sample size is 97314, the vocab size is 18739
+2017:03:13 16:14:08	use DataLoaderChildrenStory to init data.
+2017:03:13 16:14:08	loading preprocessed files.
+2017:03:13 16:14:16	the sample size is 97314, the vocab size is 18739
+2017:03:13 16:14:36	use DataLoaderChildrenStory to init data.
+2017:03:13 16:14:36	loading preprocessed files.
+2017:03:13 16:14:44	the sample size is 97314, the vocab size is 18739
+2017:03:13 16:16:23	use DataLoaderChildrenStory to init data.
+2017:03:13 16:16:23	loading preprocessed files.
+2017:03:13 16:16:30	the sample size is 97314, the vocab size is 18739
+2017:03:13 16:16:44	use DataLoaderChildrenStory to init data.
+2017:03:13 16:16:44	loading preprocessed files.
+2017:03:13 16:16:51	the sample size is 97314, the vocab size is 18739
+2017:03:13 16:17:13	use DataLoaderChildrenStory to init data.
+2017:03:13 16:17:13	loading preprocessed files.
+2017:03:13 16:17:20	the sample size is 97314, the vocab size is 18739
+2017:03:13 16:20:50	use DataLoaderChildrenStory to init data.
+2017:03:13 16:20:50	loading preprocessed files.
+2017:03:13 16:20:57	the sample size is 97314, the vocab size is 18739
+2017:03:13 16:21:24	use DataLoaderChildrenStory to init data.
+2017:03:13 16:21:24	loading preprocessed files.
+2017:03:13 16:21:31	the sample size is 97314, the vocab size is 18739
+2017:03:13 16:21:49	use DataLoaderChildrenStory to init data.
+2017:03:13 16:21:49	loading preprocessed files.
+2017:03:13 16:21:56	the sample size is 97314, the vocab size is 18739
+2017:03:13 16:23:14	use DataLoaderChildrenStory to init data.
+2017:03:13 16:23:14	loading preprocessed files.
+2017:03:13 16:23:21	the sample size is 97314, the vocab size is 18739
+2017:03:13 16:29:59	use DataLoaderChildrenStory to init data.
+2017:03:13 16:29:59	loading preprocessed files.
+2017:03:13 16:30:07	the sample size is 97314, the vocab size is 18739
+2017:03:13 16:34:17	use DataLoaderChildrenStory to init data.
+2017:03:13 16:34:17	loading preprocessed files.
+2017:03:13 16:34:25	the sample size is 97314, the vocab size is 18739
+2017:03:13 16:34:31	writing to /home/tlin/notebooks/code/demo3/data/training/runs/code.model.textGAN.TextGAN/1489422871
+
+2017:03:13 16:34:35	------ do the pretrain ------ 
+
+2017:03:13 16:34:35	pretrain epoch 0
+2017:03:13 16:35:53	use DataLoaderChildrenStory to init data.
+2017:03:13 16:35:53	loading preprocessed files.
+2017:03:13 16:36:01	the sample size is 97314, the vocab size is 18739
+2017:03:13 16:38:09	use DataLoaderChildrenStory to init data.
+2017:03:13 16:38:09	loading preprocessed files.
+2017:03:13 16:38:16	the sample size is 97314, the vocab size is 18739
+2017:03:13 16:38:30	use DataLoaderChildrenStory to init data.
+2017:03:13 16:38:30	loading preprocessed files.
+2017:03:13 16:38:37	the sample size is 97314, the vocab size is 18739
+2017:03:13 16:38:43	writing to /home/tlin/notebooks/code/demo3/data/training/runs/code.model.textGAN.TextGAN/1489423123
+
+2017:03:13 16:38:46	------ do the pretrain ------ 
+
+2017:03:13 16:38:46	pretrain epoch 0
+2017:03:13 16:39:26	use DataLoaderChildrenStory to init data.
+2017:03:13 16:39:26	loading preprocessed files.
+2017:03:13 16:39:33	the sample size is 97314, the vocab size is 18739
+2017:03:13 16:40:34	use DataLoaderChildrenStory to init data.
+2017:03:13 16:40:34	loading preprocessed files.
+2017:03:13 16:40:41	the sample size is 97314, the vocab size is 18739
+2017:03:13 16:56:10	use DataLoaderChildrenStory to init data.
+2017:03:13 16:56:10	loading preprocessed files.
+2017:03:13 16:56:17	the sample size is 97314, the vocab size is 18739
+2017:03:13 16:56:43	use DataLoaderChildrenStory to init data.
+2017:03:13 16:56:43	loading preprocessed files.
+2017:03:13 16:56:50	the sample size is 97314, the vocab size is 18739
+2017:03:13 16:56:59	writing to /home/tlin/notebooks/code/demo3/data/training/runs/code.model.textGANV1.TextGANV1/1489424219
+
+2017:03:13 16:58:58	use DataLoaderChildrenStory to init data.
+2017:03:13 16:58:58	loading preprocessed files.
+2017:03:13 16:59:06	the sample size is 97314, the vocab size is 18739
+2017:03:13 16:59:31	use DataLoaderChildrenStory to init data.
+2017:03:13 16:59:31	loading preprocessed files.
+2017:03:13 16:59:38	the sample size is 97314, the vocab size is 18739
+2017:03:13 16:59:56	use DataLoaderChildrenStory to init data.
+2017:03:13 16:59:56	loading preprocessed files.
+2017:03:13 17:00:03	the sample size is 97314, the vocab size is 18739
+2017:03:13 17:01:12	use DataLoaderChildrenStory to init data.
+2017:03:13 17:01:12	loading preprocessed files.
+2017:03:13 17:01:19	the sample size is 97314, the vocab size is 18739
+2017:03:13 17:02:25	use DataLoaderChildrenStory to init data.
+2017:03:13 17:02:25	loading preprocessed files.
+2017:03:13 17:02:32	the sample size is 97314, the vocab size is 18739
+2017:03:13 17:04:50	use DataLoaderChildrenStory to init data.
+2017:03:13 17:04:50	loading preprocessed files.
+2017:03:13 17:04:57	the sample size is 97314, the vocab size is 18739
+2017:03:13 17:05:08	writing to /home/tlin/notebooks/code/demo3/data/training/runs/code.model.textGANV1.TextGANV1/1489424707
+
+2017:03:13 17:05:13	------ do the pretrain ------ 
+
+2017:03:13 17:05:39	use DataLoaderChildrenStory to init data.
+2017:03:13 17:05:39	loading preprocessed files.
+2017:03:13 17:05:46	the sample size is 97314, the vocab size is 18739
+2017:03:13 17:05:56	use DataLoaderChildrenStory to init data.
+2017:03:13 17:05:56	loading preprocessed files.
+2017:03:13 17:06:03	the sample size is 97314, the vocab size is 18739
+2017:03:13 17:06:14	writing to /home/tlin/notebooks/code/demo3/data/training/runs/code.model.textGANV1.TextGANV1/1489424774
+
+2017:03:13 17:07:25	use DataLoaderChildrenStory to init data.
+2017:03:13 17:07:25	loading preprocessed files.
+2017:03:13 17:07:32	the sample size is 97314, the vocab size is 18739
+2017:03:13 17:07:44	use DataLoaderChildrenStory to init data.
+2017:03:13 17:07:44	loading preprocessed files.
+2017:03:13 17:07:51	the sample size is 97314, the vocab size is 18739
+2017:03:13 17:08:01	writing to /home/tlin/notebooks/code/demo3/data/training/runs/code.model.textGANV1.TextGANV1/1489424881
+
+2017:03:13 17:08:06	------ do the pretrain ------ 
+
+2017:03:13 17:08:08	save bestmodel:1.
+
+2017:03:13 17:08:08	------ do the standard GAN training ------ 
+
+2017:03:13 17:08:08	total execution time: 23
+2017:03:13 18:18:23	use DataLoaderChildrenStory to init data.
+2017:03:13 18:18:23	loading preprocessed files.
+2017:03:13 18:18:29	the sample size is 97314, the vocab size is 18739
+2017:03:13 18:22:18	use DataLoaderChildrenStory to init data.
+2017:03:13 18:22:18	loading preprocessed files.
+2017:03:13 18:22:24	the sample size is 97314, the vocab size is 18739
+2017:03:13 18:37:52	use DataLoaderChildrenStory to init data.
+2017:03:13 18:37:52	loading preprocessed files.
+2017:03:13 18:37:59	the sample size is 97314, the vocab size is 18739
+2017:03:13 18:39:38	use DataLoaderChildrenStory to init data.
+2017:03:13 18:39:38	loading preprocessed files.
+2017:03:13 18:39:45	the sample size is 97314, the vocab size is 18739
+2017:03:13 18:40:12	use DataLoaderChildrenStory to init data.
+2017:03:13 18:40:12	loading preprocessed files.
+2017:03:13 18:40:19	the sample size is 97314, the vocab size is 18739
+2017:03:13 18:42:15	use DataLoaderChildrenStory to init data.
+2017:03:13 18:42:15	loading preprocessed files.
+2017:03:13 18:42:22	the sample size is 97314, the vocab size is 18739
+2017:03:13 18:42:27	use DataLoaderChildrenStory to init data.
+2017:03:13 18:42:27	loading preprocessed files.
+2017:03:13 18:42:36	the sample size is 97314, the vocab size is 18739
+2017:03:13 18:42:46	writing to /home/tlin/notebooks/code/demo3/data/training/runs/code.model.textGANV1.TextGANV1/1489430566
+
+2017:03:13 18:42:51	------ do the pretrain ------ 
+
+2017:03:13 18:42:51	pretrain epoch 0
+2017:03:13 18:42:59	use DataLoaderChildrenStory to init data.
+2017:03:13 18:42:59	loading preprocessed files.
+2017:03:13 18:43:06	the sample size is 97314, the vocab size is 18739
+2017:03:13 18:45:09	use DataLoaderChildrenStory to init data.
+2017:03:13 18:45:09	loading preprocessed files.
+2017:03:13 18:45:16	the sample size is 97314, the vocab size is 18739
+2017:03:13 18:46:43	use DataLoaderChildrenStory to init data.
+2017:03:13 18:46:43	loading preprocessed files.
+2017:03:13 18:46:50	the sample size is 97314, the vocab size is 18739
+2017:03:13 18:47:02	writing to /home/tlin/notebooks/code/demo3/data/training/runs/code.model.textGANV2.TextGANV2/1489430822
+
+2017:03:13 18:47:07	------ do the pretrain ------ 
+
+2017:03:13 18:47:07	pretrain epoch 0
+2017:03:13 18:47:19	use DataLoaderChildrenStory to init data.
+2017:03:13 18:47:19	loading preprocessed files.
+2017:03:13 18:47:26	the sample size is 97314, the vocab size is 18739
+2017:03:13 18:47:36	writing to /home/tlin/notebooks/code/demo3/data/training/runs/code.model.textGANV1.TextGANV1/1489430856
+
+2017:03:13 18:47:41	------ do the pretrain ------ 
+
+2017:03:13 18:47:41	pretrain epoch 0
+2017:03:13 18:47:52	use DataLoaderChildrenStory to init data.
+2017:03:13 18:47:52	loading preprocessed files.
+2017:03:13 18:47:59	the sample size is 97314, the vocab size is 18739
+2017:03:13 18:48:26	use DataLoaderChildrenStory to init data.
+2017:03:13 18:48:26	loading preprocessed files.
+2017:03:13 18:48:33	the sample size is 97314, the vocab size is 18739
+2017:03:13 18:48:39	writing to /home/tlin/notebooks/code/demo3/data/training/runs/code.model.textGAN.TextGAN/1489430919
+
+2017:03:13 18:48:43	------ do the pretrain ------ 
+
+2017:03:13 18:48:43	pretrain epoch 0

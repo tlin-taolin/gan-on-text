@@ -12,6 +12,7 @@ from code.dataset.dataLoaderChildrenStory import DataLoaderChildrenStory
 from code.model.textGAN import TextGAN
 from code.model.textGANV1 import TextGANV1
 from code.model.textGANV2 import TextGANV2
+from code.model.textGANV3 import TextGANV3
 
 
 def init(data_loader):
@@ -34,7 +35,7 @@ def main(data_loader_fn, MODEL):
         with sess.as_default():
             # init model
             model = MODEL(para, data_loader)
-            model.define_inference()
+            model.inference()
             # pretrain stuff
             model.define_pretrain_loss()
             model.define_pretraining_op()
@@ -54,23 +55,22 @@ def main(data_loader_fn, MODEL):
             for cur_epoch in range(para.EPOCH_PRETRAIN):
                 log('pretrain epoch {}'.format(cur_epoch))
                 avg_l_d, avg_l_g, duration = model.run_pretrain_epoch(sess)
-                log('pretrain loss d:{}, pretrain loss g:{}, \
-                    execution speed:{} second/batch'.format(
+                log('pretrain loss d: {}, pretrain loss g: {}, execution speed: {} second/batch'.format(
                     avg_l_d, avg_l_g, duration))
 
             model.saver.save(
                 sess, model.best_model,
                 global_step=best_model_index)
             best_model_index += 1
-            log("save bestmodel:{}.\n".format(best_model_index))
+            log("save {}-th bestmodel to path: {}.\n".format(
+                best_model_index, model.best_model))
 
             log('------ do the standard GAN training ------ \n')
             for cur_epoch in range(para.EPOCH_TRAIN):
                 log('train epoch {}'.format(cur_epoch))
 
                 avg_l_d, avg_l_g, duration = model.run_train_epoch(sess)
-                log('train loss d:{}, train loss g:{}, \
-                    execution speed:{} second/batch\n'.format(
+                log('train loss d: {}, train loss g: {}, execution speed: {} second/batch\n'.format(
                     avg_l_d, avg_l_g, duration))
 
                 if cur_epoch % para.CHECKPOINT_EVERY:
@@ -78,7 +78,8 @@ def main(data_loader_fn, MODEL):
                     model.saver.save(
                         sess, model.best_model,
                         global_step=best_model_index)
-                    log("save bestmodel:{}.\n".format(best_model_index))
+                    log("save {}-th bestmodel to path: {}.\n".format(
+                        best_model_index, model.best_model))
 
     end_time = datetime.datetime.now()
     log('total execution time: {}'.format((end_time - start_time).seconds))
@@ -86,6 +87,6 @@ def main(data_loader_fn, MODEL):
 if __name__ == '__main__':
     data_loader = DataLoaderChildrenStory
 
-    model = [TextGAN, TextGANV1, TextGANV2][0]
+    model = [TextGAN, TextGANV1, TextGANV2, TextGANV3][0]
 
     main(data_loader, model)

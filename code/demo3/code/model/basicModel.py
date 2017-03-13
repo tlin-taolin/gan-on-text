@@ -28,6 +28,207 @@ class BasicModel(object):
             self.para.BATCH_SIZE = 1
             self.loader.sentence_length = 1
 
+    """define placeholder."""
+    # define the basic components of the inference procedure.
+    def define_placeholder(self):
+        """define the placeholders."""
+        self.z = tf.placeholder(
+            tf.float32,
+            [None, self.para.Z_DIM], name="z")
+        self.x = tf.placeholder(
+            tf.int32,
+            [None, self.loader.sentence_length], name="x")
+        self.x_label = tf.placeholder(
+            tf.float32,
+            [None, 1], name="x_label")
+        self.y = tf.placeholder(
+            tf.int32,
+            [None, self.loader.sentence_length], name="y")
+        self.ymask = tf.placeholder(
+            tf.float32,
+            [None, self.loader.sentence_length], name="ymask")
+        self.dropout_val = tf.placeholder(
+            tf.float32, name="dropout_keep_prob")
+
+    """define inference main entry."""
+
+    def define_inference(self, generator, discriminator):
+        """"define the inference procedure in training phase."""
+        with tf.variable_scope('generator'):
+            self.embedding()
+            self.language_model()
+
+            self.yhat_logit, self.yhat_prob, self.yhat_out, _, self.yhat_state\
+                = generator(x=self.x, pretrain=True)
+            self.G_logit, self.G_prob, self.G_out, self.G_embedded_out, self.G_state \
+                = generator(z=self.z, pretrain=False)
+            embedded_x = self.embedding(self.x, reuse=True)
+
+        if self.training:
+            with tf.variable_scope('discriminator') as discriminator_scope:
+                self.D_logit_real, self.D_real \
+                    = discriminator(embedded_x, discriminator_scope)
+
+                # get discriminator on fake data. the reuse=True, which
+                # specifies we reuse the discriminator ops for new placeholder.
+                self.D_logit_fake, self.D_fake \
+                    = discriminator(self.G_embedded_out, discriminator_scope,
+                                    reuse=True)
+
+    """define inference components."""
+    def define_discriminator_as_CNN(self, embedded, scope, reuse=False):
+        """define the discriminator."""
+        if reuse:
+            scope.reuse_variables()
+
+        input = tf.expand_dims(embedded, 3)
+
+        # build a series for 'CONV + RELU + POOL' architecture.
+        archits = zip(self.para.D_CONV_SPATIALS, self.para.D_CONV_DEPTHS)
+        pooled_outputs = []
+        for i, (conv_spatial, conv_depth) in enumerate(archits):
+            with tf.variable_scope("conv-lrelu-pooling-%s" % i):
+                W = self.weight_variable(
+                    shape=[
+                        conv_spatial,
+                        self.para.EMBEDDING_SIZE,
+                        1,
+                        conv_depth])
+                b = self.bias_variable(shape=[conv_depth])
+
+                conv = self.conv2d(
+                    input,
+                    W,
+                    strides=[1, 1, 1, 1],
+                    padding='VALID')
+                h = self.leakyrelu(conv, b, alpha=1.0/5.5)
+                pooled = self.max_pool(
+                    h,
+                    ksize=[
+                        1,
+                        self.loader.sentence_length - conv_spatial + 1,
+                        1,
+                        1],
+                    strides=[1, 1, 1, 1],
+                    padding="VALID")
+                pooled_outputs.append(pooled)
+
+        num_filters_total = sum([x[1] for x in archits])
+        h_pool_flat = tf.reshape(
+            tf.concat(pooled_outputs, 3), [-1, num_filters_total])
+
+        # Add dropout
+        with tf.name_scope("dropout"):
+            h_drop = tf.nn.dropout(h_pool_flat, self.dropout_val)
+
+        # output the classification result.
+        with tf.variable_scope("output"):
+            W = tf.get_variable(
+                "W",
+                shape=[num_filters_total, self.para.LABEL_DIM],
+                initializer=tf.contrib.layers.xavier_initializer())
+            b = tf.get_variable(
+                'b',
+                shape=[self.para.LABEL_DIM],
+                initializer=tf.contrib.layers.xavier_initializer())
+            logits = tf.nn.xw_plus_b(h_drop, W, b, name="scores")
+        return logits, tf.nn.sigmoid(logits)
+
+    def define_discriminator_as_LSTM(self, embedded, dis_scope, reuse=False):
+        """define the discriminator."""
+        state = self.D_cell_init_state
+
+        with tf.variable_scope('rnn') as scope_rnn:
+            for time_step in range(self.loader.sentence_length):
+                if time_step > 0 or reuse:
+                    scope_rnn.reuse_variables()
+                output, state = self.D_cell(embedded[:, time_step, :], state)
+
+        # output the classification result.
+        with tf.variable_scope("output") as scope:
+            if not reuse:
+                W = tf.get_variable(
+                    "W",
+                    shape=[self.para.RNN_SIZE, self.para.LABEL_DIM],
+                    initializer=tf.contrib.layers.xavier_initializer())
+                b = tf.get_variable(
+                    'b',
+                    shape=[self.para.LABEL_DIM],
+                    initializer=tf.contrib.layers.xavier_initializer())
+            else:
+                scope.reuse_variables()
+                W = tf.get_variable("W")
+                b = tf.get_variable("b")
+            logits = tf.nn.xw_plus_b(output, W, b)
+        return logits, tf.nn.sigmoid(logits)
+
+    def define_generator_as_LSTM(self, z=None, x=None, pretrain=False):
+        """define the generator."""
+        logits, probs, outputs, embedded_outputs = [], [], [], []
+        state = self.G_cell_init_state
+
+        if pretrain:
+            inputs = self.embedding(x, reuse=True)
+            input = inputs[:, 0, :]
+        else:
+            input = z
+
+        for time_step in range(self.loader.sentence_length):
+            with tf.variable_scope('rnn') as scope_rnn:
+                if time_step > 0 or not pretrain:
+                    scope_rnn.reuse_variables()
+                cell_output, state = self.G_cell(input, state)
+
+            # feed the current cell output to a language model.
+            logit, prob, soft_prob, output = self.language_model(
+                cell_output, reuse=True)
+            # decide the next input,either from inputs or from approx embedding
+            if pretrain:
+                input = inputs[:, time_step, :]
+            else:
+                input = self.get_approx_embedding(soft_prob)
+
+            # save the middle result.
+            logits.append(logit)
+            probs.append(prob)
+            outputs.append(output)
+            embedded_outputs.append(input)
+
+        logits = tf.reshape(
+            tf.concat(logits, 0),
+            [-1, self.loader.sentence_length, self.loader.vocab_size])
+        probs = tf.reshape(
+            tf.concat(probs, 0),
+            [-1, self.loader.sentence_length, self.loader.vocab_size])
+        embedded_outputs = tf.reshape(
+            tf.concat(embedded_outputs, 0),
+            [-1, self.loader.sentence_length, self.para.EMBEDDING_SIZE])
+        return logits, probs, outputs, embedded_outputs, state
+
+    def define_generator_as_LSTMV1(self, z=None, x=None, pretrain=False):
+        logits, probs, outputs, embedded_outputs = [], [], [], []
+        state = self.G_cell_init_state
+
+    def define_rnn_cell(self, model_type):
+        if model_type == 'rnn':
+            cell_fn = tf.contrib.rnn.BasicRNNCell
+        elif model_type == 'gru':
+            cell_fn = tf.contrib.rnn.GRUCell
+        elif model_type == 'lstm':
+            cell_fn = tf.contrib.rnn.BasicLSTMCell
+        else:
+            raise Exception("model type not supported: {}".format(
+                self.para.MODEL_TYPE))
+
+        # define cell architecture.
+        cell = cell_fn(self.para.RNN_SIZE, state_is_tuple=True)
+        cell = tf.contrib.rnn.DropoutWrapper(
+            cell, output_keep_prob=self.para.DROPOUT_RATE)
+        cell = tf.contrib.rnn.MultiRNNCell(
+            [cell] * self.para.RNN_DEPTH, state_is_tuple=True)
+        return cell
+
+    """training related."""
     # define optimiaer for training
     def define_optimizer(self, learning_rate):
         if self.para.OPTIMIZER_NAME == 'Adam':
@@ -236,156 +437,7 @@ class BasicModel(object):
         return np.mean(losses['losses_D']), \
             np.mean(losses['losses_G']), duration
 
-    # define the basic components of the inference procedure.
-    def define_placeholder(self):
-        """define the placeholders."""
-        self.z = tf.placeholder(
-            tf.float32,
-            [None, self.para.Z_DIM], name="z")
-        self.x = tf.placeholder(
-            tf.int32,
-            [None, self.loader.sentence_length], name="x")
-        self.x_label = tf.placeholder(
-            tf.float32,
-            [None, 1], name="x_label")
-        self.y = tf.placeholder(
-            tf.int32,
-            [None, self.loader.sentence_length], name="y")
-        self.ymask = tf.placeholder(
-            tf.float32,
-            [None, self.loader.sentence_length], name="ymask")
-        self.dropout_val = tf.placeholder(
-            tf.float32, name="dropout_keep_prob")
-
-    def define_discriminator_as_CNN(self, embedded, scope, reuse=False):
-        """define the discriminator."""
-        if reuse:
-            scope.reuse_variables()
-
-        input = tf.expand_dims(embedded, 3)
-
-        # build a series for 'CONV + RELU + POOL' architecture.
-        archits = zip(self.para.D_CONV_SPATIALS, self.para.D_CONV_DEPTHS)
-        pooled_outputs = []
-        for i, (conv_spatial, conv_depth) in enumerate(archits):
-            with tf.variable_scope("conv-lrelu-pooling-%s" % i):
-                W = self.weight_variable(
-                    shape=[
-                        conv_spatial,
-                        self.para.EMBEDDING_SIZE,
-                        1,
-                        conv_depth])
-                b = self.bias_variable(shape=[conv_depth])
-
-                conv = self.conv2d(
-                    input,
-                    W,
-                    strides=[1, 1, 1, 1],
-                    padding='VALID')
-                h = self.leakyrelu(conv, b, alpha=1.0/5.5)
-                pooled = self.max_pool(
-                    h,
-                    ksize=[
-                        1,
-                        self.loader.sentence_length - conv_spatial + 1,
-                        1,
-                        1],
-                    strides=[1, 1, 1, 1],
-                    padding="VALID")
-                pooled_outputs.append(pooled)
-
-        num_filters_total = sum([x[1] for x in archits])
-        h_pool_flat = tf.reshape(
-            tf.concat(pooled_outputs, 3), [-1, num_filters_total])
-
-        # Add dropout
-        with tf.name_scope("dropout"):
-            h_drop = tf.nn.dropout(h_pool_flat, self.dropout_val)
-
-        # output the classification result.
-        with tf.variable_scope("output"):
-            W = tf.get_variable(
-                "W",
-                shape=[num_filters_total, self.para.LABEL_DIM],
-                initializer=tf.contrib.layers.xavier_initializer())
-            b = tf.get_variable(
-                'b',
-                shape=[self.para.LABEL_DIM],
-                initializer=tf.contrib.layers.xavier_initializer())
-            logits = tf.nn.xw_plus_b(h_drop, W, b, name="scores")
-        return logits, tf.nn.sigmoid(logits)
-
-    def define_discriminator_as_LSTM(self, embedded, reuse=False):
-        """define the discriminator."""
-        state = self.D_cell_init_state
-
-        with tf.variable_scope('rnn') as scope_rnn:
-            for time_step in range(self.loader.sentence_length):
-                if time_step > 0 or reuse:
-                    scope_rnn.reuse_variables()
-                output, state = self.G_cell(embedded[:, time_step, :], state)
-
-        # output the classification result.
-        with tf.variable_scope("output") as scope:
-            if not reuse:
-                W = tf.get_variable(
-                    "W",
-                    shape=[self.para.RNN_SIZE, self.para.LABEL_DIM],
-                    initializer=tf.contrib.layers.xavier_initializer())
-                b = tf.get_variable(
-                    'b',
-                    shape=[self.para.LABEL_DIM],
-                    initializer=tf.contrib.layers.xavier_initializer())
-            else:
-                scope.reuse_variables()
-                W = tf.get_variable("W")
-                b = tf.get_variable("b")
-            logits = tf.nn.xw_plus_b(output, W, b)
-        return logits, tf.nn.sigmoid(logits)
-
-    def define_generator_as_LSTM(self, z=None, x=None, pretrain=False):
-        """define the generator."""
-        logits, probs, outputs, embedded_outputs = [], [], [], []
-        state = self.G_cell_init_state
-
-        if pretrain:
-            inputs = self.embedding(x, reuse=True)
-            input = inputs[:, 0, :]
-        else:
-            input = z
-
-        for time_step in range(self.loader.sentence_length):
-            with tf.variable_scope('rnn') as scope_rnn:
-                if time_step > 0 or not pretrain:
-                    scope_rnn.reuse_variables()
-                cell_output, state = self.G_cell(input, state)
-
-            # feed the current cell output to a language model.
-            logit, prob, soft_prob, output = self.language_model(
-                cell_output, reuse=True)
-            # decide the next input,either from inputs or from approx embedding
-            if pretrain:
-                input = inputs[:, time_step, :]
-            else:
-                input = self.get_approx_embedding(soft_prob)
-
-            # save the middle result.
-            logits.append(logit)
-            probs.append(prob)
-            outputs.append(output)
-            embedded_outputs.append(input)
-
-        logits = tf.reshape(
-            tf.concat(logits, 0),
-            [-1, self.loader.sentence_length, self.loader.vocab_size])
-        probs = tf.reshape(
-            tf.concat(probs, 0),
-            [-1, self.loader.sentence_length, self.loader.vocab_size])
-        embedded_outputs = tf.reshape(
-            tf.concat(embedded_outputs, 0),
-            [-1, self.loader.sentence_length, self.para.EMBEDDING_SIZE])
-        return logits, probs, outputs, embedded_outputs, state
-
+    """define status tracking stuff."""
     # tracking status.
     def define_keep_tracking(self, sess):
         self.build_dir_for_tracking()
@@ -444,8 +496,8 @@ class BasicModel(object):
             self.grads_and_vars_G)
 
         # Summaries for loss and accuracy
-        loss_summary_D = tf.summary.scalar('loss_D', self.loss_D)
-        loss_summary_G = tf.summary.scalar("loss_G", self.loss_G)
+        loss_summary_D = tf.summary.scalar('loss_train_D', self.loss_D)
+        loss_summary_G = tf.summary.scalar("loss_train_G", self.loss_G)
 
         # Train Summaries
         self.train_summary_D_op = tf.summary.merge(
@@ -483,6 +535,7 @@ class BasicModel(object):
             tf.summary.scalar('min', tf.reduce_min(var))
             tf.summary.histogram('histogram', var)
 
+    """define some common operations that are involved in inference."""
     # define some common operation.
     def conv2d(self, x, W, strides, padding='SAME', name="conv"):
         """do convolution.
@@ -530,25 +583,7 @@ class BasicModel(object):
         """use tanh as the activation function."""
         return tf.tanh(tf.nn.bias_add(conv, b), name=name)
 
-    def define_rnn_cell(self, model_type):
-        if model_type == 'rnn':
-            cell_fn = tf.contrib.rnn.BasicRNNCell
-        elif model_type == 'gru':
-            cell_fn = tf.contrib.rnn.GRUCell
-        elif model_type == 'lstm':
-            cell_fn = tf.contrib.rnn.BasicLSTMCell
-        else:
-            raise Exception("model type not supported: {}".format(
-                self.para.MODEL_TYPE))
-
-        # define cell architecture.
-        cell = cell_fn(self.para.RNN_SIZE, state_is_tuple=True)
-        cell = tf.contrib.rnn.DropoutWrapper(
-            cell, output_keep_prob=self.para.DROPOUT_RATE)
-        cell = tf.contrib.rnn.MultiRNNCell(
-            [cell] * self.para.RNN_DEPTH, state_is_tuple=True)
-        return cell
-
+    """define method related to language model/word embedding."""
     def language_model(self, output=None, reuse=False):
         with tf.variable_scope('lm') as scope:
             if not reuse:
@@ -602,9 +637,11 @@ class BasicModel(object):
         s = np.sum(weights)
         return int(np.searchsorted(t, np.random.rand(1) * s))
 
+    """define stuff related to sentence generation, i.e., samping."""
     def beam_search_pick(self, probs):
         samples, scores = BeamSearch(probs).beamsearch(
-            None, '<go>', None, k=2, maxsample=len(probs), use_unk=False)
+            None, self.loader.vocab['<go>'], None,
+            k=3, maxsample=len(probs), use_unk=False)
         sampleweights = samples[np.argmax(scores)]
         t = np.cumsum(sampleweights)
         s = np.sum(sampleweights)
@@ -613,14 +650,13 @@ class BasicModel(object):
     # add function to generate sentence.
     def sample_from_latent_space(
             self, sess, vocab_word2index, vocab_index2word,
-            sampling_type=1, pick=1):
+            sampling_type=1, pick=2):
         """generate sentence from latent space.."""
         state = sess.run(self.G_cell.zero_state(1, tf.float32))
         z = self.para.Z_PRIOR(size=(1, self.para.Z_DIM))
         input = z
 
         generated = []
-        word = ''
 
         for n in range(self.para.SENTENCE_LENGTH_TO_GENERATE):
             if n == 0:
@@ -642,8 +678,7 @@ class BasicModel(object):
                 else:
                     sample_index = self.weighted_pick(p)
             elif pick == 2:
-                raise NotImplementedError
-                sample_index = self.beam_search_pick(p)
+                sample_index = self.beam_search_pick(probs[0])
 
             pred = vocab_index2word[sample_index]
             word = pred

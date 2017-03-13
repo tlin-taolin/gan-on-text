@@ -26,27 +26,11 @@ class TextGANV2(BasicModel):
         self.D_cell_init_state = self.D_cell.zero_state(
             self.para.BATCH_SIZE, tf.float32)
 
-    def define_inference(self):
+    def inference(self):
         """"define the inference procedure in training phase."""
-        with tf.variable_scope('generator'):
-            self.embedding()
-            self.language_model()
-
-            self.yhat_logit, self.yhat_prob, self.yhat_out, _ \
-                = self.define_generator_as_LSTM(x=self.x, pretrain=True)
-            self.G_logit, self.G_prob, self.G_out, self.G_embedded_out \
-                = self.define_generator_as_LSTM(z=self.z, pretrain=False)
-            embedded_x = self.embedding(self.x, reuse=True)
-
-        with tf.variable_scope('discriminator'):
-            self.D_logit_real, self.D_real \
-                = self.define_discriminator_as_LSTM(embedded_x)
-
-            # get discriminator on fake data. the reuse=True, which
-            # specifies we reuse the discriminator ops for new placeholder.
-            self.D_logit_fake, self.D_fake \
-                = self.define_discriminator_as_LSTM(
-                    self.G_embedded_out, reuse=True)
+        self.define_inference(
+            self.define_generator_as_LSTM,
+            self.define_discriminator_as_LSTM)
 
     def define_pretrain_loss(self):
         """define the pretrain loss.
