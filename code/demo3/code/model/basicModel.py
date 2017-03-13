@@ -163,7 +163,6 @@ class BasicModel(object):
         return logits, tf.nn.sigmoid(logits)
 
     def define_generator_as_LSTM(self, z=None, x=None, pretrain=False):
-        """define the generator."""
         logits, probs, outputs, embedded_outputs = [], [], [], []
         state = self.G_cell_init_state
 
@@ -205,28 +204,50 @@ class BasicModel(object):
             [-1, self.loader.sentence_length, self.para.EMBEDDING_SIZE])
         return logits, probs, outputs, embedded_outputs, state
 
-    def define_generator_as_LSTMV1(self, z=None, x=None, pretrain=False):
+    def define_generator_as_noiseLSTM(self, z=None, x=None, pretrain=False):
+        """define the generator."""
         logits, probs, outputs, embedded_outputs = [], [], [], []
         state = self.G_cell_init_state
 
-    def define_rnn_cell(self, model_type):
-        if model_type == 'rnn':
-            cell_fn = tf.contrib.rnn.BasicRNNCell
-        elif model_type == 'gru':
-            cell_fn = tf.contrib.rnn.GRUCell
-        elif model_type == 'lstm':
-            cell_fn = tf.contrib.rnn.BasicLSTMCell
+        if pretrain:
+            cell_type = self.lstm.standard_lstm_unit
+            inputs = self.embedding(x, reuse=True)
+            input = inputs[:, 0, :]
         else:
-            raise Exception("model type not supported: {}".format(
-                self.para.MODEL_TYPE))
+            cell_type = self.lstm.noise_lstm_unit
+            input = z
 
-        # define cell architecture.
-        cell = cell_fn(self.para.RNN_SIZE, state_is_tuple=True)
-        cell = tf.contrib.rnn.DropoutWrapper(
-            cell, output_keep_prob=self.para.DROPOUT_RATE)
-        cell = tf.contrib.rnn.MultiRNNCell(
-            [cell] * self.para.RNN_DEPTH, state_is_tuple=True)
-        return cell
+        for time_step in range(self.loader.sentence_length):
+            with tf.variable_scope('rnn') as scope_rnn:
+                if time_step > 0 or not pretrain:
+                    scope_rnn.reuse_variables()
+                cell_output, state = self.lstm.cell(cell_type, input, state, z)
+
+            # feed the current cell output to a language model.
+            logit, prob, soft_prob, output = self.language_model(
+                cell_output, reuse=True)
+            # decide the next input,either from inputs or from approx embedding
+            if pretrain:
+                input = inputs[:, time_step, :]
+            else:
+                input = self.get_approx_embedding(soft_prob)
+
+            # save the middle result.
+            logits.append(logit)
+            probs.append(prob)
+            outputs.append(output)
+            embedded_outputs.append(input)
+
+        logits = tf.reshape(
+            tf.concat(logits, 0),
+            [-1, self.loader.sentence_length, self.loader.vocab_size])
+        probs = tf.reshape(
+            tf.concat(probs, 0),
+            [-1, self.loader.sentence_length, self.loader.vocab_size])
+        embedded_outputs = tf.reshape(
+            tf.concat(embedded_outputs, 0),
+            [-1, self.loader.sentence_length, self.para.EMBEDDING_SIZE])
+        return logits, probs, outputs, embedded_outputs, state
 
     """training related."""
     # define optimiaer for training

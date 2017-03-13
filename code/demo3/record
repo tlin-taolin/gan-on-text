@@ -2477,3 +2477,41 @@
 2017:03:13 18:48:43	------ do the pretrain ------ 
 
 2017:03:13 18:48:43	pretrain epoch 0
+2017:03:13 22:46:06	use DataLoaderChildrenStory to init data.
+2017:03:13 22:46:06	loading preprocessed files.
+2017:03:13 22:46:14	the sample size is 97314, the vocab size is 18739
+2017:03:13 22:47:29	use DataLoaderChildrenStory to init data.
+2017:03:13 22:47:29	loading preprocessed files.
+2017:03:13 22:47:36	the sample size is 97314, the vocab size is 18739
+2017:03:13 22:48:15	use DataLoaderChildrenStory to init data.
+2017:03:13 22:48:15	loading preprocessed files.
+2017:03:13 22:48:22	the sample size is 97314, the vocab size is 18739
+2017:03:13 22:48:36	writing to /home/tlin/notebooks/code/demo3/data/training/runs/code.model.textGANV3.TextGANV3/1489445316
+
+2017:03:13 22:48:42	------ do the pretrain ------ 
+
+2017:03:13 22:48:42	pretrain epoch 0
+2017:03:13 22:57:20	use DataLoaderChildrenStory to init data.
+2017:03:13 22:57:20	loading preprocessed files.
+2017:03:13 22:57:27	the sample size is 97314, the vocab size is 18739
+2017:03:13 22:57:33	writing to /home/tlin/notebooks/code/demo3/data/training/runs/code.model.textGAN.TextGAN/1489445853
+
+2017:03:13 22:57:37	------ do the pretrain ------ 
+
+2017:03:13 22:57:37	pretrain epoch 0
+2017:03:13 23:03:25	use DataLoaderChildrenStory to init data.
+2017:03:13 23:03:25	loading preprocessed files.
+2017:03:13 23:03:32	the sample size is 97314, the vocab size is 18739
+2017:03:13 23:03:44	writing to /home/tlin/notebooks/code/demo3/data/training/runs/code.model.textGANV1.TextGANV1/1489446224
+
+2017:03:13 23:03:49	------ do the pretrain ------ 
+
+2017:03:13 23:03:49	pretrain epoch 0
+2017:03:13 23:06:38	use DataLoaderChildrenStory to init data.
+2017:03:13 23:06:38	loading preprocessed files.
+2017:03:13 23:06:46	the sample size is 97314, the vocab size is 18739
+2017:03:13 23:06:59	writing to /home/tlin/notebooks/code/demo3/data/training/runs/code.model.textGANV2.TextGANV2/1489446419
+
+2017:03:13 23:07:04	------ do the pretrain ------ 
+
+2017:03:13 23:07:04	pretrain epoch 0

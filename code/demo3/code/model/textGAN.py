@@ -2,6 +2,7 @@
 import tensorflow as tf
 
 from code.model.basicModel import BasicModel
+from code.model.lstm import LSTM
 
 
 class TextGAN(BasicModel):
@@ -15,8 +16,9 @@ class TextGAN(BasicModel):
 
         # init the basic model..
         self.define_placeholder()
+        self.lstm = LSTM(para.RNN_SIZE, para.BATCH_SIZE)
 
-        self.G_cell = self.define_rnn_cell('lstm')
+        self.G_cell = self.lstm.inherit_lstm_fn_from_tf(para, 'lstm')
         self.G_cell_init_state = self.G_cell.zero_state(
             self.para.BATCH_SIZE, tf.float32)
 
