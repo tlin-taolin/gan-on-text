@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import re
 import collections
-from os.path import exists, join
+from os.path import exists
 
 import numpy as np
 
@@ -179,7 +179,7 @@ class BasicLoader(object):
         row, col = x.shape
         random_choice_1 = np.random.randint(col, size=row)
         random_choice_2 = np.remainder(
-            random_choice_1+np.random.randint(1, high=col, size=row), col)
+            random_choice_1 + np.random.randint(1, high=col, size=row), col)
 
         x = np.copy(x)
         tmp = np.copy(x[np.arange(row), random_choice_1])

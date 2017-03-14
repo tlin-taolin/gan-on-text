@@ -33,7 +33,7 @@ def main(data_loader_fn, MODEL, checkpoint_dir):
         sess = tf.Session(config=session_conf)
 
         # setup the model.
-        model = MODEL(para, data_loader, training=False)
+        model = MODEL(para, data_loader, sess, training=False)
         model.define_inference()
         sess.run(tf.global_variables_initializer())
 
@@ -50,7 +50,7 @@ def main(data_loader_fn, MODEL, checkpoint_dir):
         generated_sentences = []
         for cur_epoch in range(para.EPOCH_SENTENCE_GENERATION):
             generated_sentence = model.sample_from_latent_space(
-                sess, vocab_word2index, vocab_index2word,
+                vocab_word2index, vocab_index2word,
                 sampling_type=2, pick=1)
             generated_sentences.append(generated_sentence)
 

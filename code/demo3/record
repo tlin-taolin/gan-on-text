@@ -2566,3 +2566,25 @@
 2017:03:14 00:27:13	------ do the standard GAN training ------ 
 
 2017:03:14 00:27:13	train epoch 0
+2017:03:14 19:17:14	use DataLoaderChildrenStory to init data.
+2017:03:14 19:17:14	loading preprocessed files.
+2017:03:14 19:17:22	the number of sentence is 97314, the vocab size is 18739
+2017:03:14 19:20:35	use DataLoaderChildrenStory to init data.
+2017:03:14 19:20:35	loading preprocessed files.
+2017:03:14 19:20:43	the number of sentence is 97314, the vocab size is 18739
+2017:03:14 19:20:49	writing to /home/tlin/notebooks/code/demo3/data/training/runs/code.model.textGAN.TextGAN/1489519249
+
+2017:03:14 19:20:53	------ do the pretrain ------ 
+
+2017:03:14 19:20:53	pretrain epoch 0
+2017:03:14 19:31:59	use DataLoaderChildrenStory to init data.
+2017:03:14 19:31:59	loading preprocessed files.
+2017:03:14 19:32:06	the number of sentence is 97314, the vocab size is 18739
+2017:03:14 19:32:52	use DataLoaderChildrenStory to init data.
+2017:03:14 19:32:52	loading preprocessed files.
+2017:03:14 19:32:59	the number of sentence is 97314, the vocab size is 18739
+2017:03:14 19:33:06	writing to /home/tlin/notebooks/code/demo3/data/training/runs/DataLoaderChildrenStory/code.model.textGAN.TextGAN/1489519985
+
+2017:03:14 19:33:10	------ do the pretrain ------ 
+
+2017:03:14 19:33:10	pretrain epoch 0

@@ -33,7 +33,7 @@ class DataLoaderChildrenStory(BasicLoader):
 
         # load the data, potentially need to do the preprocessing.
         self.load_data(para.REBUILD_DATA)
-        log('the sample size is {}, the vocab size is {}'.format(
+        log('the number of sentence is {}, the vocab size is {}'.format(
             self.sentence_size, self.vocab_size))
 
         # split the data or restore them from path.
@@ -88,11 +88,13 @@ class DataLoaderChildrenStory(BasicLoader):
         max_len = np.max(sentence_lengths)
         median_len = np.median(sentence_lengths)
         min_len = np.min(sentence_lengths)
-        threshold_len = 5
+        upper = 3
+        lower = 5
 
         log('......max len:{}, median len:{}, min len:{}'.format(
             max_len, median_len, min_len))
-        valid_sentences = filter(lambda s: len(s) >= threshold_len, sentences)
+        valid_sentences = filter(
+            lambda s: len(s) >= lower and len(s) <= max_len - upper, sentences)
         padded_sentences = [
             s + ['<pad>'] * (max_len - len(s))
             for s in valid_sentences]

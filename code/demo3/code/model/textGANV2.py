@@ -13,9 +13,9 @@ class TextGANV2(BasicModel):
     It uses an RNN network as the generator, an CNN as the discriminator.
     """
 
-    def __init__(self, para, loader, training=True):
+    def __init__(self, para, loader, sess, training=True):
         """init parameters."""
-        super(TextGANV2, self).__init__(para, loader, training)
+        super(TextGANV2, self).__init__(para, loader, sess, training)
 
         # init the basic model..
         self.define_placeholder()
@@ -44,7 +44,7 @@ class TextGANV2(BasicModel):
             # deal with discriminator.
             self.loss_pretrain_D = tf.reduce_mean(
                 tf.nn.sigmoid_cross_entropy_with_logits(
-                    logits=self.D_logit_real,
+                    logits=self.logit_D_real,
                     labels=self.x_label
                 )
             )
@@ -59,58 +59,72 @@ class TextGANV2(BasicModel):
     def define_train_loss(self):
         """define the train loss."""
         with tf.variable_scope("loss"):
-            self.loss_D = tf.reduce_mean(self.D_logit_real-self.D_logit_fake)
-            self.loss_G = tf.reduce_mean(self.D_logit_fake)
+            self.loss_D = tf.reduce_mean(self.logit_D_real - self.logit_D_fake)
+            self.loss_G = tf.reduce_mean(self.logit_D_fake)
 
-    def train_step(self, sess, batch_x, batch_z, losses):
+            self.perplexity_G = tf.contrib.seq2seq.sequence_loss(
+                logits=self.G_logit,
+                targets=self.y,
+                weights=self.ymask,
+                average_across_timesteps=True,
+                average_across_batch=True)
+
+    def train_step(self, losses):
         """do the training step."""
+        batch_x, batch_z, batch_y, batch_ymask = self.loader.next_batch()
+
         feed_dict_D = {
             self.x: batch_x, self.z: batch_z,
             self.dropout_val: self.para.DROPOUT_RATE}
         feed_dict_G = {
             self.z: batch_z,
+            self.y: batch_y,
+            self.ymask: batch_ymask,
             self.dropout_val: self.para.DROPOUT_RATE}
 
         # train D.
         for _ in range(self.para.D_ITERS_PER_BATCH):
-            _, summary_D, loss_D, predict_D_real, predict_D_fake = sess.run(
-                [self.op_D, self.train_summary_D_op, self.loss_D,
+            _, summary_D, loss_D, predict_D_real, predict_D_fake = self.sess.run(
+                [self.op_train_D, self.train_summary_D_op, self.loss_D,
                  self.D_real, self.D_fake],
                 feed_dict=feed_dict_D)
+            self.sess.run(self.op_clip_D_vars)
 
         # train G.
         for _ in range(self.para.G_ITERS_PER_BATCH):
-            _, summary_G, loss_G = sess.run(
-                [self.op_G, self.train_summary_G_op, self.loss_G],
+            _, summary_G, loss_G, perplexity_G = self.sess.run(
+                [self.op_train_G, self.train_summary_G_op,
+                 self.loss_G, self.perplexity_G],
                 feed_dict=feed_dict_G)
 
         # record loss.
         losses['losses_D'].append(loss_D)
         losses['losses_G'].append(loss_G)
+        losses['perplexity_G'].append(perplexity_G)
 
         # summary
         self.summary_writer.add_summary(summary_D)
         self.summary_writer.add_summary(summary_G)
         return losses
 
-    def run_train_epoch(self, sess, train=False, verbose=True):
+    def run_train_epoch(self):
         """run standard train epoch."""
         # define some basic parameters.
-        losses = {
-            'losses_D': [], 'losses_G': []}
+        losses = {'losses_D': [], 'losses_G': [], 'perplexity_G': []}
 
         start_epoch_time = datetime.datetime.now()
         self.loader.reset_batch_pointer()
         for step in range(self.loader.num_batches):
-            batch_x, batch_z, _, _ = self.loader.next_batch()
-            losses = self.train_step(sess, batch_x, batch_z, losses)
+            losses = self.train_step(losses)
 
             sys.stdout.write(
-                "\r{}/{}: mean loss of D:{},mean loss of G:{}".format(
+                "\r{}/{}: mean loss of D:{}, mean accuracy of D:{}, mean loss of G:{}, mean perplexity of G: {}".format(
                     step + 1,
                     self.loader.num_batches,
                     np.mean(losses['losses_D']),
-                    np.mean(losses['losses_G'])
+                    np.mean(losses['accuracy_D']),
+                    np.mean(losses['losses_G']),
+                    np.mean(losses['perplexity_G'])
                 )
             )
             sys.stdout.flush()

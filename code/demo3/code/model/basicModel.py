@@ -10,19 +10,20 @@ import numpy as np
 import tensorflow as tf
 
 import code.utils.auxiliary as auxi
+import code.utils.opfiles as opfile
 from code.utils.logger import log
 from code.model.beamSearch import BeamSearch
 
 
 class BasicModel(object):
     """a base model for any subsequent implementation."""
-
-    def __init__(self, para, loader, training):
+    def __init__(self, para, loader, sess, training):
         """init."""
         # system define.
         self.para = para
         self.loader = loader
         self.training = training
+        self.sess = sess
 
         if not training:
             self.para.BATCH_SIZE = 1
@@ -51,7 +52,6 @@ class BasicModel(object):
             tf.float32, name="dropout_keep_prob")
 
     """define inference main entry."""
-
     def define_inference(self, generator, discriminator):
         """"define the inference procedure in training phase."""
         with tf.variable_scope('generator'):
@@ -60,18 +60,18 @@ class BasicModel(object):
 
             self.yhat_logit, self.yhat_prob, self.yhat_out, _, self.yhat_state\
                 = generator(x=self.x, pretrain=True)
-            self.G_logit, self.G_prob, self.G_out, self.G_embedded_out, self.G_state \
+            self.G_logit, self.G_prob, self.G_out, self.G_embedded_out, self.G_state\
                 = generator(z=self.z, pretrain=False)
             embedded_x = self.embedding(self.x, reuse=True)
 
         if self.training:
             with tf.variable_scope('discriminator') as discriminator_scope:
-                self.D_logit_real, self.D_real \
+                self.logit_D_real, self.D_real \
                     = discriminator(embedded_x, discriminator_scope)
 
                 # get discriminator on fake data. the reuse=True, which
                 # specifies we reuse the discriminator ops for new placeholder.
-                self.D_logit_fake, self.D_fake \
+                self.logit_D_fake, self.D_fake \
                     = discriminator(self.G_embedded_out, discriminator_scope,
                                     reuse=True)
 
@@ -345,8 +345,10 @@ class BasicModel(object):
         self.op_pretrain_G = optimizer_pretrain_G.apply_gradients(
             self.grads_and_vars_pretrain_G)
 
-    def pretrain_step(self, sess, batch_x, batch_y, batch_ymask, losses):
+    def pretrain_step(self, losses):
         """pretrain the model."""
+        batch_x, batch_z, batch_y, batch_ymask = self.loader.next_batch()
+
         feed_dict_D_pos = {
             self.x: batch_x,
             self.x_label: np.ones((self.para.BATCH_SIZE, 1)),
@@ -364,18 +366,18 @@ class BasicModel(object):
             self.dropout_val: self.para.DROPOUT_RATE}
 
         # train D.
-        _, loss_D_pos, summary_D_pos = sess.run(
+        _, loss_D_pos, summary_D_pos = self.sess.run(
             [self.op_pretrain_D, self.loss_pretrain_D,
              self.pretrain_summary_D_op],
             feed_dict=feed_dict_D_pos)
 
-        _, loss_D_neg, summary_D_neg = sess.run(
+        _, loss_D_neg, summary_D_neg = self.sess.run(
             [self.op_pretrain_D, self.loss_pretrain_D,
              self.pretrain_summary_D_op],
             feed_dict=feed_dict_D_neg)
 
         # train G.
-        _, loss_G, summary_G = sess.run(
+        _, loss_G, summary_G = self.sess.run(
             [self.op_pretrain_G, self.loss_pretrain_G,
              self.pretrain_summary_G_op],
             feed_dict=feed_dict_G)
@@ -390,7 +392,7 @@ class BasicModel(object):
         self.pretrain_summary_writer.add_summary(summary_G)
         return losses
 
-    def run_pretrain_epoch(self, sess):
+    def run_pretrain_epoch(self):
         """run pretrain epoch."""
         losses = {'losses_D': [], 'losses_G': []}
 
@@ -398,10 +400,7 @@ class BasicModel(object):
         self.loader.reset_batch_pointer()
 
         for step in range(self.loader.num_batches):
-            batch_x, _, batch_y, batch_ymask = self.loader.next_batch()
-
-            losses = self.pretrain_step(
-                sess, batch_x, batch_y, batch_ymask, losses)
+            losses = self.pretrain_step(losses)
 
             sys.stdout.write(
                 '\r{}/{}: pretrain: mean loss D = {}; mean loss G = {}'.format(
@@ -414,7 +413,8 @@ class BasicModel(object):
         sys.stdout.flush()
 
         end_epoch_time = datetime.datetime.now()
-        duration = (end_epoch_time - start_epoch_time).seconds
+        duration = 1.0 * (
+            end_epoch_time - start_epoch_time).seconds/self.loader.num_batches
         return np.mean(losses['losses_D']), \
             np.mean(losses['losses_G']), duration
 
@@ -424,6 +424,12 @@ class BasicModel(object):
         vars_all = tf.trainable_variables()
         vars_D = [var for var in vars_all if 'discriminator' in var.name]
         vars_G = [var for var in vars_all if 'generator' in var.name]
+
+        # define clip operation.
+        self.op_clip_D_vars = [
+            var.assign(tf.clip_by_value(
+                var, self.para.WGAN_CLIP_VALUES[0],
+                self.para.WGAN_CLIP_VALUES[1])) for var in vars_D]
 
         # define optimizer
         optimizer_D = self.define_optimizer(self.para.LEARNING_RATE_D)
@@ -439,21 +445,25 @@ class BasicModel(object):
         self.op_train_D = optimizer_D.apply_gradients(self.grads_and_vars_D)
         self.op_train_G = optimizer_G.apply_gradients(self.grads_and_vars_G)
 
-    def train_step(self, sess, batch_x, batch_z, losses):
+    def train_step(self, losses):
         """do the training step."""
+        batch_x, batch_z, batch_y, batch_ymask = self.loader.next_batch()
+
         feed_dict_D = {
             self.x: batch_x, self.z: batch_z,
             self.dropout_val: self.para.DROPOUT_RATE}
         feed_dict_G = {
             self.z: batch_z,
+            self.y: batch_y,
+            self.ymask: batch_ymask,
             self.dropout_val: self.para.DROPOUT_RATE}
 
         # train D.
         for _ in range(self.para.D_ITERS_PER_BATCH):
-            _, summary_D, loss_real_D, loss_fake_D, loss_D,\
-                    predict_D_real, predict_D_fake = sess.run(
+            _, summary_D, loss_D_real, loss_D_fake, loss_D,\
+                    predict_D_real, predict_D_fake = self.sess.run(
                         [self.op_train_D, self.train_summary_D_op,
-                         self.loss_real_D, self.loss_fake_D, self.loss_D,
+                         self.loss_D_real, self.loss_D_fake, self.loss_D,
                          self.D_real, self.D_fake],
                         feed_dict=feed_dict_D)
 
@@ -461,8 +471,8 @@ class BasicModel(object):
             D_real_number = len(predict_D_real[predict_D_real > 0.5])
             D_fake_number = len(predict_D_fake[predict_D_fake < 0.5])
 
-            losses['losses_real_D'].append(loss_real_D)
-            losses['losses_fake_D'].append(loss_fake_D)
+            losses['losses_D_real'].append(loss_D_real)
+            losses['losses_D_fake'].append(loss_D_fake)
             losses['accuracy_D_real'].append(
                 1.0 * D_real_number / self.para.BATCH_SIZE)
             losses['accuracy_D_fake'].append(
@@ -472,41 +482,42 @@ class BasicModel(object):
 
         # train G.
         for _ in range(self.para.G_ITERS_PER_BATCH):
-            _, summary_G, loss_G = sess.run(
-                [self.op_train_G, self.train_summary_G_op, self.loss_G],
+            _, summary_G, loss_G, perplexity_G = self.sess.run(
+                [self.op_train_G, self.train_summary_G_op,
+                 self.loss_G, self.perplexity_G],
                 feed_dict=feed_dict_G)
 
         # record loss.
         losses['losses_D'].append(loss_D)
         losses['losses_G'].append(loss_G)
+        losses['perplexity_G'].append(perplexity_G)
 
         # summary
         self.summary_writer.add_summary(summary_D)
         self.summary_writer.add_summary(summary_G)
         return losses
 
-    def run_train_epoch(self, sess, train=False, verbose=True):
+    def run_train_epoch(self):
         """run standard train epoch."""
         # define some basic parameters.
         losses = {
-            'losses_real_D': [], 'losses_fake_D': [],
-            'losses_D': [], 'losses_G': [],
+            'losses_D_real': [], 'losses_D_fake': [],
+            'losses_D': [], 'losses_G': [], 'perplexity_G': [],
             'accuracy_D_real': [], 'accuracy_D_fake': [], 'accuracy_D': []}
 
         start_epoch_time = datetime.datetime.now()
         self.loader.reset_batch_pointer()
         for step in range(self.loader.num_batches):
-            batch_x, batch_z, _, _ = self.loader.next_batch()
-            losses = self.train_step(sess, batch_x, batch_z, losses)
+            losses = self.train_step(losses)
 
             sys.stdout.write(
-                "\r{}/{}: mean loss of D:{},\
-                 mean accuracy of D:{},mean loss of G:{}".format(
+                "\r{}/{}: mean loss of D: {}, mean accuracy of D: {}, mean loss of G: {}, mean perplexity of G: {}".format(
                     step + 1,
                     self.loader.num_batches,
                     np.mean(losses['losses_D']),
                     np.mean(losses['accuracy_D']),
-                    np.mean(losses['losses_G'])
+                    np.mean(losses['losses_G']),
+                    np.mean(losses['perplexity_G'])
                 )
             )
             sys.stdout.flush()
@@ -515,24 +526,25 @@ class BasicModel(object):
         sys.stdout.flush()
 
         end_epoch_time = datetime.datetime.now()
-        duration = (end_epoch_time - start_epoch_time).seconds
-        return np.mean(losses['losses_D']), \
-            np.mean(losses['losses_G']), duration
+        duration = 1.0 * (
+            end_epoch_time - start_epoch_time).seconds/self.loader.num_batches
+        return np.mean(losses['losses_D']), np.mean(losses['losses_G']), duration
 
     """define status tracking stuff."""
     # tracking status.
-    def define_keep_tracking(self, sess):
+    def define_keep_tracking(self):
         self.build_dir_for_tracking()
-        self.keep_tracking_pretrain(sess)
-        self.keep_tracking_train(sess)
+        self.keep_tracking_pretrain()
+        self.keep_tracking_train()
 
     def build_dir_for_tracking(self):
         # Output directory for models and summaries
         timestamp = str(int(time.time()))
-        self.out_dir = join(
-            join(self.para.TRAINING_DIRECTORY,
-                 "runs", auxi.get_fullname(self)),
-            timestamp)
+        datatype = self.loader.__class__.__name__
+        parent_path = join(self.para.TRAINING_DIRECTORY, "runs", datatype)
+        method_folder = join(parent_path, auxi.get_fullname(self))
+        pretrain_dir = join(method_folder, 'pretrain')
+        self.out_dir = join(method_folder, timestamp)
 
         # Checkpoint directory. Tensorflow assumes this directory
         # already exists so we need to create it
@@ -540,12 +552,13 @@ class BasicModel(object):
         self.checkpoint_prefix = join(checkpoint_dir, "model")
         self.checkpoint_comparison = join(checkpoint_dir, "comparison")
         self.best_model = join(checkpoint_dir, "bestmodel")
+        self.pretrain_model = join(pretrain_dir, "pretrainmodel")
         if not exists(checkpoint_dir):
-            os.makedirs(checkpoint_dir)
-            os.makedirs(self.checkpoint_comparison)
+            opfile.build_dirs(self.checkpoint_comparison)
+            opfile.build_dirs(pretrain_dir)
         self.saver = tf.train.Saver(tf.global_variables())
 
-    def keep_tracking_pretrain(self, sess):
+    def keep_tracking_pretrain(self):
         # Keep track of gradient values and sparsity (optional)
         grad_summaries_merged_D = self.keep_tracking_grad_and_vals(
             self.grads_and_vars_pretrain_D)
@@ -567,10 +580,10 @@ class BasicModel(object):
         log("writing to {}\n".format(self.out_dir))
         train_summary_dir = join(self.out_dir, "summaries", "pretrain")
         self.pretrain_summary_writer = tf.summary.FileWriter(
-            train_summary_dir, sess.graph)
+            train_summary_dir, self.sess.graph)
 
     # checking and recording part.
-    def keep_tracking_train(self, sess):
+    def keep_tracking_train(self):
         # Keep track of gradient values and sparsity (optional)
         grad_summaries_merged_D = self.keep_tracking_grad_and_vals(
             self.grads_and_vars_D)
@@ -589,7 +602,7 @@ class BasicModel(object):
 
         train_summary_dir = join(self.out_dir, "summaries", "train")
         self.summary_writer = tf.summary.FileWriter(
-            train_summary_dir, sess.graph)
+            train_summary_dir, self.sess.graph)
 
     def keep_tracking_grad_and_vals(self, grads_and_vars):
         grad_summaries = []
@@ -731,10 +744,10 @@ class BasicModel(object):
 
     # add function to generate sentence.
     def sample_from_latent_space(
-            self, sess, vocab_word2index, vocab_index2word,
+            self, vocab_word2index, vocab_index2word,
             sampling_type=1, pick=2):
         """generate sentence from latent space.."""
-        state = sess.run(self.G_cell.zero_state(1, tf.float32))
+        state = self.sess.run(self.G_cell.zero_state(1, tf.float32))
         z = self.para.Z_PRIOR(size=(1, self.para.Z_DIM))
         input = z
 
@@ -742,12 +755,12 @@ class BasicModel(object):
 
         for n in range(self.para.SENTENCE_LENGTH_TO_GENERATE):
             if n == 0:
-                probs, state = sess.run(
+                probs, state = self.sess.run(
                     [self.G_prob, self.G_state],
                     {self.z: input, self.dropout_val: 1.0,
                      self.G_cell_init_state: state})
             else:
-                probs, state = sess.run(
+                probs, state = self.sess.run(
                     [self.yhat_prob, self.yhat_state],
                     {self.x: input, self.dropout_val: 1.0,
                      self.G_cell_init_state: state})

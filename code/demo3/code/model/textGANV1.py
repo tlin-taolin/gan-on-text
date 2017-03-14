@@ -10,9 +10,9 @@ class TextGANV1(BasicModel):
     It uses an RNN network as the generator, an CNN as the discriminator.
     """
 
-    def __init__(self, para, loader, training=True):
+    def __init__(self, para, loader, sess, training=True):
         """init parameters."""
-        super(TextGANV1, self).__init__(para, loader, training)
+        super(TextGANV1, self).__init__(para, loader, sess, training)
 
         # init the basic model..
         self.define_placeholder()
@@ -41,13 +41,13 @@ class TextGANV1(BasicModel):
             # deal with discriminator.
             self.loss_pretrain_D = tf.reduce_mean(
                 tf.nn.sigmoid_cross_entropy_with_logits(
-                    logits=self.D_logit_real,
+                    logits=self.logit_D_real,
                     labels=self.x_label
                 )
             )
 
             self.loss_pretrain_G = tf.contrib.seq2seq.sequence_loss(
-                logits=self.yhat_logit,
+                logits=self.G_logit,
                 targets=self.y,
                 weights=self.ymask,
                 average_across_timesteps=True,
@@ -60,19 +60,26 @@ class TextGANV1(BasicModel):
         we have z * -log(sigmoid(x)) + (1 - z) * -log(1 - sigmoid(x)).
         """
         with tf.variable_scope("loss"):
-            self.loss_real_D = tf.reduce_mean(
+            self.loss_D_real = tf.reduce_mean(
                 tf.nn.sigmoid_cross_entropy_with_logits(
-                    logits=self.D_logit_real,
-                    labels=tf.ones_like(self.D_logit_real)))
+                    logits=self.logit_D_real,
+                    labels=tf.ones_like(self.logit_D_real)))
 
-            self.loss_fake_D = tf.reduce_mean(
+            self.loss_D_fake = tf.reduce_mean(
                 tf.nn.sigmoid_cross_entropy_with_logits(
-                    logits=self.D_logit_fake,
-                    labels=tf.zeros_like(self.D_logit_fake)))
-            self.loss_D = self.loss_real_D + self.loss_fake_D
+                    logits=self.logit_D_fake,
+                    labels=tf.zeros_like(self.logit_D_fake)))
+            self.loss_D = self.loss_D_real + self.loss_D_fake
 
-            # G loss: minimizes the divergence of D_logit_fake to 1 (real)
+            # G loss: minimizes the divergence of logit_D_fake to 1 (real)
             self.loss_G = tf.reduce_mean(
                 tf.nn.sigmoid_cross_entropy_with_logits(
-                    logits=self.D_logit_fake,
-                    labels=tf.ones_like(self.D_logit_fake)))
+                    logits=self.logit_D_fake,
+                    labels=tf.ones_like(self.logit_D_fake)))
+
+            self.perplexity_G = tf.contrib.seq2seq.sequence_loss(
+                logits=self.logit_D_fake,
+                targets=self.y,
+                weights=self.ymask,
+                average_across_timesteps=True,
+                average_across_batch=True)
