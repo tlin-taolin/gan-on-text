@@ -2515,3 +2515,54 @@
 2017:03:13 23:07:04	------ do the pretrain ------ 
 
 2017:03:13 23:07:04	pretrain epoch 0
+2017:03:14 00:19:28	use DataLoaderChildrenStory to init data.
+2017:03:14 00:19:28	loading preprocessed files.
+2017:03:14 00:19:35	the sample size is 97314, the vocab size is 18739
+2017:03:14 00:20:27	use DataLoaderChildrenStory to init data.
+2017:03:14 00:20:27	loading preprocessed files.
+2017:03:14 00:20:34	the sample size is 97314, the vocab size is 18739
+2017:03:14 00:21:26	use DataLoaderChildrenStory to init data.
+2017:03:14 00:21:26	loading preprocessed files.
+2017:03:14 00:21:33	the sample size is 97314, the vocab size is 18739
+2017:03:14 00:22:14	use DataLoaderChildrenStory to init data.
+2017:03:14 00:22:14	loading preprocessed files.
+2017:03:14 00:22:21	the sample size is 97314, the vocab size is 18739
+2017:03:14 00:23:13	use DataLoaderChildrenStory to init data.
+2017:03:14 00:23:13	loading preprocessed files.
+2017:03:14 00:23:21	the sample size is 97314, the vocab size is 18739
+2017:03:14 00:24:32	use DataLoaderChildrenStory to init data.
+2017:03:14 00:24:32	loading preprocessed files.
+2017:03:14 00:24:39	the sample size is 97314, the vocab size is 18739
+2017:03:14 00:24:50	writing to /home/tlin/notebooks/code/demo3/data/training/runs/code.model.textGANV4.TextGANV4/1489451090
+
+2017:03:14 00:24:56	------ do the pretrain ------ 
+
+2017:03:14 00:24:57	save 1-th bestmodel to path: /home/tlin/notebooks/code/demo3/data/training/runs/code.model.textGANV4.TextGANV4/1489451090/checkpoints/bestmodel.
+
+2017:03:14 00:24:57	------ do the standard GAN training ------ 
+
+2017:03:14 00:24:57	train epoch 0
+2017:03:14 00:25:58	use DataLoaderChildrenStory to init data.
+2017:03:14 00:25:58	loading preprocessed files.
+2017:03:14 00:26:05	the sample size is 97314, the vocab size is 18739
+2017:03:14 00:26:17	writing to /home/tlin/notebooks/code/demo3/data/training/runs/code.model.textGANV4.TextGANV4/1489451177
+
+2017:03:14 00:26:23	------ do the pretrain ------ 
+
+2017:03:14 00:26:24	save 1-th bestmodel to path: /home/tlin/notebooks/code/demo3/data/training/runs/code.model.textGANV4.TextGANV4/1489451177/checkpoints/bestmodel.
+
+2017:03:14 00:26:24	------ do the standard GAN training ------ 
+
+2017:03:14 00:26:24	train epoch 0
+2017:03:14 00:26:44	use DataLoaderChildrenStory to init data.
+2017:03:14 00:26:44	loading preprocessed files.
+2017:03:14 00:26:53	the sample size is 97314, the vocab size is 18739
+2017:03:14 00:27:05	writing to /home/tlin/notebooks/code/demo3/data/training/runs/code.model.textGANV3.TextGANV3/1489451225
+
+2017:03:14 00:27:11	------ do the pretrain ------ 
+
+2017:03:14 00:27:13	save 1-th bestmodel to path: /home/tlin/notebooks/code/demo3/data/training/runs/code.model.textGANV3.TextGANV3/1489451225/checkpoints/bestmodel.
+
+2017:03:14 00:27:13	------ do the standard GAN training ------ 
+
+2017:03:14 00:27:13	train epoch 0

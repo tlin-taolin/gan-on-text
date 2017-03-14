@@ -13,6 +13,7 @@ from code.model.textGAN import TextGAN
 from code.model.textGANV1 import TextGANV1
 from code.model.textGANV2 import TextGANV2
 from code.model.textGANV3 import TextGANV3
+from code.model.textGANV4 import TextGANV4
 
 
 def init(data_loader):
@@ -87,6 +88,6 @@ def main(data_loader_fn, MODEL):
 if __name__ == '__main__':
     data_loader = DataLoaderChildrenStory
 
-    model = [TextGAN, TextGANV1, TextGANV2, TextGANV3][2]
+    model = [TextGAN, TextGANV1, TextGANV2, TextGANV3, TextGANV4][-2]
 
     main(data_loader, model)

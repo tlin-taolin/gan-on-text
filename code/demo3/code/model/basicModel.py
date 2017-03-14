@@ -205,7 +205,10 @@ class BasicModel(object):
         return logits, probs, outputs, embedded_outputs, state
 
     def define_generator_as_noiseLSTM(self, z=None, x=None, pretrain=False):
-        """define the generator."""
+        """define the generator.
+
+        feed z to every lstm cells to guide the sentence generation.
+        """
         logits, probs, outputs, embedded_outputs = [], [], [], []
         state = self.G_cell_init_state
 
@@ -221,7 +224,12 @@ class BasicModel(object):
             with tf.variable_scope('rnn') as scope_rnn:
                 if time_step > 0 or not pretrain:
                     scope_rnn.reuse_variables()
-                cell_output, state = self.lstm.cell(cell_type, input, state, z)
+                if time_step == 0:
+                    cell_output, state = self.lstm.cell(
+                        self.lstm.standard_lstm_unit, input, state, z)
+                else:
+                    cell_output, state = self.lstm.cell(
+                        cell_type, input, state, z)
 
             # feed the current cell output to a language model.
             logit, prob, soft_prob, output = self.language_model(
@@ -249,7 +257,60 @@ class BasicModel(object):
             [-1, self.loader.sentence_length, self.para.EMBEDDING_SIZE])
         return logits, probs, outputs, embedded_outputs, state
 
-    """training related."""
+    def define_generator_as_hiddenLSTM(self, z=None, x=None, pretrain=False):
+        """define the generator.
+
+        Feed z as an init state to the cell,
+        and feed the embedding of '<go>' as the input of the first lstm cell.
+        """
+        logits, probs, outputs, embedded_outputs = [], [], [], []
+        state = self.G_cell_init_state
+
+        if pretrain:
+            inputs = self.embedding(x, reuse=True)
+            input = inputs[:, 0, :]
+        else:
+            tmp = tf.ones(
+                (self.para.BATCH_SIZE, 1),
+                dtype=tf.int32) * self.loader.vocab['<go>']
+            input = self.embedding(tmp, reuse=True)[:, 0, :]
+            state = tf.contrib.rnn.LSTMStateTuple(c=z, h=z)
+
+        for time_step in range(self.loader.sentence_length):
+            with tf.variable_scope('rnn') as scope_rnn:
+                if time_step > 0 or not pretrain:
+                    scope_rnn.reuse_variables()
+
+                cell_output, state = self.G_cell(
+                    self.lstm.standard_lstm_unit, input, state)
+
+            # feed the current cell output to a language model.
+            logit, prob, soft_prob, output = self.language_model(
+                cell_output, reuse=True)
+            # decide the next input,either from inputs or from approx embedding
+            if pretrain:
+                input = inputs[:, time_step, :]
+            else:
+                input = self.get_approx_embedding(soft_prob)
+
+            # save the middle result.
+            logits.append(logit)
+            probs.append(prob)
+            outputs.append(output)
+            embedded_outputs.append(input)
+
+        logits = tf.reshape(
+            tf.concat(logits, 0),
+            [-1, self.loader.sentence_length, self.loader.vocab_size])
+        probs = tf.reshape(
+            tf.concat(probs, 0),
+            [-1, self.loader.sentence_length, self.loader.vocab_size])
+        embedded_outputs = tf.reshape(
+            tf.concat(embedded_outputs, 0),
+            [-1, self.loader.sentence_length, self.para.EMBEDDING_SIZE])
+        return logits, probs, outputs, embedded_outputs, state
+
+    """training/optimizer related."""
     # define optimiaer for training
     def define_optimizer(self, learning_rate):
         if self.para.OPTIMIZER_NAME == 'Adam':
