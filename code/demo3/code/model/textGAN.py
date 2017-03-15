@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 import tensorflow as tf
 
-from code.model.basicModel import BasicModel
-from code.model.lstm import LSTM
+from code.core.inferenceModel import InferenceModel
+from code.core.lstm import LSTM
 
 
-class TextGAN(BasicModel):
+class TextGAN(InferenceModel):
     """The textGAN here simply follow the paper.
     It uses an RNN network as the generator, an CNN as the discriminator.
     """
@@ -44,7 +44,7 @@ class TextGAN(BasicModel):
             )
 
             self.loss_pretrain_G = tf.contrib.seq2seq.sequence_loss(
-                logits=self.yhat_logit,
+                logits=self.pre_logit,
                 targets=self.y,
                 weights=self.ymask,
                 average_across_timesteps=True,

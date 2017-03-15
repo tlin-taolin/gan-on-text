@@ -117,9 +117,9 @@ class DataLoaderChildrenStory(BasicLoader):
 
     def cleaner_assist(self, x):
         """an assistant to do the cleaning."""
-        x = re.sub(r'[:|\-|/|+]', r' ', x)
-        x = re.sub(r'[\d*|`|\%\%|\&|\%]', r'', x)
-        x = re.sub(r',', '', x)
-        x = re.sub(r'\.', '', x)
+        # x = re.sub(r'[:|\-|/|+]', r' ', x)
+        # x = re.sub(r'[\d*|`|\%\%|\&|\%]', r'', x)
+        # x = re.sub(r',', '', x)
+        # x = re.sub(r'\.', '', x)
         x = re.sub(r"\s{2,}", " ", x)
         return x.strip()

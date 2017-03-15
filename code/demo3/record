@@ -2588,3 +2588,34 @@
 2017:03:14 19:33:10	------ do the pretrain ------ 
 
 2017:03:14 19:33:10	pretrain epoch 0
+2017:03:14 20:21:01	use DataLoaderChildrenStory to init data.
+2017:03:14 20:21:01	loading preprocessed files.
+2017:03:14 20:21:08	the number of sentence is 97314, the vocab size is 18739
+2017:03:14 20:21:15	writing to /home/tlin/notebooks/code/demo3/data/training/runs/DataLoaderChildrenStory/code.model.textGAN.TextGAN/1489522875
+
+2017:03:14 20:21:18	------ do the pretrain ------ 
+
+2017:03:14 20:21:18	pretrain epoch 0
+2017:03:15 10:13:19	use DataLoaderChildrenStory to init data.
+2017:03:15 10:13:19	loading preprocessed files.
+2017:03:15 10:13:26	the number of sentence is 97314, the vocab size is 18739
+2017:03:15 10:14:24	use DataLoaderChildrenStory to init data.
+2017:03:15 10:14:24	loading preprocessed files.
+2017:03:15 10:14:31	the number of sentence is 97314, the vocab size is 18739
+2017:03:15 10:16:07	use DataLoaderChildrenStory to init data.
+2017:03:15 10:16:07	loading preprocessed files.
+2017:03:15 10:16:14	the number of sentence is 97314, the vocab size is 18739
+2017:03:15 10:16:41	use DataLoaderChildrenStory to init data.
+2017:03:15 10:16:41	loading preprocessed files.
+2017:03:15 10:16:48	the number of sentence is 97314, the vocab size is 18739
+2017:03:15 10:16:59	use DataLoaderChildrenStory to init data.
+2017:03:15 10:16:59	loading preprocessed files.
+2017:03:15 10:17:05	the number of sentence is 97314, the vocab size is 18739
+2017:03:15 14:28:04	use DataLoaderChildrenStory to init data.
+2017:03:15 14:28:04	loading preprocessed files.
+2017:03:15 14:28:11	the number of sentence is 97314, the vocab size is 18739
+2017:03:15 14:28:23	writing to /home/tlin/notebooks/code/demo3/data/training/runs/DataLoaderChildrenStory/code.model.textGANV1.TextGANV1/1489588103
+
+2017:03:15 14:28:29	------ do the pretrain ------ 
+
+2017:03:15 14:28:29	pretrain epoch 0

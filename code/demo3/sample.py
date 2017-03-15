@@ -34,7 +34,7 @@ def main(data_loader_fn, MODEL, checkpoint_dir):
 
         # setup the model.
         model = MODEL(para, data_loader, sess, training=False)
-        model.define_inference()
+        model.inference()
         sess.run(tf.global_variables_initializer())
 
         # Load the saved meta graph and restore variables
@@ -50,24 +50,28 @@ def main(data_loader_fn, MODEL, checkpoint_dir):
         generated_sentences = []
         for cur_epoch in range(para.EPOCH_SENTENCE_GENERATION):
             generated_sentence = model.sample_from_latent_space(
-                vocab_word2index, vocab_index2word,
-                sampling_type=2, pick=1)
+                vocab_word2index, vocab_index2word)
             generated_sentences.append(generated_sentence)
 
         log('generate sentence and write to path: {}'.format(checkpoint_dir))
-        generated_sentences_string = '\n'.join(
-            [' '.join(s) for s in generated_sentences]) + '\n\n'
+        generated_sentences_string = '.\\\\ \n'.join(
+            [' '.join(s) for s in generated_sentences]) + '.\n\n'
+
+        print(generated_sentences_string)
         opfile.write_txt(
             generated_sentences_string,
             os.path.join('..', checkpoint_dir, 'generated_sentences'),
-            type='a')
+            type='w')
 
 if __name__ == '__main__':
     # change the execution path here!
+    # execution = os.path.join(
+    #     para.TRAINING_DIRECTORY, 'runs', 'code.model.textGAN.TextGAN',
+    #     '1489361968', 'checkpoints')
+
     execution = os.path.join(
-        para.TRAINING_DIRECTORY,
-        'runs', 'code.model.textGAN.TextGAN',
-        '1489361968', 'checkpoints')
+        para.TRAINING_DIRECTORY, 'runs', 'DataLoaderChildrenStory',
+        'code.model.textGAN.TextGAN', '1489520953', 'checkpoints')
 
     data_loader = DataLoaderChildrenStory
     model = [TextGAN, TextGANV1, TextGANV2][0]

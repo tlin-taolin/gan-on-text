@@ -94,5 +94,5 @@ def main(data_loader_fn, MODEL):
 if __name__ == '__main__':
     data_loader = DataLoaderChildrenStory
 
-    model = [TextGAN, TextGANV1, TextGANV2, TextGANV3, TextGANV4][0]
+    model = [TextGAN, TextGANV1, TextGANV2, TextGANV3, TextGANV4][1]
     main(data_loader, model)
