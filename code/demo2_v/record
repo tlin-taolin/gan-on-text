@@ -2619,85 +2619,1605 @@
 2017:03:15 14:28:29	------ do the pretrain ------ 
 
 2017:03:15 14:28:29	pretrain epoch 0
-2017:03:17 11:35:22	use DataLoaderBBC to init data.
-2017:03:17 11:35:22	reading and processing the text file.
-2017:03:17 11:35:22	preprocess the dataset.
-2017:03:17 11:35:22	load data.
-2017:03:17 11:35:22	load context for further preprocessing.
-2017:03:17 11:35:22	clean data.
-2017:03:17 11:35:23	...mask and pad the sentence.
-2017:03:17 11:35:23	......max len:363, median len:22.0, min len:2
-2017:03:17 11:35:23	build a vocabulary.
-2017:03:17 11:35:23	...flatmap a list of sentence list to a list of sentence.
-2017:03:17 11:35:24	...mapping from index to word.
-2017:03:17 11:35:24	...mapping from word to index.
-2017:03:17 11:35:24	...map word to index.
-2017:03:17 11:35:24	...some data statistics.
-2017:03:17 11:35:24	......existing 32626 sentences, vocabulary size is 28075
-2017:03:17 11:35:24	...save processed data to file.
-2017:03:17 11:35:26	...number of batches: 127
-2017:03:17 11:36:01	use DataLoaderBBC to init data.
-2017:03:17 11:36:01	loading preprocessed files.
-2017:03:17 11:36:05	...some data statistics.
-2017:03:17 11:36:05	......existing 32626 sentences, vocabulary size is 28075
-2017:03:17 11:36:05	...number of batches: 127
-2017:03:17 11:36:05	the number of sentence is 32626, the vocab size is 28075
-2017:03:17 11:37:27	use DataLoaderBBC to init data.
-2017:03:17 11:37:27	loading preprocessed files.
-2017:03:17 11:37:30	...some data statistics.
-2017:03:17 11:37:30	......existing 32626 sentences, vocabulary size is 28075
-2017:03:17 11:37:30	...number of batches: 127
-2017:03:17 11:37:31	the number of sentence is 32626, the vocab size is 28075
-2017:03:17 11:39:23	use DataLoaderBBC to init data.
-2017:03:17 11:39:23	loading preprocessed files.
-2017:03:17 11:39:27	...some data statistics.
-2017:03:17 11:39:27	......existing 32626 sentences, vocabulary size is 28075
-2017:03:17 11:39:27	...number of batches: 127
-2017:03:17 11:39:27	the number of sentence is 32626, the vocab size is 28075
-2017:03:17 11:40:21	use DataLoaderBBC to init data.
-2017:03:17 11:40:21	loading preprocessed files.
-2017:03:17 11:40:24	...some data statistics.
-2017:03:17 11:40:24	......existing 32626 sentences, vocabulary size is 28075
-2017:03:17 11:40:24	...number of batches: 127
-2017:03:17 11:40:24	the number of sentence is 32626, the vocab size is 28075
-2017:03:17 11:40:35	writing to /home/tlin/notebooks/code/demo3/data/training/runs/DataLoaderBBC/code.model.textGAN.TextGAN/1489750835
+2017:03:16 12:44:20	use DataLoaderChildrenStory to init data.
+2017:03:16 12:44:20	loading preprocessed files.
+2017:03:16 12:44:28	the number of sentence is 97314, the vocab size is 18739
+2017:03:16 12:47:45	use DataLoaderChildrenStory to init data.
+2017:03:16 12:47:45	loading preprocessed files.
+2017:03:16 12:47:52	the number of sentence is 97314, the vocab size is 18739
+2017:03:16 12:48:09	use DataLoaderChildrenStory to init data.
+2017:03:16 12:48:09	loading preprocessed files.
+2017:03:16 12:48:16	the number of sentence is 97314, the vocab size is 18739
+2017:03:16 12:49:09	use DataLoaderChildrenStory to init data.
+2017:03:16 12:49:09	loading preprocessed files.
+2017:03:16 12:49:16	the number of sentence is 97314, the vocab size is 18739
+2017:03:16 12:50:06	use DataLoaderChildrenStory to init data.
+2017:03:16 12:50:06	loading preprocessed files.
+2017:03:16 12:50:13	the number of sentence is 97314, the vocab size is 18739
+2017:03:16 12:50:34	use DataLoaderChildrenStory to init data.
+2017:03:16 12:50:34	reading and processing the text file.
+2017:03:16 12:50:34	preprocess the dataset.
+2017:03:16 12:50:38	...mask and pad the sentence.
+2017:03:16 12:50:38	......max len:21, median len:10.0, min len:3
+2017:03:16 12:50:39	build a vocabulary.
+2017:03:16 12:50:39	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 12:50:40	...mapping from index to word.
+2017:03:16 12:50:40	...mapping from word to index.
+2017:03:16 12:50:40	...map word to index.
+2017:03:16 12:50:41	...some data statistics.
+2017:03:16 12:50:41	...save processed data to file.
+2017:03:16 12:50:45	the number of sentence is 97241, the vocab size is 19396
+2017:03:16 12:51:36	use DataLoaderChildrenStory to init data.
+2017:03:16 12:51:36	loading preprocessed files.
+2017:03:16 12:51:44	the number of sentence is 97241, the vocab size is 19396
+2017:03:16 12:52:26	use DataLoaderChildrenStory to init data.
+2017:03:16 12:52:26	loading preprocessed files.
+2017:03:16 12:52:34	the number of sentence is 97241, the vocab size is 19396
+2017:03:16 12:52:53	use DataLoaderChildrenStory to init data.
+2017:03:16 12:52:53	loading preprocessed files.
+2017:03:16 12:53:01	the number of sentence is 97241, the vocab size is 19396
+2017:03:16 12:53:43	use DataLoaderChildrenStory to init data.
+2017:03:16 12:53:43	loading preprocessed files.
+2017:03:16 12:53:50	the number of sentence is 97241, the vocab size is 19396
+2017:03:16 12:56:40	use DataLoaderChildrenStory to init data.
+2017:03:16 12:56:41	loading preprocessed files.
+2017:03:16 12:56:55	the number of sentence is 97241, the vocab size is 19396
+2017:03:16 12:59:12	use DataLoaderChildrenStory to init data.
+2017:03:16 12:59:12	loading preprocessed files.
+2017:03:16 12:59:21	the number of sentence is 97241, the vocab size is 19396
+2017:03:16 12:59:44	use DataLoaderChildrenStory to init data.
+2017:03:16 12:59:44	loading preprocessed files.
+2017:03:16 12:59:51	the number of sentence is 97241, the vocab size is 19396
+2017:03:16 12:59:54	writing to /home/tlin/notebooks/code/demo3/data/training/runs/DataLoaderChildrenStory/code.model.textG.TextG/1489669194
 
-2017:03:17 11:41:44	use DataLoaderBBC to init data.
-2017:03:17 11:41:44	loading preprocessed files.
-2017:03:17 11:41:47	...some data statistics.
-2017:03:17 11:41:47	......existing 32626 sentences, vocabulary size is 28075
-2017:03:17 11:41:47	...number of batches: 127
-2017:03:17 11:41:47	the number of sentence is 32626, the vocab size is 28075
-2017:03:17 11:41:58	writing to /home/tlin/notebooks/code/demo3/data/training/runs/DataLoaderBBC/code.model.textGAN.TextGAN/1489750918
+2017:03:16 12:59:55	------ do the pretrain ------ 
 
-2017:03:17 11:45:23	use DataLoaderBBC to init data.
-2017:03:17 11:45:23	loading preprocessed files.
-2017:03:17 11:45:27	...some data statistics.
-2017:03:17 11:45:27	......existing 32626 sentences, vocabulary size is 28075
-2017:03:17 11:45:27	...number of batches: 127
-2017:03:17 11:45:27	the number of sentence is 32626, the vocab size is 28075
-2017:03:17 11:45:39	writing to /home/tlin/notebooks/code/demo3/data/training/runs/DataLoaderBBC/code.model.textGAN.TextGAN/1489751139
+2017:03:16 12:59:55	train epoch 0
+2017:03:16 13:00:11	use DataLoaderChildrenStory to init data.
+2017:03:16 13:00:11	loading preprocessed files.
+2017:03:16 13:00:18	the number of sentence is 97241, the vocab size is 19396
+2017:03:16 13:00:21	writing to /home/tlin/notebooks/code/demo3/data/training/runs/DataLoaderChildrenStory/code.model.textG.TextG/1489669220
 
-2017:03:17 11:46:15	use DataLoaderBBC to init data.
-2017:03:17 11:46:15	loading preprocessed files.
-2017:03:17 11:46:19	...some data statistics.
-2017:03:17 11:46:19	......existing 32626 sentences, vocabulary size is 28075
-2017:03:17 11:46:19	...number of batches: 127
-2017:03:17 11:46:19	the number of sentence is 32626, the vocab size is 28075
-2017:03:17 11:46:30	writing to /home/tlin/notebooks/code/demo3/data/training/runs/DataLoaderBBC/code.model.textGAN.TextGAN/1489751190
+2017:03:16 13:00:21	------ do the pretrain ------ 
 
-2017:03:17 11:46:36	------ do the pretrain ------ 
+2017:03:16 13:00:21	train epoch 0
+2017:03:16 13:29:15	use DataLoaderChildrenStory to init data.
+2017:03:16 13:29:15	reading and processing the text file.
+2017:03:16 13:29:15	preprocess the dataset.
+2017:03:16 13:29:24	...mask and pad the sentence.
+2017:03:16 13:29:24	......max len:21, median len:10.0, min len:3
+2017:03:16 13:29:25	build a vocabulary.
+2017:03:16 13:29:25	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 13:29:27	...mapping from index to word.
+2017:03:16 13:29:27	...mapping from word to index.
+2017:03:16 13:29:27	...map word to index.
+2017:03:16 13:29:29	...some data statistics.
+2017:03:16 13:29:29	...save processed data to file.
+2017:03:16 13:29:35	the number of sentence is 97241, the vocab size is 19396
+2017:03:16 13:29:42	writing to /home/tlin/notebooks/code/demo3/data/training/runs/DataLoaderChildrenStory/code.model.textG.TextG/1489670982
 
-2017:03:17 11:46:36	....empty pretrain folder.
-2017:03:17 11:47:11	use DataLoaderBBC to init data.
-2017:03:17 11:47:11	loading preprocessed files.
-2017:03:17 11:47:15	...some data statistics.
-2017:03:17 11:47:15	......existing 32626 sentences, vocabulary size is 28075
-2017:03:17 11:47:15	...number of batches: 127
-2017:03:17 11:47:15	the number of sentence is 32626, the vocab size is 28075
-2017:03:17 11:47:26	writing to /home/tlin/notebooks/code/demo3/data/training/runs/DataLoaderBBC/code.model.textGAN.TextGAN/1489751246
+2017:03:16 13:29:45	------ training ------ 
 
-2017:03:17 11:47:32	------ do the pretrain ------ 
+2017:03:16 13:29:45	train epoch 0
+2017:03:16 13:32:20	use DataLoaderChildrenStory to init data.
+2017:03:16 13:32:20	loading preprocessed files.
+2017:03:16 13:32:30	the number of sentence is 97241, the vocab size is 19396
+2017:03:16 13:32:35	writing to /home/tlin/notebooks/code/demo3/data/training/runs/DataLoaderChildrenStory/code.model.textG.TextG/1489671155
 
-2017:03:17 11:47:32	....empty pretrain folder.
-2017:03:17 11:47:32	pretrain epoch 0
+2017:03:16 13:32:36	------ training ------ 
+
+2017:03:16 13:32:36	train epoch 0
+2017:03:16 13:33:16	use DataLoaderChildrenStory to init data.
+2017:03:16 13:33:17	loading preprocessed files.
+2017:03:16 13:33:25	the number of sentence is 97241, the vocab size is 19396
+2017:03:16 13:33:29	writing to /home/tlin/notebooks/code/demo3/data/training/runs/DataLoaderChildrenStory/code.model.textG.TextG/1489671209
+
+2017:03:16 13:33:31	------ training ------ 
+
+2017:03:16 13:33:31	train epoch 0
+2017:03:16 13:33:50	train loss: 9.8720369339, execution speed: 4.75 seconds/batch
+
+2017:03:16 13:34:28	use DataLoaderChildrenStory to init data.
+2017:03:16 13:34:28	loading preprocessed files.
+2017:03:16 13:34:35	the number of sentence is 97241, the vocab size is 19396
+2017:03:16 13:34:39	writing to /home/tlin/notebooks/code/demo3/data/training/runs/DataLoaderChildrenStory/code.model.textG.TextG/1489671279
+
+2017:03:16 13:34:41	------ training ------ 
+
+2017:03:16 13:34:41	train epoch 0
+2017:03:16 13:35:01	train loss: 9.87321853638, execution speed: 5.00 seconds/batch
+
+2017:03:16 13:36:03	use DataLoaderChildrenStory to init data.
+2017:03:16 13:36:03	loading preprocessed files.
+2017:03:16 13:36:11	the number of sentence is 97241, the vocab size is 19396
+2017:03:16 13:36:14	writing to /home/tlin/notebooks/code/demo3/data/training/runs/DataLoaderChildrenStory/code.model.textG.TextG/1489671374
+
+2017:03:16 13:36:16	------ training ------ 
+
+2017:03:16 13:36:16	train epoch 0
+2017:03:16 13:36:34	train loss: 9.87308216095, execution speed: 4.50 seconds/batch
+
+2017:03:16 13:36:40	val loss: 9.87268066406, execution speed: 1.50 seconds/batch
+
+2017:03:16 16:32:36	use DataLoaderShakespeare to init data.
+2017:03:16 16:32:36	reading and processing the text file.
+2017:03:16 16:32:36	preprocess the dataset.
+2017:03:16 16:33:24	use DataLoaderShakespeare to init data.
+2017:03:16 16:33:24	reading and processing the text file.
+2017:03:16 16:33:24	preprocess the dataset.
+2017:03:16 16:38:51	use DataLoaderShakespeare to init data.
+2017:03:16 16:38:51	reading and processing the text file.
+2017:03:16 16:38:51	preprocess the dataset.
+2017:03:16 16:39:06	build a vocabulary.
+2017:03:16 16:39:06	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 16:39:06	...mapping from index to word.
+2017:03:16 16:39:06	...mapping from word to index.
+2017:03:16 16:39:06	...map word to index.
+2017:03:16 16:39:06	...some data statistics.
+2017:03:16 16:46:11	use DataLoaderShakespeare to init data.
+2017:03:16 16:46:11	reading and processing the text file.
+2017:03:16 16:46:11	preprocess the dataset.
+2017:03:16 16:46:27	build a vocabulary.
+2017:03:16 16:46:27	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 16:46:27	...mapping from index to word.
+2017:03:16 16:46:27	...mapping from word to index.
+2017:03:16 16:46:27	...map word to index.
+2017:03:16 16:46:27	...some data statistics.
+2017:03:16 16:46:27	...save processed data to file.
+2017:03:16 16:48:27	use DataLoaderShakespeare to init data.
+2017:03:16 16:48:27	reading and processing the text file.
+2017:03:16 16:48:27	preprocess the dataset.
+2017:03:16 16:48:41	build a vocabulary.
+2017:03:16 16:48:41	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 16:48:42	...mapping from index to word.
+2017:03:16 16:48:42	...mapping from word to index.
+2017:03:16 16:48:42	...map word to index.
+2017:03:16 16:48:42	...some data statistics.
+2017:03:16 16:48:42	...save processed data to file.
+2017:03:16 16:49:13	use DataLoaderShakespeare to init data.
+2017:03:16 16:49:13	reading and processing the text file.
+2017:03:16 16:49:13	preprocess the dataset.
+2017:03:16 16:49:28	build a vocabulary.
+2017:03:16 16:49:28	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 16:49:28	...mapping from index to word.
+2017:03:16 16:49:28	...mapping from word to index.
+2017:03:16 16:49:28	...map word to index.
+2017:03:16 16:49:28	...some data statistics.
+2017:03:16 16:49:28	...save processed data to file.
+2017:03:16 16:50:43	use DataLoaderShakespeare to init data.
+2017:03:16 16:50:43	reading and processing the text file.
+2017:03:16 16:50:43	preprocess the dataset.
+2017:03:16 16:50:57	build a vocabulary.
+2017:03:16 16:50:57	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 16:50:58	...mapping from index to word.
+2017:03:16 16:50:58	...mapping from word to index.
+2017:03:16 16:50:58	...map word to index.
+2017:03:16 16:50:58	...some data statistics.
+2017:03:16 16:50:58	...save processed data to file.
+2017:03:16 16:52:54	use DataLoaderShakespeare to init data.
+2017:03:16 16:52:54	reading and processing the text file.
+2017:03:16 16:52:54	preprocess the dataset.
+2017:03:16 16:53:08	build a vocabulary.
+2017:03:16 16:53:08	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 16:53:08	...mapping from index to word.
+2017:03:16 16:53:08	...mapping from word to index.
+2017:03:16 16:53:08	...map word to index.
+2017:03:16 16:53:08	...some data statistics.
+2017:03:16 16:53:08	...save processed data to file.
+2017:03:16 16:53:08	the number of sentence is 243200, the vocab size is 38
+2017:03:16 16:53:51	use DataLoaderShakespeare to init data.
+2017:03:16 16:53:52	reading and processing the text file.
+2017:03:16 16:53:52	preprocess the dataset.
+2017:03:16 16:54:08	build a vocabulary.
+2017:03:16 16:54:08	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 16:54:09	...mapping from index to word.
+2017:03:16 16:54:09	...mapping from word to index.
+2017:03:16 16:54:09	...map word to index.
+2017:03:16 16:54:09	...some data statistics.
+2017:03:16 16:54:09	...save processed data to file.
+2017:03:16 16:54:09	the number of sentence is 243200, the vocab size is 38
+2017:03:16 16:54:13	writing to /home/tlin/notebooks/code/demo2/data/training/runs/DataLoaderShakespeare/code.model.textG.TextG/1489683252
+
+2017:03:16 16:54:13	------ training ------ 
+
+2017:03:16 16:54:13	train epoch 0
+2017:03:16 16:56:00	use DataLoaderShakespeare to init data.
+2017:03:16 16:56:00	loading preprocessed files.
+2017:03:16 16:56:00	the number of sentence is 243200, the vocab size is 38
+2017:03:16 16:56:03	writing to /home/tlin/notebooks/code/demo2/data/training/runs/DataLoaderShakespeare/code.model.textG.TextG/1489683362
+
+2017:03:16 16:56:03	------ training ------ 
+
+2017:03:16 16:56:03	train epoch 0
+2017:03:16 16:58:23	use DataLoaderShakespeare to init data.
+2017:03:16 16:58:23	loading preprocessed files.
+2017:03:16 16:58:23	the number of sentence is 243200, the vocab size is 38
+2017:03:16 17:01:47	use DataLoaderShakespeare to init data.
+2017:03:16 17:01:47	loading preprocessed files.
+2017:03:16 17:01:48	the number of sentence is 243200, the vocab size is 38
+2017:03:16 17:02:00	use DataLoaderShakespeare to init data.
+2017:03:16 17:02:00	loading preprocessed files.
+2017:03:16 17:02:01	the number of sentence is 243200, the vocab size is 38
+2017:03:16 17:02:16	use DataLoaderShakespeare to init data.
+2017:03:16 17:02:16	loading preprocessed files.
+2017:03:16 17:02:16	the number of sentence is 243200, the vocab size is 38
+2017:03:16 17:02:19	writing to /home/tlin/notebooks/code/demo2/data/training/runs/DataLoaderShakespeare/code.model.textG.TextG/1489683738
+
+2017:03:16 17:02:20	------ training ------ 
+
+2017:03:16 17:02:20	train epoch 0
+2017:03:16 17:04:50	use DataLoaderShakespeare to init data.
+2017:03:16 17:04:50	loading preprocessed files.
+2017:03:16 17:04:51	the number of sentence is 243200, the vocab size is 38
+2017:03:16 17:04:52	writing to /home/tlin/notebooks/code/demo2/data/training/runs/DataLoaderShakespeare/code.model.textG.TextG/1489683892
+
+2017:03:16 17:04:53	------ training ------ 
+
+2017:03:16 17:04:53	train epoch 0
+2017:03:16 17:17:46	use DataLoaderShakespeare to init data.
+2017:03:16 17:17:46	loading preprocessed files.
+2017:03:16 17:17:46	the number of sentence is 243200, the vocab size is 38
+2017:03:16 17:17:48	writing to /home/tlin/notebooks/code/demo2/data/training/runs/DataLoaderShakespeare/code.model.textG.TextG/1489684667
+
+2017:03:16 17:17:48	------ training ------ 
+
+2017:03:16 17:17:48	train epoch 0
+2017:03:16 17:18:40	use DataLoaderShakespeare to init data.
+2017:03:16 17:18:40	loading preprocessed files.
+2017:03:16 17:18:40	the number of sentence is 243200, the vocab size is 38
+2017:03:16 17:18:42	writing to /home/tlin/notebooks/code/demo2/data/training/runs/DataLoaderShakespeare/code.model.textG.TextG/1489684722
+
+2017:03:16 17:18:43	------ training ------ 
+
+2017:03:16 17:18:43	train epoch 0
+2017:03:16 17:20:44	use DataLoaderShakespeare to init data.
+2017:03:16 17:20:44	loading preprocessed files.
+2017:03:16 17:20:45	the number of sentence is 243200, the vocab size is 38
+2017:03:16 17:20:47	writing to /home/tlin/notebooks/code/demo2/data/training/runs/DataLoaderShakespeare/code.model.textG.TextG/1489684846
+
+2017:03:16 17:20:48	------ training ------ 
+
+2017:03:16 17:20:48	train epoch 0
+2017:03:16 17:21:04	use DataLoaderShakespeare to init data.
+2017:03:16 17:21:04	reading and processing the text file.
+2017:03:16 17:21:04	preprocess the dataset.
+2017:03:16 17:21:18	build a vocabulary.
+2017:03:16 17:21:18	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 17:21:18	...mapping from index to word.
+2017:03:16 17:21:18	...mapping from word to index.
+2017:03:16 17:21:18	...map word to index.
+2017:03:16 17:21:18	...some data statistics.
+2017:03:16 17:21:18	...save processed data to file.
+2017:03:16 17:21:18	the number of sentence is 243200, the vocab size is 38
+2017:03:16 17:21:20	writing to /home/tlin/notebooks/code/demo2/data/training/runs/DataLoaderShakespeare/code.model.textG.TextG/1489684880
+
+2017:03:16 17:21:21	------ training ------ 
+
+2017:03:16 17:21:21	train epoch 0
+2017:03:16 17:21:47	use DataLoaderShakespeare to init data.
+2017:03:16 17:21:47	reading and processing the text file.
+2017:03:16 17:21:47	preprocess the dataset.
+2017:03:16 17:22:01	build a vocabulary.
+2017:03:16 17:22:01	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 17:22:01	...mapping from index to word.
+2017:03:16 17:22:01	...mapping from word to index.
+2017:03:16 17:22:01	...map word to index.
+2017:03:16 17:22:01	...some data statistics.
+2017:03:16 17:22:01	...save processed data to file.
+2017:03:16 17:22:01	the number of sentence is 243200, the vocab size is 38
+2017:03:16 17:22:03	writing to /home/tlin/notebooks/code/demo2/data/training/runs/DataLoaderShakespeare/code.model.textG.TextG/1489684923
+
+2017:03:16 17:22:04	------ training ------ 
+
+2017:03:16 17:22:04	train epoch 0
+2017:03:16 17:22:37	use DataLoaderShakespeare to init data.
+2017:03:16 17:22:37	reading and processing the text file.
+2017:03:16 17:22:37	preprocess the dataset.
+2017:03:16 17:22:53	build a vocabulary.
+2017:03:16 17:22:53	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 17:22:53	...mapping from index to word.
+2017:03:16 17:22:53	...mapping from word to index.
+2017:03:16 17:22:53	...map word to index.
+2017:03:16 17:22:53	...some data statistics.
+2017:03:16 17:22:53	...save processed data to file.
+2017:03:16 17:22:53	the number of sentence is 243200, the vocab size is 14004
+2017:03:16 17:22:55	writing to /home/tlin/notebooks/code/demo2/data/training/runs/DataLoaderShakespeare/code.model.textG.TextG/1489684975
+
+2017:03:16 17:22:56	------ training ------ 
+
+2017:03:16 17:22:56	train epoch 0
+2017:03:16 17:23:54	use DataLoaderShakespeare to init data.
+2017:03:16 17:23:54	reading and processing the text file.
+2017:03:16 17:23:54	preprocess the dataset.
+2017:03:16 17:24:08	build a vocabulary.
+2017:03:16 17:24:08	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 17:24:08	...mapping from index to word.
+2017:03:16 17:24:08	...mapping from word to index.
+2017:03:16 17:24:08	...map word to index.
+2017:03:16 17:24:08	...some data statistics.
+2017:03:16 17:24:08	...save processed data to file.
+2017:03:16 17:25:02	use DataLoaderShakespeare to init data.
+2017:03:16 17:25:02	reading and processing the text file.
+2017:03:16 17:25:02	preprocess the dataset.
+2017:03:16 17:25:16	build a vocabulary.
+2017:03:16 17:25:16	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 17:25:16	...mapping from index to word.
+2017:03:16 17:25:16	...mapping from word to index.
+2017:03:16 17:25:16	...map word to index.
+2017:03:16 17:25:16	...some data statistics.
+2017:03:16 17:25:16	...save processed data to file.
+2017:03:16 17:25:30	use DataLoaderShakespeare to init data.
+2017:03:16 17:25:30	loading preprocessed files.
+2017:03:16 17:27:08	use DataLoaderShakespeare to init data.
+2017:03:16 17:27:08	loading preprocessed files.
+2017:03:16 17:27:31	use DataLoaderShakespeare to init data.
+2017:03:16 17:27:31	loading preprocessed files.
+2017:03:16 17:27:53	use DataLoaderShakespeare to init data.
+2017:03:16 17:27:53	loading preprocessed files.
+2017:03:16 17:28:02	use DataLoaderShakespeare to init data.
+2017:03:16 17:28:02	reading and processing the text file.
+2017:03:16 17:28:02	preprocess the dataset.
+2017:03:16 17:28:15	build a vocabulary.
+2017:03:16 17:28:15	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 17:28:15	...mapping from index to word.
+2017:03:16 17:28:15	...mapping from word to index.
+2017:03:16 17:28:15	...map word to index.
+2017:03:16 17:28:15	...some data statistics.
+2017:03:16 17:28:46	use DataLoaderShakespeare to init data.
+2017:03:16 17:28:46	reading and processing the text file.
+2017:03:16 17:28:46	preprocess the dataset.
+2017:03:16 17:29:00	build a vocabulary.
+2017:03:16 17:29:00	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 17:29:00	...mapping from index to word.
+2017:03:16 17:29:00	...mapping from word to index.
+2017:03:16 17:29:00	...map word to index.
+2017:03:16 17:29:00	...some data statistics.
+2017:03:16 17:29:00	......existing 243264 words, vocabulary size is 14004
+2017:03:16 17:29:00	...save processed data to file.
+2017:03:16 17:29:01	the number of sentence is 243200, the vocab size is 14004
+2017:03:16 17:29:03	writing to /home/tlin/notebooks/code/demo2_v/data/training/runs/DataLoaderShakespeare/code.model.textG.TextG/1489685342
+
+2017:03:16 17:29:03	------ training ------ 
+
+2017:03:16 17:29:03	train epoch 0
+2017:03:16 17:30:28	use DataLoaderShakespeare to init data.
+2017:03:16 17:30:28	reading and processing the text file.
+2017:03:16 17:30:28	preprocess the dataset.
+2017:03:16 17:30:41	build a vocabulary.
+2017:03:16 17:30:41	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 17:30:41	...mapping from index to word.
+2017:03:16 17:30:41	...mapping from word to index.
+2017:03:16 17:30:41	...map word to index.
+2017:03:16 17:30:41	...some data statistics.
+2017:03:16 17:30:41	......existing 243264 words, vocabulary size is 14004
+2017:03:16 17:30:41	...save processed data to file.
+2017:03:16 17:30:41	...number of batches: 0
+2017:03:16 17:31:12	use DataLoaderShakespeare to init data.
+2017:03:16 17:31:12	reading and processing the text file.
+2017:03:16 17:31:12	preprocess the dataset.
+2017:03:16 17:31:25	build a vocabulary.
+2017:03:16 17:31:25	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 17:31:25	...mapping from index to word.
+2017:03:16 17:31:25	...mapping from word to index.
+2017:03:16 17:31:25	...map word to index.
+2017:03:16 17:31:25	...some data statistics.
+2017:03:16 17:31:25	......existing 243264 words, vocabulary size is 14004
+2017:03:16 17:31:25	...save processed data to file.
+2017:03:16 17:31:26	...number of batches: 8
+2017:03:16 17:31:26	the number of sentence is 10240, the vocab size is 14004
+2017:03:16 17:31:27	writing to /home/tlin/notebooks/code/demo2_v/data/training/runs/DataLoaderShakespeare/code.model.textG.TextG/1489685487
+
+2017:03:16 17:31:28	------ training ------ 
+
+2017:03:16 17:31:28	train epoch 0
+2017:03:16 17:31:33	train loss: 9.5472984314, execution speed: 0.50 seconds/batch
+
+2017:03:16 17:31:34	val loss: 9.54658508301, execution speed: 0.12 seconds/batch
+
+2017:03:16 17:31:35	save 1-th bestmodel to path: /home/tlin/notebooks/code/demo2_v/data/training/runs/DataLoaderShakespeare/code.model.textG.TextG/1489685487/checkpoints/bestmodel.
+
+2017:03:16 17:31:35	train epoch 1
+2017:03:16 17:33:03	use DataLoaderShakespeare to init data.
+2017:03:16 17:33:03	reading and processing the text file.
+2017:03:16 17:33:03	preprocess the dataset.
+2017:03:16 17:33:17	build a vocabulary.
+2017:03:16 17:33:17	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 17:33:17	...mapping from index to word.
+2017:03:16 17:33:17	...mapping from word to index.
+2017:03:16 17:33:17	...map word to index.
+2017:03:16 17:33:17	...some data statistics.
+2017:03:16 17:33:17	......existing 243264 words, vocabulary size is 14004
+2017:03:16 17:33:17	...save processed data to file.
+2017:03:16 17:33:17	...number of batches: 8
+2017:03:16 17:33:17	the number of sentence is 10240, the vocab size is 14004
+2017:03:16 17:33:19	writing to /home/tlin/notebooks/code/demo2_v/data/training/runs/DataLoaderShakespeare/code.model.textG.TextG/1489685599
+
+2017:03:16 17:33:20	------ training ------ 
+
+2017:03:16 17:33:20	train epoch 0
+2017:03:16 17:33:24	train loss: 9.54664516449, execution speed: 0.50 seconds/batch
+
+2017:03:16 17:33:26	val loss: 9.54594230652, execution speed: 0.12 seconds/batch
+
+2017:03:16 17:33:26	save 1-th bestmodel to path: /home/tlin/notebooks/code/demo2_v/data/training/runs/DataLoaderShakespeare/code.model.textG.TextG/1489685599/checkpoints/bestmodel.
+
+2017:03:16 17:33:26	train epoch 1
+2017:03:16 17:33:30	train loss: 9.54544448853, execution speed: 0.50 seconds/batch
+
+2017:03:16 17:33:32	val loss: 9.54474544525, execution speed: 0.12 seconds/batch
+
+2017:03:16 17:33:32	train epoch 2
+2017:03:16 19:35:34	use DataLoaderBBC to init data.
+2017:03:16 19:36:07	use DataLoaderBBC to init data.
+2017:03:16 19:36:07	reading and processing the text file.
+2017:03:16 19:36:07	preprocess the dataset.
+2017:03:16 19:36:07	...load data.
+2017:03:16 19:36:07	load context for further preprocessing.
+2017:03:16 19:36:28	use DataLoaderBBC to init data.
+2017:03:16 19:36:28	reading and processing the text file.
+2017:03:16 19:36:28	preprocess the dataset.
+2017:03:16 19:36:28	...load data.
+2017:03:16 19:36:28	load context for further preprocessing.
+2017:03:16 19:37:39	build a vocabulary.
+2017:03:16 19:37:39	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 19:37:39	...mapping from index to word.
+2017:03:16 19:37:39	...mapping from word to index.
+2017:03:16 19:37:39	...map word to index.
+2017:03:16 19:37:40	...some data statistics.
+2017:03:16 19:37:40	......existing 954949 words, vocabulary size is 34571
+2017:03:16 19:37:40	...save processed data to file.
+2017:03:16 19:37:41	...number of batches: 8
+2017:03:16 19:37:41	the number of sentence is 10240, the vocab size is 34571
+2017:03:16 19:37:43	writing to /home/tlin/notebooks/code/demo2_v/data/training/runs/DataLoaderBBC/code.model.textG.TextG/1489693063
+
+2017:03:16 19:37:44	------ training ------ 
+
+2017:03:16 19:37:44	train epoch 0
+2017:03:16 19:38:00	train loss: 10.4502439499, execution speed: 2.00 seconds/batch
+
+2017:03:16 19:38:06	val loss: 10.4495401382, execution speed: 0.62 seconds/batch
+
+2017:03:16 19:38:06	save 1-th bestmodel to path: /home/tlin/notebooks/code/demo2_v/data/training/runs/DataLoaderBBC/code.model.textG.TextG/1489693063/checkpoints/bestmodel.
+
+2017:03:16 19:38:06	train epoch 1
+2017:03:16 19:38:20	train loss: 10.4490385056, execution speed: 1.75 seconds/batch
+
+2017:03:16 19:39:10	use DataLoaderBBC to init data.
+2017:03:16 19:39:10	reading and processing the text file.
+2017:03:16 19:39:10	preprocess the dataset.
+2017:03:16 19:39:10	...load data.
+2017:03:16 19:39:10	load context for further preprocessing.
+2017:03:16 19:40:13	build a vocabulary.
+2017:03:16 19:40:13	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 19:40:14	...mapping from index to word.
+2017:03:16 19:40:14	...mapping from word to index.
+2017:03:16 19:40:14	...map word to index.
+2017:03:16 19:40:14	...some data statistics.
+2017:03:16 19:40:14	......existing 954949 words, vocabulary size is 34571
+2017:03:16 19:40:14	...save processed data to file.
+2017:03:16 19:40:15	...number of batches: 8
+2017:03:16 19:40:15	the number of sentence is 10240, the vocab size is 34571
+2017:03:16 19:40:18	writing to /home/tlin/notebooks/code/demo2_v/data/training/runs/DataLoaderBBC/code.model.textG.TextG/1489693217
+
+2017:03:16 19:40:19	------ training ------ 
+
+2017:03:16 19:40:19	train epoch 0
+2017:03:16 19:40:51	use DataLoaderBBC to init data.
+2017:03:16 19:40:51	reading and processing the text file.
+2017:03:16 19:40:51	preprocess the dataset.
+2017:03:16 19:40:51	...load data.
+2017:03:16 19:40:51	init content from raw.
+2017:03:16 19:40:51	init data from the raw dataset.
+2017:03:16 19:42:18	use DataLoaderBBC to init data.
+2017:03:16 19:42:18	reading and processing the text file.
+2017:03:16 19:42:18	preprocess the dataset.
+2017:03:16 19:42:18	...load data.
+2017:03:16 19:42:18	init content from raw.
+2017:03:16 19:42:18	init data from the raw dataset.
+2017:03:16 19:43:15	use DataLoaderBBC to init data.
+2017:03:16 19:43:15	reading and processing the text file.
+2017:03:16 19:43:15	preprocess the dataset.
+2017:03:16 19:43:15	...load data.
+2017:03:16 19:43:15	init content from raw.
+2017:03:16 19:43:15	init data from the raw dataset.
+2017:03:16 19:43:44	use DataLoaderBBC to init data.
+2017:03:16 19:43:44	reading and processing the text file.
+2017:03:16 19:43:44	preprocess the dataset.
+2017:03:16 19:43:44	...load data.
+2017:03:16 19:43:44	init content from raw.
+2017:03:16 19:43:44	init data from the raw dataset.
+2017:03:16 19:43:46	clean data.
+2017:03:16 19:44:08	use DataLoaderBBC to init data.
+2017:03:16 19:44:08	reading and processing the text file.
+2017:03:16 19:44:08	preprocess the dataset.
+2017:03:16 19:44:08	load data.
+2017:03:16 19:44:08	init content from raw.
+2017:03:16 19:44:08	init data from the raw dataset.
+2017:03:16 19:44:11	clean data.
+2017:03:16 19:44:50	use DataLoaderBBC to init data.
+2017:03:16 19:44:50	reading and processing the text file.
+2017:03:16 19:44:50	preprocess the dataset.
+2017:03:16 19:44:50	load data.
+2017:03:16 19:44:50	init content from raw.
+2017:03:16 19:44:50	init data from the raw dataset.
+2017:03:16 19:45:36	use DataLoaderBBC to init data.
+2017:03:16 19:45:36	reading and processing the text file.
+2017:03:16 19:45:36	preprocess the dataset.
+2017:03:16 19:45:36	load data.
+2017:03:16 19:45:36	init content from raw.
+2017:03:16 19:45:36	init data from the raw dataset.
+2017:03:16 19:46:20	use DataLoaderBBC to init data.
+2017:03:16 19:46:20	reading and processing the text file.
+2017:03:16 19:46:20	preprocess the dataset.
+2017:03:16 19:46:20	load data.
+2017:03:16 19:46:20	init content from raw.
+2017:03:16 19:46:20	init data from the raw dataset.
+2017:03:16 19:46:21	load context for further preprocessing.
+2017:03:16 19:46:21	clean data.
+2017:03:16 19:46:22	build a vocabulary.
+2017:03:16 19:46:22	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 19:46:22	...mapping from index to word.
+2017:03:16 19:46:22	...mapping from word to index.
+2017:03:16 19:47:30	...map word to index.
+2017:03:16 19:47:30	...some data statistics.
+2017:03:16 19:47:30	......existing 954949 words, vocabulary size is 34571
+2017:03:16 19:47:30	...save processed data to file.
+2017:03:16 19:47:32	...number of batches: 8
+2017:03:16 19:47:32	the number of sentence is 10240, the vocab size is 34571
+2017:03:16 19:47:34	writing to /home/tlin/notebooks/code/demo2_v/data/training/runs/DataLoaderBBC/code.model.textG.TextG/1489693654
+
+2017:03:16 19:47:36	------ training ------ 
+
+2017:03:16 19:47:36	train epoch 0
+2017:03:16 19:47:52	train loss: 10.4507255554, execution speed: 2.00 seconds/batch
+
+2017:03:16 19:47:57	val loss: 10.4500274658, execution speed: 0.50 seconds/batch
+
+2017:03:16 19:47:57	save 1-th bestmodel to path: /home/tlin/notebooks/code/demo2_v/data/training/runs/DataLoaderBBC/code.model.textG.TextG/1489693654/checkpoints/bestmodel.
+
+2017:03:16 19:47:57	train epoch 1
+2017:03:16 19:48:12	train loss: 10.4495229721, execution speed: 1.75 seconds/batch
+
+2017:03:16 19:48:17	val loss: 10.4488182068, execution speed: 0.50 seconds/batch
+
+2017:03:16 19:48:17	train epoch 2
+2017:03:16 19:57:37	use DataLoaderBBC to init data.
+2017:03:16 19:57:37	reading and processing the text file.
+2017:03:16 19:57:37	preprocess the dataset.
+2017:03:16 19:57:37	load data.
+2017:03:16 19:57:37	init content from raw.
+2017:03:16 19:57:37	init data from the raw dataset.
+2017:03:16 19:57:38	load context for further preprocessing.
+2017:03:16 19:57:38	clean data.
+2017:03:16 19:57:39	build a vocabulary.
+2017:03:16 19:57:39	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 19:57:39	...mapping from index to word.
+2017:03:16 19:57:39	...mapping from word to index.
+2017:03:16 19:58:45	...map word to index.
+2017:03:16 19:58:45	...some data statistics.
+2017:03:16 19:58:45	......existing 954949 words, vocabulary size is 34571
+2017:03:16 19:58:45	...save processed data to file.
+2017:03:16 19:58:46	...number of batches: 8
+2017:03:16 19:58:46	the number of sentence is 10240, the vocab size is 34571
+2017:03:16 19:58:48	writing to /home/tlin/notebooks/code/demo2_v/data/training/runs/DataLoaderBBC/code.model.textG.TextG/1489694328
+
+2017:03:16 19:58:49	------ training ------ 
+
+2017:03:16 19:58:49	train epoch 0
+2017:03:16 20:00:25	use DataLoaderBBC to init data.
+2017:03:16 20:00:25	reading and processing the text file.
+2017:03:16 20:00:25	preprocess the dataset.
+2017:03:16 20:00:25	load data.
+2017:03:16 20:00:25	init content from raw.
+2017:03:16 20:00:25	init data from the raw dataset.
+2017:03:16 20:00:26	load context for further preprocessing.
+2017:03:16 20:00:26	clean data.
+2017:03:16 20:00:27	build a vocabulary.
+2017:03:16 20:00:27	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 20:00:27	...mapping from index to word.
+2017:03:16 20:00:27	...mapping from word to index.
+2017:03:16 20:01:32	...map word to index.
+2017:03:16 20:01:33	...some data statistics.
+2017:03:16 20:01:33	......existing 954949 words, vocabulary size is 34571
+2017:03:16 20:01:33	...save processed data to file.
+2017:03:16 20:01:34	...number of batches: 8
+2017:03:16 20:01:34	the number of sentence is 10240, the vocab size is 34571
+2017:03:16 20:01:36	writing to /home/tlin/notebooks/code/demo2_v/data/training/runs/DataLoaderBBC/code.model.textG.TextG/1489694496
+
+2017:03:16 20:01:37	------ training ------ 
+
+2017:03:16 20:01:37	train epoch 0
+2017:03:16 20:01:52	train loss: 10.4500589371, execution speed: 1.88 seconds/batch
+
+2017:03:16 20:01:57	val loss: 10.4493560791, execution speed: 0.50 seconds/batch
+
+2017:03:16 20:01:57	save 1-th bestmodel to path: /home/tlin/notebooks/code/demo2_v/data/training/runs/DataLoaderBBC/code.model.textG.TextG/1489694496/checkpoints/bestmodel.
+
+2017:03:16 20:01:57	train epoch 1
+2017:03:16 20:02:22	use DataLoaderBBC to init data.
+2017:03:16 20:02:22	loading preprocessed files.
+2017:03:16 20:02:24	......existing 954949 words, vocabulary size is 34571
+2017:03:16 20:02:24	...number of batches: 8
+2017:03:16 20:02:24	the number of sentence is 10240, the vocab size is 34571
+2017:03:16 20:02:26	writing to /home/tlin/notebooks/code/demo2_v/data/training/runs/DataLoaderBBC/code.model.textG.TextG/1489694546
+
+2017:03:16 20:02:27	------ training ------ 
+
+2017:03:16 20:02:27	train epoch 0
+2017:03:16 20:03:16	use DataLoaderBBC to init data.
+2017:03:16 20:03:16	loading preprocessed files.
+2017:03:16 20:03:18	......existing 954949 words, vocabulary size is 34571
+2017:03:16 20:03:18	...number of batches: 8
+2017:03:16 20:03:18	the number of sentence is 10240, the vocab size is 34571
+2017:03:16 20:03:19	writing to /home/tlin/notebooks/code/demo2_v/data/training/runs/DataLoaderBBC/code.model.textG.TextG/1489694599
+
+2017:03:16 20:03:33	use DataLoaderBBC to init data.
+2017:03:16 20:03:33	loading preprocessed files.
+2017:03:16 20:03:35	......existing 954949 words, vocabulary size is 34571
+2017:03:16 20:03:35	...number of batches: 8
+2017:03:16 20:03:35	the number of sentence is 10240, the vocab size is 34571
+2017:03:16 20:03:36	writing to /home/tlin/notebooks/code/demo2_v/data/training/runs/DataLoaderBBC/code.model.textG.TextG/1489694616
+
+2017:03:16 20:05:39	use DataLoaderBBC to init data.
+2017:03:16 20:05:39	reading and processing the text file.
+2017:03:16 20:05:40	preprocess the dataset.
+2017:03:16 20:05:40	load data.
+2017:03:16 20:05:40	init content from raw.
+2017:03:16 20:05:40	init data from the raw dataset.
+2017:03:16 20:05:41	load context for further preprocessing.
+2017:03:16 20:05:41	clean data.
+2017:03:16 20:05:42	build a vocabulary.
+2017:03:16 20:05:42	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 20:05:42	...mapping from index to word.
+2017:03:16 20:05:42	...mapping from word to index.
+2017:03:16 20:06:31	use DataLoaderBBC to init data.
+2017:03:16 20:06:31	reading and processing the text file.
+2017:03:16 20:06:31	preprocess the dataset.
+2017:03:16 20:06:31	load data.
+2017:03:16 20:06:31	init content from raw.
+2017:03:16 20:06:31	init data from the raw dataset.
+2017:03:16 20:06:32	load context for further preprocessing.
+2017:03:16 20:06:32	clean data.
+2017:03:16 20:06:33	build a vocabulary.
+2017:03:16 20:06:33	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 20:06:33	...mapping from index to word.
+2017:03:16 20:06:33	...mapping from word to index.
+2017:03:16 20:06:33	...map word to index.
+2017:03:16 20:06:34	...some data statistics.
+2017:03:16 20:06:34	......existing 954949 words, vocabulary size is 34571
+2017:03:16 20:06:34	...save processed data to file.
+2017:03:16 20:06:35	...number of batches: 8
+2017:03:16 20:06:35	the number of sentence is 10240, the vocab size is 34571
+2017:03:16 20:06:39	writing to /home/tlin/notebooks/code/demo2_v/data/training/runs/DataLoaderBBC/code.model.textG.TextG/1489694799
+
+2017:03:16 20:06:41	------ training ------ 
+
+2017:03:16 20:06:41	train epoch 0
+2017:03:16 20:08:55	use DataLoaderShakespeare to init data.
+2017:03:16 20:08:55	reading and processing the text file.
+2017:03:16 20:08:55	preprocess the dataset.
+2017:03:16 20:09:10	build a vocabulary.
+2017:03:16 20:09:10	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 20:09:10	...mapping from index to word.
+2017:03:16 20:09:10	...mapping from word to index.
+2017:03:16 20:09:10	...map word to index.
+2017:03:16 20:09:10	...some data statistics.
+2017:03:16 20:09:10	......existing 243264 words, vocabulary size is 14004
+2017:03:16 20:09:10	...save processed data to file.
+2017:03:16 20:09:10	...number of batches: 8
+2017:03:16 20:09:10	the number of sentence is 10240, the vocab size is 14004
+2017:03:16 20:09:12	writing to /home/tlin/notebooks/code/demo2_v/data/training/runs/DataLoaderShakespeare/code.model.textG.TextG/1489694952
+
+2017:03:16 20:09:13	------ training ------ 
+
+2017:03:16 20:09:13	train epoch 0
+2017:03:16 20:09:18	train loss: 9.54503154755, execution speed: 0.62 seconds/batch
+
+2017:03:16 20:09:20	val loss: 9.54432678223, execution speed: 0.12 seconds/batch
+
+2017:03:16 20:09:20	save 1-th bestmodel to path: /home/tlin/notebooks/code/demo2_v/data/training/runs/DataLoaderShakespeare/code.model.textG.TextG/1489694952/checkpoints/bestmodel.
+
+2017:03:16 20:09:20	train epoch 1
+2017:03:16 20:09:25	train loss: 9.54382419586, execution speed: 0.50 seconds/batch
+
+2017:03:16 20:09:26	val loss: 9.54311561584, execution speed: 0.12 seconds/batch
+
+2017:03:16 20:09:26	train epoch 2
+2017:03:16 20:09:31	train loss: 9.54260635376, execution speed: 0.50 seconds/batch
+
+2017:03:16 20:09:33	val loss: 9.54187488556, execution speed: 0.12 seconds/batch
+
+2017:03:16 20:09:33	train epoch 3
+2017:03:16 20:09:38	train loss: 9.54135036469, execution speed: 0.50 seconds/batch
+
+2017:03:16 20:09:39	val loss: 9.54060173035, execution speed: 0.12 seconds/batch
+
+2017:03:16 20:09:39	train epoch 4
+2017:03:16 20:09:44	train loss: 9.54005050659, execution speed: 0.50 seconds/batch
+
+2017:03:16 20:09:45	val loss: 9.5392742157, execution speed: 0.12 seconds/batch
+
+2017:03:16 20:09:45	train epoch 5
+2017:03:16 20:09:50	train loss: 9.53869533539, execution speed: 0.50 seconds/batch
+
+2017:03:16 20:09:52	val loss: 9.53787326813, execution speed: 0.12 seconds/batch
+
+2017:03:16 20:09:52	save 2-th bestmodel to path: /home/tlin/notebooks/code/demo2_v/data/training/runs/DataLoaderShakespeare/code.model.textG.TextG/1489694952/checkpoints/bestmodel.
+
+2017:03:16 20:09:52	train epoch 6
+2017:03:16 20:09:56	train loss: 9.53725242615, execution speed: 0.50 seconds/batch
+
+2017:03:16 20:09:58	val loss: 9.53635597229, execution speed: 0.12 seconds/batch
+
+2017:03:16 20:09:58	train epoch 7
+2017:03:16 20:10:03	train loss: 9.53569316864, execution speed: 0.50 seconds/batch
+
+2017:03:16 20:10:04	val loss: 9.53472518921, execution speed: 0.12 seconds/batch
+
+2017:03:16 20:10:04	train epoch 8
+2017:03:16 20:10:09	train loss: 9.53400802612, execution speed: 0.50 seconds/batch
+
+2017:03:16 20:10:10	val loss: 9.53296089172, execution speed: 0.12 seconds/batch
+
+2017:03:16 20:10:10	train epoch 9
+2017:03:16 20:10:15	train loss: 9.53215312958, execution speed: 0.50 seconds/batch
+
+2017:03:16 20:10:16	val loss: 9.5309753418, execution speed: 0.12 seconds/batch
+
+2017:03:16 20:10:16	train epoch 10
+2017:03:16 20:10:21	train loss: 9.53011798859, execution speed: 0.62 seconds/batch
+
+2017:03:16 20:10:23	val loss: 9.52880477905, execution speed: 0.12 seconds/batch
+
+2017:03:16 20:10:24	save 3-th bestmodel to path: /home/tlin/notebooks/code/demo2_v/data/training/runs/DataLoaderShakespeare/code.model.textG.TextG/1489694952/checkpoints/bestmodel.
+
+2017:03:16 20:10:24	train epoch 11
+2017:03:16 21:17:40	use DataLoaderBBC to init data.
+2017:03:16 21:17:40	reading and processing the text file.
+2017:03:16 21:17:40	preprocess the dataset.
+2017:03:16 21:17:40	load data.
+2017:03:16 21:17:40	init content from raw.
+2017:03:16 21:17:40	init data from the raw dataset.
+2017:03:16 21:17:41	load context for further preprocessing.
+2017:03:16 21:17:41	clean data.
+2017:03:16 21:17:42	build a vocabulary.
+2017:03:16 21:17:42	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 21:17:42	...mapping from index to word.
+2017:03:16 21:17:42	...mapping from word to index.
+2017:03:16 21:17:42	...map word to index.
+2017:03:16 21:17:42	...some data statistics.
+2017:03:16 21:17:42	......existing 954949 words, vocabulary size is 34571
+2017:03:16 21:17:42	...save processed data to file.
+2017:03:16 21:17:44	...number of batches: 8
+2017:03:16 21:17:44	the number of sentence is 10240, the vocab size is 34571
+2017:03:16 21:17:46	writing to /home/tlin/notebooks/code/demo2_v/data/training/runs/DataLoaderBBC/code.model.textG.TextG/1489699065
+
+2017:03:16 21:17:47	------ training ------ 
+
+2017:03:16 21:17:47	train epoch 0
+2017:03:16 21:18:11	use DataLoaderBBC to init data.
+2017:03:16 21:18:11	reading and processing the text file.
+2017:03:16 21:18:11	preprocess the dataset.
+2017:03:16 21:18:11	load data.
+2017:03:16 21:18:11	init content from raw.
+2017:03:16 21:18:11	init data from the raw dataset.
+2017:03:16 21:18:11	load context for further preprocessing.
+2017:03:16 21:18:11	clean data.
+2017:03:16 21:18:26	use DataLoaderBBC to init data.
+2017:03:16 21:18:26	reading and processing the text file.
+2017:03:16 21:18:26	preprocess the dataset.
+2017:03:16 21:18:26	load data.
+2017:03:16 21:18:26	init content from raw.
+2017:03:16 21:18:26	init data from the raw dataset.
+2017:03:16 21:18:26	load context for further preprocessing.
+2017:03:16 21:18:26	clean data.
+2017:03:16 21:18:26	build a vocabulary.
+2017:03:16 21:18:26	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 21:18:27	...mapping from index to word.
+2017:03:16 21:18:27	...mapping from word to index.
+2017:03:16 21:18:27	...map word to index.
+2017:03:16 21:18:27	...some data statistics.
+2017:03:16 21:18:27	......existing 954949 words, vocabulary size is 34571
+2017:03:16 21:18:27	...save processed data to file.
+2017:03:16 21:18:38	use DataLoaderBBC to init data.
+2017:03:16 21:18:38	reading and processing the text file.
+2017:03:16 21:18:38	preprocess the dataset.
+2017:03:16 21:18:38	load data.
+2017:03:16 21:18:38	init content from raw.
+2017:03:16 21:18:38	init data from the raw dataset.
+2017:03:16 21:18:38	load context for further preprocessing.
+2017:03:16 21:18:38	clean data.
+2017:03:16 21:18:38	build a vocabulary.
+2017:03:16 21:18:38	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 21:18:39	...mapping from index to word.
+2017:03:16 21:18:39	...mapping from word to index.
+2017:03:16 21:18:39	...map word to index.
+2017:03:16 21:18:39	...some data statistics.
+2017:03:16 21:18:39	......existing 954949 words, vocabulary size is 34571
+2017:03:16 21:18:39	...save processed data to file.
+2017:03:16 21:19:11	use DataLoaderBBC to init data.
+2017:03:16 21:19:11	reading and processing the text file.
+2017:03:16 21:19:11	preprocess the dataset.
+2017:03:16 21:19:11	load data.
+2017:03:16 21:19:11	init content from raw.
+2017:03:16 21:19:11	init data from the raw dataset.
+2017:03:16 21:19:11	load context for further preprocessing.
+2017:03:16 21:19:11	clean data.
+2017:03:16 21:19:12	build a vocabulary.
+2017:03:16 21:19:12	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 21:19:12	...mapping from index to word.
+2017:03:16 21:19:12	...mapping from word to index.
+2017:03:16 21:19:12	...map word to index.
+2017:03:16 21:19:12	...some data statistics.
+2017:03:16 21:19:12	......existing 950501 words, vocabulary size is 35793
+2017:03:16 21:19:12	...save processed data to file.
+2017:03:16 21:20:06	use DataLoaderBBC to init data.
+2017:03:16 21:20:06	reading and processing the text file.
+2017:03:16 21:20:06	preprocess the dataset.
+2017:03:16 21:20:06	load data.
+2017:03:16 21:20:06	init content from raw.
+2017:03:16 21:20:06	init data from the raw dataset.
+2017:03:16 21:20:06	load context for further preprocessing.
+2017:03:16 21:20:06	clean data.
+2017:03:16 21:20:07	build a vocabulary.
+2017:03:16 21:20:07	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 21:20:08	...mapping from index to word.
+2017:03:16 21:20:08	...mapping from word to index.
+2017:03:16 21:20:08	...map word to index.
+2017:03:16 21:20:08	...some data statistics.
+2017:03:16 21:20:08	......existing 950501 words, vocabulary size is 35793
+2017:03:16 21:20:08	...save processed data to file.
+2017:03:16 21:20:09	...number of batches: 8
+2017:03:16 21:20:09	the number of sentence is 10240, the vocab size is 35793
+2017:03:16 21:21:07	use DataLoaderBBC to init data.
+2017:03:16 21:21:07	reading and processing the text file.
+2017:03:16 21:21:07	preprocess the dataset.
+2017:03:16 21:21:07	load data.
+2017:03:16 21:21:07	init content from raw.
+2017:03:16 21:21:07	init data from the raw dataset.
+2017:03:16 21:21:07	load context for further preprocessing.
+2017:03:16 21:21:07	clean data.
+2017:03:16 21:21:07	build a vocabulary.
+2017:03:16 21:21:07	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 21:21:08	...mapping from index to word.
+2017:03:16 21:21:08	...mapping from word to index.
+2017:03:16 21:21:08	...map word to index.
+2017:03:16 21:21:08	...some data statistics.
+2017:03:16 21:21:08	......existing 945920 words, vocabulary size is 34165
+2017:03:16 21:21:08	...save processed data to file.
+2017:03:16 21:23:51	use DataLoaderBBC to init data.
+2017:03:16 21:23:51	reading and processing the text file.
+2017:03:16 21:23:51	preprocess the dataset.
+2017:03:16 21:23:51	load data.
+2017:03:16 21:23:51	init content from raw.
+2017:03:16 21:23:51	init data from the raw dataset.
+2017:03:16 21:23:51	load context for further preprocessing.
+2017:03:16 21:23:51	clean data.
+2017:03:16 21:23:51	build a vocabulary.
+2017:03:16 21:23:51	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 21:23:51	...mapping from index to word.
+2017:03:16 21:23:51	...mapping from word to index.
+2017:03:16 21:23:51	...map word to index.
+2017:03:16 21:23:52	...some data statistics.
+2017:03:16 21:23:52	......existing 943569 words, vocabulary size is 34007
+2017:03:16 21:23:52	...save processed data to file.
+2017:03:16 21:30:33	use DataLoaderBBC to init data.
+2017:03:16 21:30:33	reading and processing the text file.
+2017:03:16 21:30:33	preprocess the dataset.
+2017:03:16 21:30:33	load data.
+2017:03:16 21:30:33	init content from raw.
+2017:03:16 21:30:33	init data from the raw dataset.
+2017:03:16 21:30:33	load context for further preprocessing.
+2017:03:16 21:30:33	clean data.
+2017:03:16 21:30:34	build a vocabulary.
+2017:03:16 21:30:34	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 21:30:34	...mapping from index to word.
+2017:03:16 21:30:35	...mapping from word to index.
+2017:03:16 21:30:35	...map word to index.
+2017:03:16 21:30:35	...some data statistics.
+2017:03:16 21:30:35	......existing 943569 words, vocabulary size is 34007
+2017:03:16 21:30:35	...save processed data to file.
+2017:03:16 21:30:36	...number of batches: 8
+2017:03:16 21:30:36	the number of sentence is 10240, the vocab size is 34007
+2017:03:16 21:33:09	use DataLoaderBBC to init data.
+2017:03:16 21:33:09	reading and processing the text file.
+2017:03:16 21:33:09	preprocess the dataset.
+2017:03:16 21:33:09	load data.
+2017:03:16 21:33:09	init content from raw.
+2017:03:16 21:33:09	init data from the raw dataset.
+2017:03:16 21:33:09	load context for further preprocessing.
+2017:03:16 21:33:09	clean data.
+2017:03:16 21:33:10	build a vocabulary.
+2017:03:16 21:33:10	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 21:33:10	...mapping from index to word.
+2017:03:16 21:33:10	...mapping from word to index.
+2017:03:16 21:33:10	...map word to index.
+2017:03:16 21:33:11	...some data statistics.
+2017:03:16 21:33:11	......existing 943569 words, vocabulary size is 34007
+2017:03:16 21:33:11	...save processed data to file.
+2017:03:16 21:35:30	use DataLoaderBBC to init data.
+2017:03:16 21:35:30	reading and processing the text file.
+2017:03:16 21:35:30	preprocess the dataset.
+2017:03:16 21:35:30	load data.
+2017:03:16 21:35:30	init content from raw.
+2017:03:16 21:35:30	init data from the raw dataset.
+2017:03:16 21:35:44	use DataLoaderBBC to init data.
+2017:03:16 21:35:44	reading and processing the text file.
+2017:03:16 21:35:44	preprocess the dataset.
+2017:03:16 21:35:44	load data.
+2017:03:16 21:35:44	init content from raw.
+2017:03:16 21:35:44	init data from the raw dataset.
+2017:03:16 21:35:44	load context for further preprocessing.
+2017:03:16 21:37:15	use DataLoaderBBC to init data.
+2017:03:16 21:37:15	reading and processing the text file.
+2017:03:16 21:37:15	preprocess the dataset.
+2017:03:16 21:37:15	load data.
+2017:03:16 21:37:15	init content from raw.
+2017:03:16 21:37:15	init data from the raw dataset.
+2017:03:16 21:37:15	load context for further preprocessing.
+2017:03:16 21:38:02	use DataLoaderBBC to init data.
+2017:03:16 21:38:02	reading and processing the text file.
+2017:03:16 21:38:02	preprocess the dataset.
+2017:03:16 21:38:02	load data.
+2017:03:16 21:38:02	init content from raw.
+2017:03:16 21:38:02	init data from the raw dataset.
+2017:03:16 21:38:02	load context for further preprocessing.
+2017:03:16 21:38:33	use DataLoaderBBC to init data.
+2017:03:16 21:38:33	reading and processing the text file.
+2017:03:16 21:38:33	preprocess the dataset.
+2017:03:16 21:38:33	load data.
+2017:03:16 21:38:33	init content from raw.
+2017:03:16 21:38:33	init data from the raw dataset.
+2017:03:16 21:38:33	load context for further preprocessing.
+2017:03:16 21:38:33	clean data.
+2017:03:16 21:38:33	build a vocabulary.
+2017:03:16 21:38:33	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 21:38:33	...mapping from index to word.
+2017:03:16 21:38:33	...mapping from word to index.
+2017:03:16 21:38:33	...map word to index.
+2017:03:16 21:38:33	...some data statistics.
+2017:03:16 21:38:33	......existing 199 words, vocabulary size is 121
+2017:03:16 21:38:33	...save processed data to file.
+2017:03:16 21:38:33	...number of batches: 8
+2017:03:16 21:38:49	use DataLoaderBBC to init data.
+2017:03:16 21:38:49	reading and processing the text file.
+2017:03:16 21:38:49	preprocess the dataset.
+2017:03:16 21:38:49	load data.
+2017:03:16 21:38:49	init content from raw.
+2017:03:16 21:38:49	init data from the raw dataset.
+2017:03:16 21:38:49	load context for further preprocessing.
+2017:03:16 21:38:49	clean data.
+2017:03:16 21:38:50	build a vocabulary.
+2017:03:16 21:38:50	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 21:38:50	...mapping from index to word.
+2017:03:16 21:38:50	...mapping from word to index.
+2017:03:16 21:38:50	...map word to index.
+2017:03:16 21:38:51	...some data statistics.
+2017:03:16 21:38:51	......existing 931810 words, vocabulary size is 33444
+2017:03:16 21:38:51	...save processed data to file.
+2017:03:16 21:38:52	...number of batches: 8
+2017:03:16 21:38:52	the number of sentence is 10240, the vocab size is 33444
+2017:03:16 21:38:54	writing to /home/tlin/notebooks/code/demo2_v/data/training/runs/DataLoaderBBC/code.model.textG.TextG/1489700334
+
+2017:03:16 21:38:55	------ training ------ 
+
+2017:03:16 21:38:55	train epoch 0
+2017:03:16 21:40:20	use DataLoaderBBC to init data.
+2017:03:16 21:40:20	reading and processing the text file.
+2017:03:16 21:40:20	preprocess the dataset.
+2017:03:16 21:40:20	load data.
+2017:03:16 21:40:20	init content from raw.
+2017:03:16 21:40:20	init data from the raw dataset.
+2017:03:16 21:40:20	load context for further preprocessing.
+2017:03:16 21:40:20	clean data.
+2017:03:16 21:40:21	build a vocabulary.
+2017:03:16 21:40:21	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 21:40:21	...mapping from index to word.
+2017:03:16 21:40:21	...mapping from word to index.
+2017:03:16 21:40:21	...map word to index.
+2017:03:16 21:40:21	...some data statistics.
+2017:03:16 21:40:21	......existing 931344 words, vocabulary size is 33434
+2017:03:16 21:40:21	...save processed data to file.
+2017:03:16 21:40:22	...number of batches: 8
+2017:03:16 21:40:22	the number of sentence is 10240, the vocab size is 33434
+2017:03:16 21:40:24	writing to /home/tlin/notebooks/code/demo2_v/data/training/runs/DataLoaderBBC/code.model.textG.TextG/1489700424
+
+2017:03:16 21:40:25	------ training ------ 
+
+2017:03:16 21:40:25	train epoch 0
+2017:03:16 21:41:54	use DataLoaderBBC to init data.
+2017:03:16 21:41:54	reading and processing the text file.
+2017:03:16 21:41:54	preprocess the dataset.
+2017:03:16 21:41:54	load data.
+2017:03:16 21:41:54	init content from raw.
+2017:03:16 21:41:54	init data from the raw dataset.
+2017:03:16 21:41:54	load context for further preprocessing.
+2017:03:16 21:41:54	clean data.
+2017:03:16 21:41:54	build a vocabulary.
+2017:03:16 21:41:54	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 21:41:55	...mapping from index to word.
+2017:03:16 21:41:55	...mapping from word to index.
+2017:03:16 21:41:55	...map word to index.
+2017:03:16 21:41:55	...some data statistics.
+2017:03:16 21:41:55	......existing 931344 words, vocabulary size is 33434
+2017:03:16 21:41:55	...save processed data to file.
+2017:03:16 21:41:56	...number of batches: 8
+2017:03:16 21:41:56	the number of sentence is 10240, the vocab size is 33434
+2017:03:16 21:42:36	use DataLoaderBBC to init data.
+2017:03:16 21:42:36	reading and processing the text file.
+2017:03:16 21:42:36	preprocess the dataset.
+2017:03:16 21:42:36	load data.
+2017:03:16 21:42:36	init content from raw.
+2017:03:16 21:42:36	init data from the raw dataset.
+2017:03:16 21:42:36	load context for further preprocessing.
+2017:03:16 21:42:36	clean data.
+2017:03:16 21:42:37	build a vocabulary.
+2017:03:16 21:42:37	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 21:42:37	...mapping from index to word.
+2017:03:16 21:42:37	...mapping from word to index.
+2017:03:16 21:42:37	...map word to index.
+2017:03:16 21:42:37	...some data statistics.
+2017:03:16 21:42:37	......existing 931344 words, vocabulary size is 33434
+2017:03:16 21:42:37	...save processed data to file.
+2017:03:16 21:44:11	use DataLoaderBBC to init data.
+2017:03:16 21:44:11	reading and processing the text file.
+2017:03:16 21:44:11	preprocess the dataset.
+2017:03:16 21:44:11	load data.
+2017:03:16 21:44:11	init content from raw.
+2017:03:16 21:44:11	init data from the raw dataset.
+2017:03:16 21:44:12	load context for further preprocessing.
+2017:03:16 21:44:12	clean data.
+2017:03:16 21:44:12	build a vocabulary.
+2017:03:16 21:44:12	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 21:44:12	...mapping from index to word.
+2017:03:16 21:44:12	...mapping from word to index.
+2017:03:16 21:44:12	...map word to index.
+2017:03:16 21:44:13	...some data statistics.
+2017:03:16 21:44:13	......existing 931344 words, vocabulary size is 33434
+2017:03:16 21:44:13	...save processed data to file.
+2017:03:16 21:44:14	...number of batches: 8
+2017:03:16 21:44:14	the number of sentence is 10240, the vocab size is 33434
+2017:03:16 21:45:38	use DataLoaderBBC to init data.
+2017:03:16 21:45:38	reading and processing the text file.
+2017:03:16 21:45:38	preprocess the dataset.
+2017:03:16 21:45:38	load data.
+2017:03:16 21:45:38	init content from raw.
+2017:03:16 21:45:38	init data from the raw dataset.
+2017:03:16 21:45:38	load context for further preprocessing.
+2017:03:16 21:45:38	clean data.
+2017:03:16 21:45:38	build a vocabulary.
+2017:03:16 21:45:38	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 21:45:39	...mapping from index to word.
+2017:03:16 21:45:39	...mapping from word to index.
+2017:03:16 21:45:39	...map word to index.
+2017:03:16 21:45:39	...some data statistics.
+2017:03:16 21:45:39	......existing 931344 words, vocabulary size is 33434
+2017:03:16 21:45:39	...save processed data to file.
+2017:03:16 21:45:40	...number of batches: 8
+2017:03:16 21:45:40	the number of sentence is 10240, the vocab size is 33434
+2017:03:16 21:48:26	use DataLoaderBBC to init data.
+2017:03:16 21:48:26	reading and processing the text file.
+2017:03:16 21:48:26	preprocess the dataset.
+2017:03:16 21:48:26	load data.
+2017:03:16 21:48:26	init content from raw.
+2017:03:16 21:48:26	init data from the raw dataset.
+2017:03:16 21:48:26	load context for further preprocessing.
+2017:03:16 21:48:26	clean data.
+2017:03:16 21:48:27	build a vocabulary.
+2017:03:16 21:48:27	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 21:48:27	...mapping from index to word.
+2017:03:16 21:48:27	...mapping from word to index.
+2017:03:16 21:48:27	...map word to index.
+2017:03:16 21:48:27	...some data statistics.
+2017:03:16 21:48:27	......existing 931344 words, vocabulary size is 33434
+2017:03:16 21:48:27	...save processed data to file.
+2017:03:16 21:49:20	use DataLoaderBBC to init data.
+2017:03:16 21:49:20	reading and processing the text file.
+2017:03:16 21:49:20	preprocess the dataset.
+2017:03:16 21:49:20	load data.
+2017:03:16 21:49:20	init content from raw.
+2017:03:16 21:49:20	init data from the raw dataset.
+2017:03:16 21:49:20	load context for further preprocessing.
+2017:03:16 21:49:20	clean data.
+2017:03:16 21:49:21	build a vocabulary.
+2017:03:16 21:49:21	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 21:49:21	...mapping from index to word.
+2017:03:16 21:49:21	...mapping from word to index.
+2017:03:16 21:49:21	...map word to index.
+2017:03:16 21:49:22	...some data statistics.
+2017:03:16 21:49:22	......existing 931344 words, vocabulary size is 33434
+2017:03:16 21:49:22	...save processed data to file.
+2017:03:16 21:50:56	use DataLoaderBBC to init data.
+2017:03:16 21:50:56	reading and processing the text file.
+2017:03:16 21:50:56	preprocess the dataset.
+2017:03:16 21:50:56	load data.
+2017:03:16 21:50:56	init content from raw.
+2017:03:16 21:50:56	init data from the raw dataset.
+2017:03:16 21:50:56	load context for further preprocessing.
+2017:03:16 21:50:56	clean data.
+2017:03:16 21:50:58	build a vocabulary.
+2017:03:16 21:50:58	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 21:50:58	...mapping from index to word.
+2017:03:16 21:50:58	...mapping from word to index.
+2017:03:16 21:50:58	...map word to index.
+2017:03:16 21:52:04	use DataLoaderBBC to init data.
+2017:03:16 21:52:04	reading and processing the text file.
+2017:03:16 21:52:04	preprocess the dataset.
+2017:03:16 21:52:04	load data.
+2017:03:16 21:52:04	init content from raw.
+2017:03:16 21:52:04	init data from the raw dataset.
+2017:03:16 21:52:05	load context for further preprocessing.
+2017:03:16 21:52:05	clean data.
+2017:03:16 21:52:05	build a vocabulary.
+2017:03:16 21:52:05	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 21:52:06	...mapping from index to word.
+2017:03:16 21:52:06	...mapping from word to index.
+2017:03:16 21:52:06	...map word to index.
+2017:03:16 21:52:06	...some data statistics.
+2017:03:16 21:52:06	......existing 888042 words, vocabulary size is 33433
+2017:03:16 21:52:06	...save processed data to file.
+2017:03:16 21:52:07	...number of batches: 8
+2017:03:16 21:52:07	the number of sentence is 10240, the vocab size is 33433
+2017:03:16 21:52:19	use DataLoaderBBC to init data.
+2017:03:16 21:52:19	reading and processing the text file.
+2017:03:16 21:52:19	preprocess the dataset.
+2017:03:16 21:52:19	load data.
+2017:03:16 21:52:19	init content from raw.
+2017:03:16 21:52:19	init data from the raw dataset.
+2017:03:16 21:52:19	load context for further preprocessing.
+2017:03:16 21:52:19	clean data.
+2017:03:16 21:52:20	build a vocabulary.
+2017:03:16 21:52:20	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 21:52:21	...mapping from index to word.
+2017:03:16 21:52:21	...mapping from word to index.
+2017:03:16 21:52:21	...map word to index.
+2017:03:16 21:52:21	...some data statistics.
+2017:03:16 21:52:21	......existing 888042 words, vocabulary size is 33433
+2017:03:16 21:52:21	...save processed data to file.
+2017:03:16 21:55:33	use DataLoaderBBC to init data.
+2017:03:16 21:55:33	reading and processing the text file.
+2017:03:16 21:55:33	preprocess the dataset.
+2017:03:16 21:55:33	load data.
+2017:03:16 21:55:33	init content from raw.
+2017:03:16 21:55:33	init data from the raw dataset.
+2017:03:16 21:55:33	load context for further preprocessing.
+2017:03:16 21:55:33	clean data.
+2017:03:16 21:55:33	build a vocabulary.
+2017:03:16 21:55:33	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 21:55:34	...mapping from index to word.
+2017:03:16 21:55:34	...mapping from word to index.
+2017:03:16 21:55:34	...map word to index.
+2017:03:16 21:59:12	use DataLoaderBBC to init data.
+2017:03:16 21:59:12	reading and processing the text file.
+2017:03:16 21:59:12	preprocess the dataset.
+2017:03:16 21:59:12	load data.
+2017:03:16 21:59:12	init content from raw.
+2017:03:16 21:59:12	init data from the raw dataset.
+2017:03:16 21:59:12	load context for further preprocessing.
+2017:03:16 21:59:12	clean data.
+2017:03:16 21:59:13	...mask and pad the sentence.
+2017:03:16 21:59:13	......max len:361, median len:20.0, min len:0
+2017:03:16 21:59:14	build a vocabulary.
+2017:03:16 21:59:14	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 21:59:19	...mapping from index to word.
+2017:03:16 21:59:19	...mapping from word to index.
+2017:03:16 21:59:19	...map word to index.
+2017:03:16 21:59:20	...some data statistics.
+2017:03:16 21:59:20	......existing 43303 words, vocabulary size is 33317
+2017:03:16 21:59:20	...save processed data to file.
+2017:03:16 21:59:20	...number of batches: 8
+2017:03:16 21:59:20	the number of sentence is 10240, the vocab size is 33317
+2017:03:16 22:00:11	use DataLoaderBBC to init data.
+2017:03:16 22:00:11	reading and processing the text file.
+2017:03:16 22:00:11	preprocess the dataset.
+2017:03:16 22:00:11	load data.
+2017:03:16 22:00:11	init content from raw.
+2017:03:16 22:00:11	init data from the raw dataset.
+2017:03:16 22:00:11	load context for further preprocessing.
+2017:03:16 22:00:11	clean data.
+2017:03:16 22:00:12	...mask and pad the sentence.
+2017:03:16 22:00:12	......max len:361, median len:20.0, min len:0
+2017:03:16 22:00:12	build a vocabulary.
+2017:03:16 22:00:12	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 22:00:13	...mapping from index to word.
+2017:03:16 22:00:13	...mapping from word to index.
+2017:03:16 22:00:13	...map word to index.
+2017:03:16 22:00:13	...some data statistics.
+2017:03:16 22:00:13	......existing 43303 words, vocabulary size is 18249
+2017:03:16 22:00:13	...save processed data to file.
+2017:03:16 22:00:14	...number of batches: 8
+2017:03:16 22:00:14	the number of sentence is 10240, the vocab size is 18249
+2017:03:16 22:00:31	use DataLoaderBBC to init data.
+2017:03:16 22:00:31	reading and processing the text file.
+2017:03:16 22:00:31	preprocess the dataset.
+2017:03:16 22:00:31	load data.
+2017:03:16 22:00:31	init content from raw.
+2017:03:16 22:00:31	init data from the raw dataset.
+2017:03:16 22:00:31	load context for further preprocessing.
+2017:03:16 22:00:31	clean data.
+2017:03:16 22:00:32	...mask and pad the sentence.
+2017:03:16 22:00:32	......max len:361, median len:20.0, min len:0
+2017:03:16 22:00:32	build a vocabulary.
+2017:03:16 22:00:32	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 22:01:23	use DataLoaderBBC to init data.
+2017:03:16 22:01:23	reading and processing the text file.
+2017:03:16 22:01:23	preprocess the dataset.
+2017:03:16 22:01:23	load data.
+2017:03:16 22:01:23	init content from raw.
+2017:03:16 22:01:23	init data from the raw dataset.
+2017:03:16 22:01:23	load context for further preprocessing.
+2017:03:16 22:01:23	clean data.
+2017:03:16 22:01:24	...mask and pad the sentence.
+2017:03:16 22:01:24	......max len:361, median len:20.0, min len:0
+2017:03:16 22:01:24	build a vocabulary.
+2017:03:16 22:01:24	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 22:01:57	use DataLoaderBBC to init data.
+2017:03:16 22:01:57	reading and processing the text file.
+2017:03:16 22:01:57	preprocess the dataset.
+2017:03:16 22:01:57	load data.
+2017:03:16 22:01:57	init content from raw.
+2017:03:16 22:01:57	init data from the raw dataset.
+2017:03:16 22:01:58	load context for further preprocessing.
+2017:03:16 22:01:58	clean data.
+2017:03:16 22:01:58	...mask and pad the sentence.
+2017:03:16 22:01:58	......max len:361, median len:20.0, min len:0
+2017:03:16 22:01:59	build a vocabulary.
+2017:03:16 22:01:59	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 22:01:59	...mapping from index to word.
+2017:03:16 22:01:59	...mapping from word to index.
+2017:03:16 22:01:59	...map word to index.
+2017:03:16 22:01:59	...some data statistics.
+2017:03:16 22:01:59	......existing 43303 words, vocabulary size is 29011
+2017:03:16 22:01:59	...save processed data to file.
+2017:03:16 22:03:02	use DataLoaderBBC to init data.
+2017:03:16 22:03:02	reading and processing the text file.
+2017:03:16 22:03:02	preprocess the dataset.
+2017:03:16 22:03:02	load data.
+2017:03:16 22:03:02	init content from raw.
+2017:03:16 22:03:02	init data from the raw dataset.
+2017:03:16 22:03:02	load context for further preprocessing.
+2017:03:16 22:03:02	clean data.
+2017:03:16 22:03:03	...mask and pad the sentence.
+2017:03:16 22:03:03	......max len:363, median len:22.0, min len:2
+2017:03:16 22:03:03	build a vocabulary.
+2017:03:16 22:03:03	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 22:03:04	...mapping from index to word.
+2017:03:16 22:03:04	...mapping from word to index.
+2017:03:16 22:03:04	...map word to index.
+2017:03:16 22:03:04	...some data statistics.
+2017:03:16 22:03:04	......existing 43303 words, vocabulary size is 28074
+2017:03:16 22:03:04	...save processed data to file.
+2017:03:16 22:03:05	...number of batches: 8
+2017:03:16 22:03:05	the number of sentence is 10240, the vocab size is 28074
+2017:03:16 22:03:07	writing to /home/tlin/notebooks/code/demo2_v/data/training/runs/DataLoaderBBC/code.model.textG.TextG/1489701787
+
+2017:03:16 22:03:09	------ training ------ 
+
+2017:03:16 22:03:09	train epoch 0
+2017:03:16 22:03:36	use DataLoaderBBC to init data.
+2017:03:16 22:03:36	reading and processing the text file.
+2017:03:16 22:03:36	preprocess the dataset.
+2017:03:16 22:03:36	load data.
+2017:03:16 22:03:36	init content from raw.
+2017:03:16 22:03:36	init data from the raw dataset.
+2017:03:16 22:03:36	load context for further preprocessing.
+2017:03:16 22:03:36	clean data.
+2017:03:16 22:03:37	...mask and pad the sentence.
+2017:03:16 22:03:37	......max len:363, median len:22.0, min len:2
+2017:03:16 22:03:37	build a vocabulary.
+2017:03:16 22:03:37	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 22:03:38	...mapping from index to word.
+2017:03:16 22:03:38	...mapping from word to index.
+2017:03:16 22:03:38	...map word to index.
+2017:03:16 22:03:38	...some data statistics.
+2017:03:16 22:03:38	......existing 43303 words, vocabulary size is 28075
+2017:03:16 22:03:38	...save processed data to file.
+2017:03:16 22:04:20	use DataLoaderBBC to init data.
+2017:03:16 22:04:20	reading and processing the text file.
+2017:03:16 22:04:20	preprocess the dataset.
+2017:03:16 22:04:20	load data.
+2017:03:16 22:04:20	init content from raw.
+2017:03:16 22:04:20	init data from the raw dataset.
+2017:03:16 22:04:20	load context for further preprocessing.
+2017:03:16 22:04:20	clean data.
+2017:03:16 22:04:21	...mask and pad the sentence.
+2017:03:16 22:04:21	......max len:363, median len:22.0, min len:2
+2017:03:16 22:04:21	build a vocabulary.
+2017:03:16 22:04:21	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 22:04:21	...mapping from index to word.
+2017:03:16 22:04:21	...mapping from word to index.
+2017:03:16 22:04:21	...map word to index.
+2017:03:16 22:04:22	...some data statistics.
+2017:03:16 22:04:22	......existing 43303 words, vocabulary size is 28075
+2017:03:16 22:04:22	...save processed data to file.
+2017:03:16 22:05:58	use DataLoaderBBC to init data.
+2017:03:16 22:05:58	reading and processing the text file.
+2017:03:16 22:05:58	preprocess the dataset.
+2017:03:16 22:05:58	load data.
+2017:03:16 22:05:58	init content from raw.
+2017:03:16 22:05:58	init data from the raw dataset.
+2017:03:16 22:05:58	load context for further preprocessing.
+2017:03:16 22:05:58	clean data.
+2017:03:16 22:05:59	...mask and pad the sentence.
+2017:03:16 22:05:59	......max len:363, median len:22.0, min len:2
+2017:03:16 22:05:59	build a vocabulary.
+2017:03:16 22:05:59	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 22:05:59	...mapping from index to word.
+2017:03:16 22:05:59	...mapping from word to index.
+2017:03:16 22:05:59	...map word to index.
+2017:03:16 22:06:00	...some data statistics.
+2017:03:16 22:06:24	use DataLoaderBBC to init data.
+2017:03:16 22:06:24	reading and processing the text file.
+2017:03:16 22:06:24	preprocess the dataset.
+2017:03:16 22:06:24	load data.
+2017:03:16 22:06:24	init content from raw.
+2017:03:16 22:06:24	init data from the raw dataset.
+2017:03:16 22:06:24	load context for further preprocessing.
+2017:03:16 22:06:24	clean data.
+2017:03:16 22:06:25	...mask and pad the sentence.
+2017:03:16 22:06:25	......max len:363, median len:22.0, min len:2
+2017:03:16 22:06:25	build a vocabulary.
+2017:03:16 22:06:25	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 22:06:25	...mapping from index to word.
+2017:03:16 22:06:25	...mapping from word to index.
+2017:03:16 22:06:25	...map word to index.
+2017:03:16 22:06:26	...some data statistics.
+2017:03:16 22:06:48	use DataLoaderBBC to init data.
+2017:03:16 22:06:48	reading and processing the text file.
+2017:03:16 22:06:48	preprocess the dataset.
+2017:03:16 22:06:48	load data.
+2017:03:16 22:06:48	init content from raw.
+2017:03:16 22:06:48	init data from the raw dataset.
+2017:03:16 22:06:48	load context for further preprocessing.
+2017:03:16 22:06:48	clean data.
+2017:03:16 22:06:49	...mask and pad the sentence.
+2017:03:16 22:06:49	......max len:363, median len:22.0, min len:2
+2017:03:16 22:06:49	build a vocabulary.
+2017:03:16 22:06:49	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 22:06:50	...mapping from index to word.
+2017:03:16 22:06:50	...mapping from word to index.
+2017:03:16 22:06:50	...map word to index.
+2017:03:16 22:06:50	...some data statistics.
+2017:03:16 22:07:11	use DataLoaderBBC to init data.
+2017:03:16 22:07:11	reading and processing the text file.
+2017:03:16 22:07:11	preprocess the dataset.
+2017:03:16 22:07:11	load data.
+2017:03:16 22:07:11	init content from raw.
+2017:03:16 22:07:11	init data from the raw dataset.
+2017:03:16 22:07:11	load context for further preprocessing.
+2017:03:16 22:07:11	clean data.
+2017:03:16 22:07:12	...mask and pad the sentence.
+2017:03:16 22:07:12	......max len:363, median len:22.0, min len:2
+2017:03:16 22:07:12	build a vocabulary.
+2017:03:16 22:07:12	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 22:07:12	...mapping from index to word.
+2017:03:16 22:07:12	...mapping from word to index.
+2017:03:16 22:07:12	...map word to index.
+2017:03:16 22:07:33	use DataLoaderBBC to init data.
+2017:03:16 22:07:33	reading and processing the text file.
+2017:03:16 22:07:33	preprocess the dataset.
+2017:03:16 22:07:33	load data.
+2017:03:16 22:07:33	init content from raw.
+2017:03:16 22:07:33	init data from the raw dataset.
+2017:03:16 22:07:33	load context for further preprocessing.
+2017:03:16 22:07:33	clean data.
+2017:03:16 22:07:34	...mask and pad the sentence.
+2017:03:16 22:07:34	......max len:363, median len:22.0, min len:2
+2017:03:16 22:07:34	build a vocabulary.
+2017:03:16 22:07:34	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 22:07:35	...mapping from index to word.
+2017:03:16 22:07:35	...mapping from word to index.
+2017:03:16 22:07:35	...map word to index.
+2017:03:16 22:07:35	...some data statistics.
+2017:03:16 22:09:27	use DataLoaderBBC to init data.
+2017:03:16 22:09:27	reading and processing the text file.
+2017:03:16 22:09:27	preprocess the dataset.
+2017:03:16 22:09:27	load data.
+2017:03:16 22:09:27	init content from raw.
+2017:03:16 22:09:27	init data from the raw dataset.
+2017:03:16 22:09:27	load context for further preprocessing.
+2017:03:16 22:09:27	clean data.
+2017:03:16 22:09:28	...mask and pad the sentence.
+2017:03:16 22:09:28	......max len:363, median len:22.0, min len:2
+2017:03:16 22:09:28	build a vocabulary.
+2017:03:16 22:09:28	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 22:09:28	...mapping from index to word.
+2017:03:16 22:09:29	...mapping from word to index.
+2017:03:16 22:09:29	...map word to index.
+2017:03:16 22:09:29	...some data statistics.
+2017:03:16 22:09:29	......existing 32626 sentences, vocabulary size is 28075
+2017:03:16 22:09:29	...save processed data to file.
+2017:03:16 22:09:31	...number of batches: 8
+2017:03:16 22:09:31	the number of sentence is 10240, the vocab size is 28075
+2017:03:16 22:10:08	use DataLoaderBBC to init data.
+2017:03:16 22:10:08	reading and processing the text file.
+2017:03:16 22:10:08	preprocess the dataset.
+2017:03:16 22:10:08	load data.
+2017:03:16 22:10:08	init content from raw.
+2017:03:16 22:10:08	init data from the raw dataset.
+2017:03:16 22:10:08	load context for further preprocessing.
+2017:03:16 22:10:08	clean data.
+2017:03:16 22:10:08	...mask and pad the sentence.
+2017:03:16 22:10:08	......max len:363, median len:22.0, min len:2
+2017:03:16 22:10:09	build a vocabulary.
+2017:03:16 22:10:09	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 22:10:09	...mapping from index to word.
+2017:03:16 22:10:09	...mapping from word to index.
+2017:03:16 22:10:09	...map word to index.
+2017:03:16 22:10:09	...some data statistics.
+2017:03:16 22:10:09	......existing 32626 sentences, vocabulary size is 28075
+2017:03:16 22:10:09	...save processed data to file.
+2017:03:16 22:10:12	...number of batches: 8
+2017:03:16 22:10:12	the number of sentence is 10240, the vocab size is 28075
+2017:03:16 22:10:13	writing to /home/tlin/notebooks/code/demo2_v/data/training/runs/DataLoaderBBC/code.model.textG.TextG/1489702213
+
+2017:03:16 22:10:15	------ training ------ 
+
+2017:03:16 22:10:15	train epoch 0
+2017:03:16 22:22:05	use DataLoaderBBC to init data.
+2017:03:16 22:22:05	reading and processing the text file.
+2017:03:16 22:22:05	preprocess the dataset.
+2017:03:16 22:22:05	load data.
+2017:03:16 22:22:05	init content from raw.
+2017:03:16 22:22:05	init data from the raw dataset.
+2017:03:16 22:22:07	load context for further preprocessing.
+2017:03:16 22:22:07	clean data.
+2017:03:16 22:22:08	...mask and pad the sentence.
+2017:03:16 22:22:08	......max len:363, median len:22.0, min len:2
+2017:03:16 22:22:09	build a vocabulary.
+2017:03:16 22:22:09	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 22:22:09	...mapping from index to word.
+2017:03:16 22:22:09	...mapping from word to index.
+2017:03:16 22:22:09	...map word to index.
+2017:03:16 22:22:10	...some data statistics.
+2017:03:16 22:22:10	......existing 32626 sentences, vocabulary size is 28075
+2017:03:16 22:22:10	...save processed data to file.
+2017:03:16 22:22:12	...number of batches: 80
+2017:03:16 22:24:04	use DataLoaderBBC to init data.
+2017:03:16 22:24:04	reading and processing the text file.
+2017:03:16 22:24:04	preprocess the dataset.
+2017:03:16 22:24:04	load data.
+2017:03:16 22:24:04	init content from raw.
+2017:03:16 22:24:04	init data from the raw dataset.
+2017:03:16 22:24:04	load context for further preprocessing.
+2017:03:16 22:24:04	clean data.
+2017:03:16 22:24:05	...mask and pad the sentence.
+2017:03:16 22:24:05	......max len:363, median len:22.0, min len:2
+2017:03:16 22:24:05	build a vocabulary.
+2017:03:16 22:24:05	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 22:24:06	...mapping from index to word.
+2017:03:16 22:24:06	...mapping from word to index.
+2017:03:16 22:24:06	...map word to index.
+2017:03:16 22:24:07	...some data statistics.
+2017:03:16 22:24:07	......existing 32626 sentences, vocabulary size is 28075
+2017:03:16 22:24:07	...save processed data to file.
+2017:03:16 22:24:09	...number of batches: 80
+2017:03:16 22:24:09	the number of sentence is 32626, the vocab size is 28075
+2017:03:16 22:24:13	writing to /home/tlin/notebooks/code/demo2_v/data/training/runs/DataLoaderBBC/code.model.textG.TextG/1489703053
+
+2017:03:16 22:24:15	------ training ------ 
+
+2017:03:16 22:24:15	train epoch 0
+2017:03:16 22:24:53	use DataLoaderBBC to init data.
+2017:03:16 22:24:53	reading and processing the text file.
+2017:03:16 22:24:53	preprocess the dataset.
+2017:03:16 22:24:53	load data.
+2017:03:16 22:24:53	init content from raw.
+2017:03:16 22:24:53	init data from the raw dataset.
+2017:03:16 22:24:54	load context for further preprocessing.
+2017:03:16 22:24:54	clean data.
+2017:03:16 22:24:55	...mask and pad the sentence.
+2017:03:16 22:24:55	......max len:363, median len:22.0, min len:2
+2017:03:16 22:24:55	build a vocabulary.
+2017:03:16 22:24:55	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 22:24:56	...mapping from index to word.
+2017:03:16 22:24:56	...mapping from word to index.
+2017:03:16 22:24:56	...map word to index.
+2017:03:16 22:24:56	...some data statistics.
+2017:03:16 22:24:56	......existing 32626 sentences, vocabulary size is 28075
+2017:03:16 22:24:56	...save processed data to file.
+2017:03:16 22:24:58	...number of batches: 80
+2017:03:16 22:24:58	the number of sentence is 32626, the vocab size is 28075
+2017:03:16 22:25:02	writing to /home/tlin/notebooks/code/demo2_v/data/training/runs/DataLoaderBBC/code.model.textG.TextG/1489703102
+
+2017:03:16 22:25:04	------ training ------ 
+
+2017:03:16 22:25:04	train epoch 0
+2017:03:16 22:25:18	use DataLoaderBBC to init data.
+2017:03:16 22:25:18	reading and processing the text file.
+2017:03:16 22:25:18	preprocess the dataset.
+2017:03:16 22:25:18	load data.
+2017:03:16 22:25:18	init content from raw.
+2017:03:16 22:25:18	init data from the raw dataset.
+2017:03:16 22:25:18	load context for further preprocessing.
+2017:03:16 22:25:18	clean data.
+2017:03:16 22:25:19	...mask and pad the sentence.
+2017:03:16 22:25:19	......max len:363, median len:22.0, min len:2
+2017:03:16 22:25:19	build a vocabulary.
+2017:03:16 22:25:19	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 22:25:20	...mapping from index to word.
+2017:03:16 22:25:20	...mapping from word to index.
+2017:03:16 22:25:20	...map word to index.
+2017:03:16 22:25:20	...some data statistics.
+2017:03:16 22:25:20	......existing 32626 sentences, vocabulary size is 28075
+2017:03:16 22:25:20	...save processed data to file.
+2017:03:16 22:25:22	...number of batches: 80
+2017:03:16 22:25:22	the number of sentence is 32626, the vocab size is 28075
+2017:03:16 22:25:25	writing to /home/tlin/notebooks/code/demo2_v/data/training/runs/DataLoaderBBC/code.model.textG.TextG/1489703125
+
+2017:03:16 22:25:27	------ training ------ 
+
+2017:03:16 22:25:27	train epoch 0
+2017:03:16 22:30:52	use DataLoaderBBC to init data.
+2017:03:16 22:30:52	reading and processing the text file.
+2017:03:16 22:30:52	preprocess the dataset.
+2017:03:16 22:30:52	load data.
+2017:03:16 22:30:52	init content from raw.
+2017:03:16 22:30:52	init data from the raw dataset.
+2017:03:16 23:24:08	use DataLoaderBBC to init data.
+2017:03:16 23:24:08	reading and processing the text file.
+2017:03:16 23:24:08	preprocess the dataset.
+2017:03:16 23:24:08	load data.
+2017:03:16 23:24:08	init content from raw.
+2017:03:16 23:24:08	init data from the raw dataset.
+2017:03:16 23:24:08	load context for further preprocessing.
+2017:03:16 23:24:08	clean data.
+2017:03:16 23:24:09	...mask and pad the sentence.
+2017:03:16 23:24:09	......max len:363, median len:22.0, min len:2
+2017:03:16 23:24:10	build a vocabulary.
+2017:03:16 23:24:10	...flatmap a list of sentence list to a list of sentence.
+2017:03:16 23:24:10	...mapping from index to word.
+2017:03:16 23:24:10	...mapping from word to index.
+2017:03:16 23:24:10	...map word to index.
+2017:03:16 23:24:10	...some data statistics.
+2017:03:16 23:24:10	......existing 32626 sentences, vocabulary size is 28075
+2017:03:16 23:24:10	...save processed data to file.
+2017:03:16 23:24:12	...number of batches: 80
+2017:03:16 23:24:12	the number of sentence is 32626, the vocab size is 28075
+2017:03:16 23:24:16	writing to /home/tlin/notebooks/code/demo2_v/data/training/runs/DataLoaderBBC/code.model.textG.TextG/1489706656
+
+2017:03:16 23:24:18	------ training ------ 
+
+2017:03:16 23:24:18	train epoch 0
+2017:03:17 09:43:36	use DataLoaderBBC to init data.
+2017:03:17 09:43:36	reading and processing the text file.
+2017:03:17 09:43:36	preprocess the dataset.
+2017:03:17 09:43:36	load data.
+2017:03:17 09:43:36	init content from raw.
+2017:03:17 09:43:36	init data from the raw dataset.
+2017:03:17 09:43:37	load context for further preprocessing.
+2017:03:17 09:43:37	clean data.
+2017:03:17 09:43:38	...mask and pad the sentence.
+2017:03:17 09:43:38	......max len:363, median len:22.0, min len:2
+2017:03:17 09:43:39	build a vocabulary.
+2017:03:17 09:43:39	...flatmap a list of sentence list to a list of sentence.
+2017:03:17 09:43:39	...mapping from index to word.
+2017:03:17 09:43:39	...mapping from word to index.
+2017:03:17 09:43:39	...map word to index.
+2017:03:17 09:43:39	...some data statistics.
+2017:03:17 09:43:39	......existing 32626 sentences, vocabulary size is 28075
+2017:03:17 09:43:39	...save processed data to file.
+2017:03:17 09:43:41	...number of batches: 254
+2017:03:17 09:43:41	the number of sentence is 32626, the vocab size is 28075
+2017:03:17 09:50:28	use DataLoaderBBC to init data.
+2017:03:17 09:50:28	reading and processing the text file.
+2017:03:17 09:50:28	preprocess the dataset.
+2017:03:17 09:50:28	load data.
+2017:03:17 09:50:28	init content from raw.
+2017:03:17 09:50:28	init data from the raw dataset.
+2017:03:17 09:50:28	load context for further preprocessing.
+2017:03:17 09:50:28	clean data.
+2017:03:17 09:50:29	...mask and pad the sentence.
+2017:03:17 09:50:29	......max len:363, median len:22.0, min len:2
+2017:03:17 09:50:29	build a vocabulary.
+2017:03:17 09:50:29	...flatmap a list of sentence list to a list of sentence.
+2017:03:17 09:50:30	...mapping from index to word.
+2017:03:17 09:50:30	...mapping from word to index.
+2017:03:17 09:50:30	...map word to index.
+2017:03:17 09:50:30	...some data statistics.
+2017:03:17 09:50:30	......existing 32626 sentences, vocabulary size is 28075
+2017:03:17 09:50:30	...save processed data to file.
+2017:03:17 09:50:32	...number of batches: 254
+2017:03:17 09:50:32	the number of sentence is 32626, the vocab size is 28075
+2017:03:17 09:50:35	writing to /home/tlin/notebooks/code/demo2_v/data/training/runs/DataLoaderBBC/code.model.textG.TextG/1489744235
+

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
+import shutil
 import datetime
 
 import tensorflow as tf
@@ -7,12 +8,9 @@ import tensorflow as tf
 import parameters as para
 from code.utils.logger import log
 from code.dataset.dataLoaderChildrenStory import DataLoaderChildrenStory
+from code.dataset.dataLoaderBBC import DataLoaderBBC
 
 from code.model.textGAN import TextGAN
-from code.model.textGANV1 import TextGANV1
-from code.model.textGANV2 import TextGANV2
-from code.model.textGANV3 import TextGANV3
-from code.model.textGANV4 import TextGANV4
 
 
 def init(data_loader):
@@ -48,10 +46,14 @@ def main(data_loader_fn, MODEL):
             sess.run(tf.global_variables_initializer())
 
             # pretrain the model a bit.
-            log('------ do the pretrain ------ \n')
             pretrain_model_index = 0
 
-            if para.IF_PRETRAIN or not os.path.exists(model.pretrain_model):
+            if para.IF_PRETRAIN or not os.path.exists(model.pretrain_dir):
+                log('------ do the pretrain ------ \n')
+                log('....empty pretrain folder.')
+                shutil.rmtree(model.pretrain_dir)
+                os.makedirs(model.pretrain_dir)
+
                 for cur_epoch in range(para.EPOCH_PRETRAIN):
                     log('pretrain epoch {}'.format(cur_epoch))
                     avg_l_d, avg_l_g, duration = model.run_pretrain_epoch()
@@ -66,7 +68,7 @@ def main(data_loader_fn, MODEL):
                         log("save {}-th bestmodel to path: {}.\n".format(
                             pretrain_model_index, model.pretrain_model))
             else:
-                checkpoint = tf.train.latest_checkpoint(model.pretrain_model)
+                checkpoint = tf.train.latest_checkpoint(model.pretrain_dir)
                 saver = tf.train.import_meta_graph(
                     "{}.meta".format(checkpoint))
                 saver.restore(sess, checkpoint)
@@ -92,7 +94,7 @@ def main(data_loader_fn, MODEL):
     log('total execution time: {}'.format((end_time - start_time).seconds))
 
 if __name__ == '__main__':
-    data_loader = DataLoaderChildrenStory
+    data_loader = DataLoaderBBC
 
-    model = [TextGAN, TextGANV1, TextGANV2, TextGANV3, TextGANV4][1]
+    model = TextGAN
     main(data_loader, model)
