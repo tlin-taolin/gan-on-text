@@ -46,14 +46,15 @@ class InferenceModel(BasicModel):
                     cell_type = self.lstm_G.standard_lstm_unit
                 cell_output, state = self.cell_G(cell_type, input, state, z)
 
+            # feed the current cell output to a language model.
+            logit, prob, soft_prob, word = self.language_model(
+                cell_output, reuse=True)
+
             if gan_mode:
-                input = cell_output
+                input = self.get_approx_embedding(soft_prob)
             else:
                 input = embedded_x[:, time_step + 1, :] \
                     if time_step < self.para.SENTENCE_LENGTH - 1 else None
-
-            # feed the current cell output to a language model.
-            logit, prob, word = self.language_model(cell_output, reuse=True)
 
             # save the middle result.
             embeddings.append(cell_output)
@@ -171,8 +172,9 @@ class InferenceModel(BasicModel):
 
                 logit = tf.matmul(output, softmax_w) + softmax_b
                 prob = tf.nn.softmax(logit)
+                soft_prob = tf.nn.softmax(logit * self.para.SOFT_ARGMAX)
                 output = tf.stop_gradient(tf.argmax(prob, 1))
-                return logit, prob, output
+                return logit, prob, soft_prob, output
             else:
                 raise 'invaild usage.'
 

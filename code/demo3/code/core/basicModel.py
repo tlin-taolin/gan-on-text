@@ -444,7 +444,7 @@ class BasicModel(object):
 
                 logit = tf.matmul(output, softmax_w) + softmax_b
                 prob = tf.nn.softmax(logit)
-                soft_prob = tf.nn.softmax(logit * self.para.L_SOFT)
+                soft_prob = tf.nn.softmax(logit * self.para.SOFT_ARGMAX)
                 output = tf.stop_gradient(tf.argmax(prob, 1))
                 return logit, prob, soft_prob, output
             else:

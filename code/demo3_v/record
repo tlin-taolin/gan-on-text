@@ -7095,3 +7095,51 @@
 2017:03:25 22:05:30	------ pretraining ------ 
 
 2017:03:25 22:05:30	pretrain epoch 0
+2017:03:25 22:17:35	use DataLoaderBBC to init data.
+2017:03:25 22:17:35	reading and processing the text file.
+2017:03:25 22:17:35	preprocess the dataset.
+2017:03:25 22:17:35	load data.
+2017:03:25 22:17:35	load context for further preprocessing.
+2017:03:25 22:17:35	clean data.
+2017:03:25 22:17:36	...mask and pad the sentence.
+2017:03:25 22:17:36	......max len:359, median len:22.0, min len:2
+2017:03:25 22:17:36	......filter sentence and bound them in the range of 25.
+2017:03:25 22:17:36	build a vocabulary.
+2017:03:25 22:17:36	...flatmap a list of sentence list to a list of sentence.
+2017:03:25 22:17:36	...mapping from index to word.
+2017:03:25 22:17:36	...mapping from word to index.
+2017:03:25 22:17:36	...map word to index.
+2017:03:25 22:17:36	...save processed data to file.
+2017:03:25 22:17:37	get data info.
+2017:03:25 22:17:37	init batch data.
+2017:03:25 22:17:37	...number of batches: 402
+2017:03:25 22:17:37	num of sentence: 20100, sentence length: 25, vocab size: 25278
+2017:03:25 22:17:38	enter standard seq2seq's generator mode.
+2017:03:25 22:19:18	use DataLoaderBBC to init data.
+2017:03:25 22:19:18	reading and processing the text file.
+2017:03:25 22:19:18	preprocess the dataset.
+2017:03:25 22:19:18	load data.
+2017:03:25 22:19:18	load context for further preprocessing.
+2017:03:25 22:19:18	clean data.
+2017:03:25 22:19:19	...mask and pad the sentence.
+2017:03:25 22:19:19	......max len:359, median len:22.0, min len:2
+2017:03:25 22:19:19	......filter sentence and bound them in the range of 25.
+2017:03:25 22:19:19	build a vocabulary.
+2017:03:25 22:19:19	...flatmap a list of sentence list to a list of sentence.
+2017:03:25 22:19:19	...mapping from index to word.
+2017:03:25 22:19:19	...mapping from word to index.
+2017:03:25 22:19:19	...map word to index.
+2017:03:25 22:19:20	...save processed data to file.
+2017:03:25 22:19:21	get data info.
+2017:03:25 22:19:21	init batch data.
+2017:03:25 22:19:21	...number of batches: 402
+2017:03:25 22:19:21	num of sentence: 20100, sentence length: 25, vocab size: 25278
+2017:03:25 22:19:21	enter standard seq2seq's generator mode.
+2017:03:25 22:19:22	enter GAN's generator mode.
+2017:03:25 22:19:41	save 1-th bestmodel to path: /home/tlin/notebooks/code/demo3_v/data/training/runs/DataLoaderBBC/code.model.textGAN.TextGAN/1490480371/checkpoints/bestmodel.
+
+2017:03:25 22:19:41	------ pretraining ------ 
+
+2017:03:25 22:19:41	------ training ------ 
+
+2017:03:25 22:19:41	train epoch 0
