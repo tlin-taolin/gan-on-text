@@ -11,8 +11,6 @@ from code.utils.logger import log
 from code.dataset.dataLoaderBBC import DataLoaderBBC
 from code.dataset.dataLoaderBBCV import DataLoaderBBCV
 from code.model.textGAN import TextGAN
-from code.model.textGANV1 import TextGANV1
-from code.model.textGANV2 import TextGANV2
 
 
 def init(args, data_loader_fn):

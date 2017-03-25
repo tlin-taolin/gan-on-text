@@ -8,7 +8,6 @@ def get_args():
     ROOT_DIRECTORY = '/home/tlin/notebooks/gan'
     ROOT_DIRECTORY = '/home/tlin/notebooks'
     RAW_DATA_DIRECTORY = join(ROOT_DIRECTORY, 'data')
-    PRE_EMBEDDING_DIRECTORY = join(RAW_DATA_DIRECTORY, 'pretrain-embedding')
     WORK_DIRECTORY = join(ROOT_DIRECTORY, 'code', 'demo3_v')
     DATA_DIRECTORY = join(WORK_DIRECTORY, 'data')
     TRAIN_DIR = join(DATA_DIRECTORY, 'training')
@@ -26,7 +25,6 @@ def get_args():
     """define path."""
     parser.add_argument('--ROOT_DIRECTORY', type=str, default=ROOT_DIRECTORY)
     parser.add_argument('--RAW_DATA_DIRECTORY', type=str, default=RAW_DATA_DIRECTORY)
-    parser.add_argument('--PRE_EMBEDDING_DIRECTORY', type=str, default=PRE_EMBEDDING_DIRECTORY)
     parser.add_argument('--WORK_DIRECTORY', type=str, default=WORK_DIRECTORY)
     parser.add_argument('--DATA_DIRECTORY', type=str, default=DATA_DIRECTORY)
     parser.add_argument('--TRAIN_DIR', type=str, default=TRAIN_DIR)
@@ -45,7 +43,6 @@ def get_args():
     parser.add_argument('-r', '--REBUILD_DATA', action="store_false", default=True)
     parser.add_argument('--SHUFFLE_DATA', action="store_true", default=True)
     parser.add_argument('--TRAIN_RATIO', type=float, default=0.8)
-    parser.add_argument('-u', '--USE_PRE_EMBEDDING', action="store_true", default=False)
 
     """parameters for the model."""
     parser.add_argument('--RNN_LAYER', type=int, default=2)
@@ -72,6 +69,9 @@ def get_args():
     parser.add_argument('--D_ITERS_PER_BATCH', type=int, default=5)
     parser.add_argument('--G_ITERS_PER_BATCH', type=int, default=1)
     parser.add_argument('--WGAN_CLIP_VALUES', type=str, default='-0.01,0.01')
+
+    parser.add_argument('--D_CONV_SPATIALS', type=str, default='2,2,2,2')
+    parser.add_argument('--D_CONV_DEPTHS', type=str, default='32,32,32,32')
 
     """parameters for evaluation."""
     parser.add_argument('--EVALUATE_EVERY', type=int, default=100)
