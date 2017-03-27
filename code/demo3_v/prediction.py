@@ -98,7 +98,7 @@ def main(args, data_loader_fn, MODEL):
 
             # train the model a bit.
             log('------ training ------ \n')
-            for c_epoch in range(model.epoch_pointer.eval(),
+            for c_epoch in range(model.epoch_pointer.eval() + 1,
                                  args.EPOCH_TRAIN + args.EPOCH_PRETRAIN):
                 log('train epoch {}'.format(c_epoch))
                 avg_l_d, avg_l_g, duration = model.run_epoch(

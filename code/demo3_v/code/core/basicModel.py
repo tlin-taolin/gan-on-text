@@ -45,6 +45,8 @@ class BasicModel(object):
         self.z = tf.placeholder(
             tf.float32,
             [None, self.para.EMBEDDING_SIZE], name='z')
+        self.soft_argmax = tf.placeholder(
+            tf.float32, name='soft_argmax')
 
     def define_pointer(self):
         self.batch_pointer = tf.Variable(
@@ -104,13 +106,16 @@ class BasicModel(object):
         self.grads_and_vars_D = zip(grads_D, vars_D)
         self.op_train_D = optimizer_D.apply_gradients(self.grads_and_vars_D)
 
-    def train_step(self, gloabl_step, losses):
+    def train_step(self, global_step, losses):
         """train the model."""
         batch_x, batch_y, batch_ymask, batch_z = self.loader.next_batch()
+        soft_argmax = self.adjust_soft_argmax(global_step)
 
-        feed_dict_D = {self.x: batch_x, self.z: batch_z}
+        feed_dict_D = {
+            self.x: batch_x, self.z: batch_z, self.soft_argmax: soft_argmax}
         feed_dict_G = {
-            self.z: batch_z, self.y: batch_y, self.ymask: batch_ymask}
+            self.z: batch_z, self.y: batch_y, self.ymask: batch_ymask,
+            self.soft_argmax: soft_argmax}
 
         # train D
         for _ in range(self.para.D_ITERS_PER_BATCH):
@@ -147,18 +152,20 @@ class BasicModel(object):
         losses['perplexity_G'].append(perplexity_G)
 
         # summary
-        self.train_summary_writer.add_summary(summary_D, gloabl_step)
-        self.train_summary_writer.add_summary(summary_G, gloabl_step)
+        self.train_summary_writer.add_summary(summary_D, global_step)
+        self.train_summary_writer.add_summary(summary_G, global_step)
         return losses
 
-    def val_step(self, gloabl_step, losses):
+    def val_step(self, global_step, losses):
         """validate the model."""
         batch_x, batch_y, batch_ymask, batch_z = self.loader.next_batch()
+        soft_argmax = self.adjust_soft_argmax(global_step)
 
         feed_dict_D = {
-            self.x: batch_x, self.z: batch_z}
+            self.x: batch_x, self.z: batch_z, self.soft_argmax: soft_argmax}
         feed_dict_G = {
-            self.z: batch_z, self.y: batch_y, self.ymask: batch_ymask}
+            self.z: batch_z, self.y: batch_y, self.ymask: batch_ymask,
+            self.soft_argmax: soft_argmax}
 
         # val D
         summary_D, loss_D_real, loss_D_fake, loss_D,\
@@ -191,8 +198,8 @@ class BasicModel(object):
         losses['perplexity_G'].append(perplexity_G)
 
         # summary
-        self.val_summary_writer.add_summary(summary_D, gloabl_step)
-        self.val_summary_writer.add_summary(summary_G, gloabl_step)
+        self.val_summary_writer.add_summary(summary_D, global_step)
+        self.val_summary_writer.add_summary(summary_G, global_step)
         return losses
 
     def run_epoch(self, stage, c_epoch, show_log=False, verbose=True):
@@ -241,9 +248,10 @@ class BasicModel(object):
         end_epoch_time = datetime.datetime.now()
         duration = 1.0 * (
             end_epoch_time - start_epoch_time).seconds/self.loader.num_batches
-        return np.mean(losses['losses_D']), np.mean(losses['losses_G']), duration
+        return np.mean(losses['losses_D']), \
+            np.mean(losses['losses_G']), duration
 
-    def pretrain_step(self, gloabl_step, losses):
+    def pretrain_step(self, global_step, losses):
         """train the model."""
         batch_x, batch_y, batch_ymask, batch_z = self.loader.next_batch()
 
@@ -321,6 +329,20 @@ class BasicModel(object):
             end_epoch_time - start_epoch_time).seconds/self.loader.num_batches
         return np.mean(losses['losses_D']), \
             np.mean(losses['losses_G']), duration
+
+    def adjust_soft_argmax(self, global_step):
+        """adjust soft_argmax parameter."""
+        cur_epoch = global_step // self.loader.num_batches
+        min_epoch = self.para.EPOCH_PRETRAIN
+        duration_epoch = self.para.EPOCH_TRAIN
+        soft_argmax_range = map(float, self.para.SOFT_ARGMAX.split(','))
+        soft_argmax_lb, soft_argmax_ub = soft_argmax_range
+        soft_argmax_step = (soft_argmax_ub - soft_argmax_lb) / duration_epoch
+        cur_soft_argmax = \
+            soft_argmax_lb + (cur_epoch - min_epoch) * soft_argmax_step
+        cur_soft_argmax = cur_soft_argmax \
+            if cur_soft_argmax >= soft_argmax_lb else soft_argmax_lb
+        return cur_soft_argmax
 
     """define status tracking stuff."""
     def define_keep_tracking(self):

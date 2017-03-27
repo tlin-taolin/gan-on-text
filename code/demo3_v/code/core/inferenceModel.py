@@ -172,7 +172,7 @@ class InferenceModel(BasicModel):
 
                 logit = tf.matmul(output, softmax_w) + softmax_b
                 prob = tf.nn.softmax(logit)
-                soft_prob = tf.nn.softmax(logit * self.para.SOFT_ARGMAX)
+                soft_prob = tf.nn.softmax(logit * self.soft_argmax)
                 output = tf.stop_gradient(tf.argmax(prob, 1))
                 return logit, prob, soft_prob, output
             else:

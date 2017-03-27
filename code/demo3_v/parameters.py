@@ -39,7 +39,7 @@ def get_args():
     """parameters for the training."""
     parser.add_argument('--SEED', type=int, default=666666)
     parser.add_argument('-d', '--DEBUG', action="store_true", default=False)
-    parser.add_argument('--DEBUG_SIZE', type=int, default=512)
+    parser.add_argument('--DEBUG_SIZE', type=int, default=150)
     parser.add_argument('-r', '--REBUILD_DATA', action="store_false", default=True)
     parser.add_argument('--SHUFFLE_DATA', action="store_true", default=True)
     parser.add_argument('--TRAIN_RATIO', type=float, default=0.8)
@@ -64,7 +64,7 @@ def get_args():
     parser.add_argument('--DROPOUT_RATE', type=float, default=0.5)
     parser.add_argument('--DECAY_RATE', type=float, default=0.97)
     parser.add_argument('--GRAD_CLIP', type=float, default=5.0)
-    parser.add_argument('--SOFT_ARGMAX', type=float, default=10000.0)
+    parser.add_argument('--SOFT_ARGMAX', type=str, default='100,10000')
 
     parser.add_argument('--D_ITERS_PER_BATCH', type=int, default=5)
     parser.add_argument('--G_ITERS_PER_BATCH', type=int, default=1)
