@@ -112,7 +112,8 @@ class BasicModel(object):
         soft_argmax = self.adjust_soft_argmax(global_step)
 
         feed_dict_D = {
-            self.x: batch_x, self.z: batch_z, self.soft_argmax: soft_argmax}
+            self.x: batch_x, self.z: batch_z, self.y: batch_y,
+            self.soft_argmax: soft_argmax}
         feed_dict_G = {
             self.z: batch_z, self.y: batch_y, self.ymask: batch_ymask,
             self.soft_argmax: soft_argmax}
@@ -162,7 +163,8 @@ class BasicModel(object):
         soft_argmax = self.adjust_soft_argmax(global_step)
 
         feed_dict_D = {
-            self.x: batch_x, self.z: batch_z, self.soft_argmax: soft_argmax}
+            self.x: batch_x, self.z: batch_z, self.y: batch_y,
+            self.soft_argmax: soft_argmax}
         feed_dict_G = {
             self.z: batch_z, self.y: batch_y, self.ymask: batch_ymask,
             self.soft_argmax: soft_argmax}

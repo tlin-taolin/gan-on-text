@@ -134,6 +134,7 @@ class InferenceModel(BasicModel):
             self.embedding_model()
             self.language_model()
             embedded_x = self.embedding_model(self.x, reuse=True)
+            embedded_y = self.embedding_model(self.y, reuse=True)
 
             _, self.logits_G_pretrain, _, _, _ = self.define_generator(
                 embedded_x=embedded_x)
@@ -147,7 +148,7 @@ class InferenceModel(BasicModel):
 
         with tf.variable_scope('discriminator'):
             self.logits_D_real, self.D_real = self.define_discriminator(
-                embedded_x)
+                embedded_y)
             self.logits_D_fake, self.D_fake = self.define_discriminator(
                 self.embedded_G, reuse=True)
 
