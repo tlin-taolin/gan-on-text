@@ -83,7 +83,7 @@ class DataLoaderBasic(object):
             raise NotImplementedError
         return scope
 
-    def swap_x(self, x):
+    def swap_random_pos(self, x):
         row, col = x.shape
         random_choice_1 = np.random.randint(col, size=row)
         random_choice_2 = np.remainder(

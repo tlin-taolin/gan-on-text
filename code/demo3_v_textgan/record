@@ -7415,3 +7415,546 @@
 2017:03:28 19:37:46	pretrain loss d: 3.08022904396, pretrain loss g: 10.1228904724, execution speed: 2.00 seconds/batch
 
 2017:03:28 19:37:46	pretrain epoch 2
+2017:03:30 16:36:25	use DataLoaderBBC to init data.
+2017:03:30 16:36:25	reading and processing the text file.
+2017:03:30 16:36:25	preprocess the dataset.
+2017:03:30 16:36:25	load data.
+2017:03:30 16:36:25	load context for further preprocessing.
+2017:03:30 16:36:25	clean data.
+2017:03:30 16:36:26	...mask and pad the sentence.
+2017:03:30 16:36:26	......max len:359, median len:22.0, min len:2
+2017:03:30 16:36:26	......filter sentence and bound them in the range of 25.
+2017:03:30 16:36:26	build a vocabulary.
+2017:03:30 16:36:26	...flatmap a list of sentence list to a list of sentence.
+2017:03:30 16:36:26	...mapping from index to word.
+2017:03:30 16:36:27	...mapping from word to index.
+2017:03:30 16:36:27	...map word to index.
+2017:03:30 16:36:27	...save processed data to file.
+2017:03:30 16:36:28	get data info.
+2017:03:30 16:36:28	init batch data.
+2017:03:30 16:36:28	...number of batches: 402
+2017:03:30 16:36:28	num of sentence: 20100, sentence length: 25, vocab size: 25278
+2017:03:30 16:36:28	enter standard seq2seq's generator mode.
+2017:03:30 16:36:29	enter GAN's generator mode.
+2017:03:30 16:36:50	save 1-th bestmodel to path: /home/tlin/notebooks/code/demo3_v/data/training/runs/DataLoaderBBC/code.model.textGANV3.TextGANV3/1490891800/checkpoints/bestmodel.
+
+2017:03:30 16:36:50	------ pretraining ------ 
+
+2017:03:30 16:36:50	pretrain epoch 0
+2017:03:30 16:38:43	use DataLoaderBBC to init data.
+2017:03:30 16:38:43	reading and processing the text file.
+2017:03:30 16:38:43	preprocess the dataset.
+2017:03:30 16:38:43	load data.
+2017:03:30 16:38:43	load context for further preprocessing.
+2017:03:30 16:38:43	clean data.
+2017:03:30 16:38:53	use DataLoaderBBC to init data.
+2017:03:30 16:38:53	reading and processing the text file.
+2017:03:30 16:38:53	preprocess the dataset.
+2017:03:30 16:38:53	load data.
+2017:03:30 16:38:53	load context for further preprocessing.
+2017:03:30 16:38:53	clean data.
+2017:03:30 16:38:54	...mask and pad the sentence.
+2017:03:30 16:38:54	......max len:359, median len:22.0, min len:2
+2017:03:30 16:38:54	......filter sentence and bound them in the range of 25.
+2017:03:30 16:38:54	build a vocabulary.
+2017:03:30 16:38:54	...flatmap a list of sentence list to a list of sentence.
+2017:03:30 16:38:54	...mapping from index to word.
+2017:03:30 16:38:54	...mapping from word to index.
+2017:03:30 16:38:54	...map word to index.
+2017:03:30 16:38:54	...save processed data to file.
+2017:03:30 16:38:56	get data info.
+2017:03:30 16:38:56	init batch data.
+2017:03:30 16:38:56	...number of batches: 3
+2017:03:30 16:38:56	num of sentence: 150, sentence length: 25, vocab size: 25278
+2017:03:30 16:38:56	enter standard seq2seq's generator mode.
+2017:03:30 16:38:57	enter GAN's generator mode.
+2017:03:30 16:39:14	save 1-th bestmodel to path: /home/tlin/notebooks/code/demo3_v/data/training/runs/DataLoaderBBC/code.model.textGANV3.TextGANV3/1490891945/checkpoints/bestmodel.
+
+2017:03:30 16:39:14	------ pretraining ------ 
+
+2017:03:30 16:39:14	pretrain epoch 0
+2017:03:30 16:39:35	use DataLoaderBBC to init data.
+2017:03:30 16:39:35	reading and processing the text file.
+2017:03:30 16:39:35	preprocess the dataset.
+2017:03:30 16:39:35	load data.
+2017:03:30 16:39:35	load context for further preprocessing.
+2017:03:30 16:39:35	clean data.
+2017:03:30 16:39:36	...mask and pad the sentence.
+2017:03:30 16:39:36	......max len:359, median len:22.0, min len:2
+2017:03:30 16:39:36	......filter sentence and bound them in the range of 25.
+2017:03:30 16:39:36	build a vocabulary.
+2017:03:30 16:39:36	...flatmap a list of sentence list to a list of sentence.
+2017:03:30 16:39:36	...mapping from index to word.
+2017:03:30 16:39:36	...mapping from word to index.
+2017:03:30 16:39:36	...map word to index.
+2017:03:30 16:39:36	...save processed data to file.
+2017:03:30 16:39:37	get data info.
+2017:03:30 16:39:37	init batch data.
+2017:03:30 16:39:37	...number of batches: 3
+2017:03:30 16:39:37	num of sentence: 150, sentence length: 25, vocab size: 25278
+2017:03:30 16:39:38	enter standard seq2seq's generator mode.
+2017:03:30 16:39:39	enter GAN's generator mode.
+2017:03:30 16:39:58	save 1-th bestmodel to path: /home/tlin/notebooks/code/demo3_v/data/training/runs/DataLoaderBBC/code.model.textGANV3.TextGANV3/1490891988/checkpoints/bestmodel.
+
+2017:03:30 16:39:58	------ pretraining ------ 
+
+2017:03:30 16:39:58	pretrain epoch 0
+2017:03:30 20:14:49	use DataLoaderBBC to init data.
+2017:03:30 20:14:49	reading and processing the text file.
+2017:03:30 20:14:49	preprocess the dataset.
+2017:03:30 20:14:49	load data.
+2017:03:30 20:14:49	load context for further preprocessing.
+2017:03:30 20:14:49	clean data.
+2017:03:30 20:14:50	...mask and pad the sentence.
+2017:03:30 20:14:50	......max len:359, median len:22.0, min len:2
+2017:03:30 20:14:50	......filter sentence and bound them in the range of 25.
+2017:03:30 20:14:50	build a vocabulary.
+2017:03:30 20:14:50	...flatmap a list of sentence list to a list of sentence.
+2017:03:30 20:14:50	...mapping from index to word.
+2017:03:30 20:14:50	...mapping from word to index.
+2017:03:30 20:14:50	...map word to index.
+2017:03:30 20:14:50	...save processed data to file.
+2017:03:30 20:14:51	get data info.
+2017:03:30 20:14:51	init batch data.
+2017:03:30 20:14:51	...number of batches: 3
+2017:03:30 20:14:51	num of sentence: 150, sentence length: 25, vocab size: 25278
+2017:03:30 20:14:52	enter standard seq2seq's generator mode.
+2017:03:30 20:14:53	enter GAN's generator mode.
+2017:03:30 20:15:07	save 1-th bestmodel to path: /home/tlin/notebooks/code/demo3_v/data/training/runs/DataLoaderBBC/code.model.textGANV3.TextGANV3/1490904899/checkpoints/bestmodel.
+
+2017:03:30 20:15:07	------ pretraining ------ 
+
+2017:03:30 20:15:07	pretrain epoch 0
+2017:03:30 20:15:44	use DataLoaderBBC to init data.
+2017:03:30 20:15:44	reading and processing the text file.
+2017:03:30 20:15:44	preprocess the dataset.
+2017:03:30 20:15:44	load data.
+2017:03:30 20:15:44	load context for further preprocessing.
+2017:03:30 20:15:44	clean data.
+2017:03:30 20:15:44	...mask and pad the sentence.
+2017:03:30 20:15:44	......max len:359, median len:22.0, min len:2
+2017:03:30 20:15:44	......filter sentence and bound them in the range of 25.
+2017:03:30 20:15:44	build a vocabulary.
+2017:03:30 20:15:44	...flatmap a list of sentence list to a list of sentence.
+2017:03:30 20:15:44	...mapping from index to word.
+2017:03:30 20:15:45	...mapping from word to index.
+2017:03:30 20:15:45	...map word to index.
+2017:03:30 20:15:45	...save processed data to file.
+2017:03:30 20:15:46	get data info.
+2017:03:30 20:15:46	init batch data.
+2017:03:30 20:15:46	...number of batches: 3
+2017:03:30 20:15:46	num of sentence: 150, sentence length: 25, vocab size: 25278
+2017:03:30 20:15:46	enter standard seq2seq's generator mode.
+2017:03:30 20:15:47	enter GAN's generator mode.
+2017:03:30 20:16:03	save 1-th bestmodel to path: /home/tlin/notebooks/code/demo3_v/data/training/runs/DataLoaderBBC/code.model.textGANV3.TextGANV3/1490904955/checkpoints/bestmodel.
+
+2017:03:30 20:16:03	------ pretraining ------ 
+
+2017:03:30 20:16:03	pretrain epoch 0
+2017:03:30 20:20:32	use DataLoaderBBC to init data.
+2017:03:30 20:20:32	reading and processing the text file.
+2017:03:30 20:20:32	preprocess the dataset.
+2017:03:30 20:20:32	load data.
+2017:03:30 20:20:32	load context for further preprocessing.
+2017:03:30 20:20:32	clean data.
+2017:03:30 20:20:33	...mask and pad the sentence.
+2017:03:30 20:20:33	......max len:359, median len:22.0, min len:2
+2017:03:30 20:20:33	......filter sentence and bound them in the range of 25.
+2017:03:30 20:20:33	build a vocabulary.
+2017:03:30 20:20:33	...flatmap a list of sentence list to a list of sentence.
+2017:03:30 20:20:33	...mapping from index to word.
+2017:03:30 20:20:33	...mapping from word to index.
+2017:03:30 20:20:33	...map word to index.
+2017:03:30 20:20:34	...save processed data to file.
+2017:03:30 20:20:34	get data info.
+2017:03:30 20:20:34	init batch data.
+2017:03:30 20:20:34	...number of batches: 3
+2017:03:30 20:20:34	num of sentence: 150, sentence length: 25, vocab size: 25278
+2017:03:30 20:20:35	enter standard seq2seq's generator mode.
+2017:03:30 20:20:36	enter GAN's generator mode.
+2017:03:30 20:20:54	save 1-th bestmodel to path: /home/tlin/notebooks/code/demo3_v/data/training/runs/DataLoaderBBC/code.model.textGANV3.TextGANV3/1490905244/checkpoints/bestmodel.
+
+2017:03:30 20:20:54	------ pretraining ------ 
+
+2017:03:30 20:20:54	pretrain epoch 0
+2017:03:30 20:22:04	use DataLoaderBBC to init data.
+2017:03:30 20:22:04	reading and processing the text file.
+2017:03:30 20:22:04	preprocess the dataset.
+2017:03:30 20:22:04	load data.
+2017:03:30 20:22:04	load context for further preprocessing.
+2017:03:30 20:22:04	clean data.
+2017:03:30 20:22:05	...mask and pad the sentence.
+2017:03:30 20:22:05	......max len:359, median len:22.0, min len:2
+2017:03:30 20:22:05	......filter sentence and bound them in the range of 25.
+2017:03:30 20:22:05	build a vocabulary.
+2017:03:30 20:22:05	...flatmap a list of sentence list to a list of sentence.
+2017:03:30 20:22:05	...mapping from index to word.
+2017:03:30 20:22:05	...mapping from word to index.
+2017:03:30 20:22:05	...map word to index.
+2017:03:30 20:22:05	...save processed data to file.
+2017:03:30 20:22:06	get data info.
+2017:03:30 20:22:06	init batch data.
+2017:03:30 20:22:06	...number of batches: 3
+2017:03:30 20:22:06	num of sentence: 150, sentence length: 25, vocab size: 25278
+2017:03:30 20:22:07	enter standard seq2seq's generator mode.
+2017:03:30 20:22:08	enter GAN's generator mode.
+2017:03:30 20:22:25	save 1-th bestmodel to path: /home/tlin/notebooks/code/demo3_v/data/training/runs/DataLoaderBBC/code.model.textGANV3.TextGANV3/1490905335/checkpoints/bestmodel.
+
+2017:03:30 20:22:25	------ pretraining ------ 
+
+2017:03:30 20:22:25	pretrain epoch 0
+2017:03:30 20:24:07	use DataLoaderBBC to init data.
+2017:03:30 20:24:07	reading and processing the text file.
+2017:03:30 20:24:07	preprocess the dataset.
+2017:03:30 20:24:07	load data.
+2017:03:30 20:24:07	load context for further preprocessing.
+2017:03:30 20:24:07	clean data.
+2017:03:30 20:24:08	...mask and pad the sentence.
+2017:03:30 20:24:08	......max len:359, median len:22.0, min len:2
+2017:03:30 20:24:08	......filter sentence and bound them in the range of 25.
+2017:03:30 20:24:08	build a vocabulary.
+2017:03:30 20:24:08	...flatmap a list of sentence list to a list of sentence.
+2017:03:30 20:24:08	...mapping from index to word.
+2017:03:30 20:24:08	...mapping from word to index.
+2017:03:30 20:24:08	...map word to index.
+2017:03:30 20:24:08	...save processed data to file.
+2017:03:30 20:24:09	get data info.
+2017:03:30 20:24:09	init batch data.
+2017:03:30 20:24:09	...number of batches: 3
+2017:03:30 20:24:09	num of sentence: 150, sentence length: 25, vocab size: 25278
+2017:03:30 20:24:10	enter standard seq2seq's generator mode.
+2017:03:30 20:24:10	enter GAN's generator mode.
+2017:03:30 20:24:26	save 1-th bestmodel to path: /home/tlin/notebooks/code/demo3_v/data/training/runs/DataLoaderBBC/code.model.textGANV3.TextGANV3/1490905457/checkpoints/bestmodel.
+
+2017:03:30 20:24:26	------ pretraining ------ 
+
+2017:03:30 20:24:26	pretrain epoch 0
+2017:03:30 20:26:57	use DataLoaderBBC to init data.
+2017:03:30 20:26:57	reading and processing the text file.
+2017:03:30 20:26:57	preprocess the dataset.
+2017:03:30 20:26:57	load data.
+2017:03:30 20:26:57	load context for further preprocessing.
+2017:03:30 20:26:57	clean data.
+2017:03:30 20:26:58	...mask and pad the sentence.
+2017:03:30 20:26:58	......max len:359, median len:22.0, min len:2
+2017:03:30 20:26:58	......filter sentence and bound them in the range of 25.
+2017:03:30 20:26:58	build a vocabulary.
+2017:03:30 20:26:58	...flatmap a list of sentence list to a list of sentence.
+2017:03:30 20:26:59	...mapping from index to word.
+2017:03:30 20:26:59	...mapping from word to index.
+2017:03:30 20:26:59	...map word to index.
+2017:03:30 20:26:59	...save processed data to file.
+2017:03:30 20:27:00	get data info.
+2017:03:30 20:27:00	init batch data.
+2017:03:30 20:27:00	...number of batches: 3
+2017:03:30 20:27:00	num of sentence: 150, sentence length: 25, vocab size: 25278
+2017:03:30 20:27:01	enter standard seq2seq's generator mode.
+2017:03:30 20:27:02	enter GAN's generator mode.
+2017:03:30 20:27:18	save 1-th bestmodel to path: /home/tlin/notebooks/code/demo3_v/data/training/runs/DataLoaderBBC/code.model.textGANV3.TextGANV3/1490905630/checkpoints/bestmodel.
+
+2017:03:30 20:27:18	------ pretraining ------ 
+
+2017:03:30 20:27:18	pretrain epoch 0
+2017:03:30 20:35:23	use DataLoaderBBC to init data.
+2017:03:30 20:35:23	reading and processing the text file.
+2017:03:30 20:35:23	preprocess the dataset.
+2017:03:30 20:35:23	load data.
+2017:03:30 20:35:23	load context for further preprocessing.
+2017:03:30 20:35:23	clean data.
+2017:03:30 20:35:24	...mask and pad the sentence.
+2017:03:30 20:35:24	......max len:359, median len:22.0, min len:2
+2017:03:30 20:35:24	......filter sentence and bound them in the range of 25.
+2017:03:30 20:35:24	build a vocabulary.
+2017:03:30 20:35:24	...flatmap a list of sentence list to a list of sentence.
+2017:03:30 20:35:24	...mapping from index to word.
+2017:03:30 20:35:25	...mapping from word to index.
+2017:03:30 20:35:25	...map word to index.
+2017:03:30 20:35:25	...save processed data to file.
+2017:03:30 20:35:26	get data info.
+2017:03:30 20:35:26	init batch data.
+2017:03:30 20:35:26	...number of batches: 3
+2017:03:30 20:35:26	num of sentence: 150, sentence length: 25, vocab size: 25278
+2017:03:30 20:35:27	enter standard seq2seq's generator mode.
+2017:03:30 20:35:27	enter GAN's generator mode.
+2017:03:30 20:45:07	use DataLoaderBBC to init data.
+2017:03:30 20:45:07	reading and processing the text file.
+2017:03:30 20:45:07	preprocess the dataset.
+2017:03:30 20:45:07	load data.
+2017:03:30 20:45:07	load context for further preprocessing.
+2017:03:30 20:45:07	clean data.
+2017:03:30 20:45:08	...mask and pad the sentence.
+2017:03:30 20:45:08	......max len:359, median len:22.0, min len:2
+2017:03:30 20:45:08	......filter sentence and bound them in the range of 25.
+2017:03:30 20:45:08	build a vocabulary.
+2017:03:30 20:45:08	...flatmap a list of sentence list to a list of sentence.
+2017:03:30 20:45:08	...mapping from index to word.
+2017:03:30 20:45:08	...mapping from word to index.
+2017:03:30 20:45:08	...map word to index.
+2017:03:30 20:45:08	...save processed data to file.
+2017:03:30 20:45:10	get data info.
+2017:03:30 20:45:10	init batch data.
+2017:03:30 20:45:10	...number of batches: 3
+2017:03:30 20:45:10	num of sentence: 150, sentence length: 25, vocab size: 25278
+2017:03:30 20:45:10	enter standard seq2seq's generator mode.
+2017:03:30 20:45:11	enter GAN's generator mode.
+2017:03:30 20:45:30	save 1-th bestmodel to path: /home/tlin/notebooks/code/demo3_v/data/training/runs/DataLoaderBBC/code.model.textGANV3.TextGANV3/1490906720/checkpoints/bestmodel.
+
+2017:03:30 20:45:30	------ pretraining ------ 
+
+2017:03:30 20:45:30	pretrain epoch 0
+2017:03:30 20:45:38	pretrain loss d: 0.792539060116, pretrain loss g: 10.1373920441, execution speed: 2.33 seconds/batch
+
+2017:03:30 20:45:39	save 2-th bestmodel to path: /home/tlin/notebooks/code/demo3_v/data/training/runs/DataLoaderBBC/code.model.textGANV3.TextGANV3/1490906720/checkpoints/bestmodel.
+
+2017:03:30 20:45:39	pretrain epoch 1
+2017:03:30 20:45:45	pretrain loss d: 0.711838722229, pretrain loss g: 10.1279668808, execution speed: 1.67 seconds/batch
+
+2017:03:30 20:45:45	pretrain epoch 2
+2017:03:30 20:45:50	pretrain loss d: 0.638304293156, pretrain loss g: 10.1175098419, execution speed: 1.67 seconds/batch
+
+2017:03:30 20:45:50	pretrain epoch 3
+2017:03:30 20:45:56	pretrain loss d: 0.570885062218, pretrain loss g: 10.1053667068, execution speed: 1.67 seconds/batch
+
+2017:03:30 20:45:56	pretrain epoch 4
+2017:03:30 20:46:02	pretrain loss d: 0.507546782494, pretrain loss g: 10.0906238556, execution speed: 1.67 seconds/batch
+
+2017:03:30 20:46:02	------ training ------ 
+
+2017:03:30 20:46:02	train epoch 5
+2017:03:30 20:51:11	use DataLoaderBBC to init data.
+2017:03:30 20:51:11	reading and processing the text file.
+2017:03:30 20:51:11	preprocess the dataset.
+2017:03:30 20:51:11	load data.
+2017:03:30 20:51:11	load context for further preprocessing.
+2017:03:30 20:51:11	clean data.
+2017:03:30 20:51:11	...mask and pad the sentence.
+2017:03:30 20:51:11	......max len:359, median len:22.0, min len:2
+2017:03:30 20:51:12	......filter sentence and bound them in the range of 25.
+2017:03:30 20:51:12	build a vocabulary.
+2017:03:30 20:51:12	...flatmap a list of sentence list to a list of sentence.
+2017:03:30 20:51:12	...mapping from index to word.
+2017:03:30 20:51:12	...mapping from word to index.
+2017:03:30 20:51:12	...map word to index.
+2017:03:30 20:51:12	...save processed data to file.
+2017:03:30 20:51:13	get data info.
+2017:03:30 20:51:13	init batch data.
+2017:03:30 20:51:13	...number of batches: 3
+2017:03:30 20:51:13	num of sentence: 150, sentence length: 25, vocab size: 25278
+2017:03:30 20:51:13	enter standard seq2seq's generator mode.
+2017:03:30 20:51:15	enter GAN's generator mode.
+2017:03:30 20:51:34	save 1-th bestmodel to path: /home/tlin/notebooks/code/demo3_v/data/training/runs/DataLoaderBBC/code.model.textGANV3.TextGANV3/1490907085/checkpoints/bestmodel.
+
+2017:03:30 20:51:34	------ pretraining ------ 
+
+2017:03:30 20:51:34	pretrain epoch 0
+2017:03:30 20:51:41	pretrain loss d: 2.93061947823, pretrain loss g: 10.1358947754, execution speed: 2.00 seconds/batch
+
+2017:03:30 20:51:42	save 2-th bestmodel to path: /home/tlin/notebooks/code/demo3_v/data/training/runs/DataLoaderBBC/code.model.textGANV3.TextGANV3/1490907085/checkpoints/bestmodel.
+
+2017:03:30 20:51:42	pretrain epoch 1
+2017:03:30 20:51:48	pretrain loss d: 2.73594999313, pretrain loss g: 10.120677948, execution speed: 2.00 seconds/batch
+
+2017:03:30 20:51:48	pretrain epoch 2
+2017:03:30 20:51:54	pretrain loss d: 2.55024719238, pretrain loss g: 10.1002378464, execution speed: 1.67 seconds/batch
+
+2017:03:30 20:51:54	pretrain epoch 3
+2017:03:30 20:51:58	pretrain loss d: 2.36709165573, pretrain loss g: 10.0710868835, execution speed: 1.33 seconds/batch
+
+2017:03:30 20:51:58	pretrain epoch 4
+2017:03:30 20:52:03	pretrain loss d: 2.17987680435, pretrain loss g: 10.0290288925, execution speed: 1.33 seconds/batch
+
+2017:03:30 20:52:03	------ training ------ 
+
+2017:03:30 20:52:03	train epoch 5
+2017:03:30 20:52:51	use DataLoaderBBC to init data.
+2017:03:30 20:52:51	reading and processing the text file.
+2017:03:30 20:52:51	preprocess the dataset.
+2017:03:30 20:52:51	load data.
+2017:03:30 20:52:51	load context for further preprocessing.
+2017:03:30 20:52:51	clean data.
+2017:03:30 20:52:52	...mask and pad the sentence.
+2017:03:30 20:52:52	......max len:359, median len:22.0, min len:2
+2017:03:30 20:52:52	......filter sentence and bound them in the range of 25.
+2017:03:30 20:52:52	build a vocabulary.
+2017:03:30 20:52:52	...flatmap a list of sentence list to a list of sentence.
+2017:03:30 20:52:52	...mapping from index to word.
+2017:03:30 20:52:52	...mapping from word to index.
+2017:03:30 20:52:52	...map word to index.
+2017:03:30 20:52:52	...save processed data to file.
+2017:03:30 20:52:53	get data info.
+2017:03:30 20:52:53	init batch data.
+2017:03:30 20:52:53	...number of batches: 3
+2017:03:30 20:52:53	num of sentence: 150, sentence length: 25, vocab size: 25278
+2017:03:30 20:52:54	enter standard seq2seq's generator mode.
+2017:03:30 20:52:54	enter GAN's generator mode.
+2017:03:30 20:53:11	save 1-th bestmodel to path: /home/tlin/notebooks/code/demo3_v/data/training/runs/DataLoaderBBC/code.model.textGANV3.TextGANV3/1490907182/checkpoints/bestmodel.
+
+2017:03:30 20:53:11	------ pretraining ------ 
+
+2017:03:30 20:53:11	pretrain epoch 0
+2017:03:30 20:53:17	pretrain loss d: 0.569540023804, pretrain loss g: 10.1355037689, execution speed: 1.67 seconds/batch
+
+2017:03:30 20:53:18	save 2-th bestmodel to path: /home/tlin/notebooks/code/demo3_v/data/training/runs/DataLoaderBBC/code.model.textGANV3.TextGANV3/1490907182/checkpoints/bestmodel.
+
+2017:03:30 20:53:18	pretrain epoch 1
+2017:03:30 20:53:23	pretrain loss d: 0.507877647877, pretrain loss g: 10.1248912811, execution speed: 1.67 seconds/batch
+
+2017:03:30 20:53:23	pretrain epoch 2
+2017:03:30 20:53:28	pretrain loss d: 0.451326429844, pretrain loss g: 10.1130876541, execution speed: 1.33 seconds/batch
+
+2017:03:30 20:53:28	pretrain epoch 3
+2017:03:30 20:53:34	pretrain loss d: 0.39859110117, pretrain loss g: 10.0991630554, execution speed: 1.67 seconds/batch
+
+2017:03:30 20:53:34	pretrain epoch 4
+2017:03:30 20:53:40	pretrain loss d: 0.348591119051, pretrain loss g: 10.0817594528, execution speed: 2.00 seconds/batch
+
+2017:03:30 20:53:40	------ training ------ 
+
+2017:03:30 20:53:40	train epoch 5
+2017:03:30 20:57:55	use DataLoaderBBC to init data.
+2017:03:30 20:57:55	reading and processing the text file.
+2017:03:30 20:57:55	preprocess the dataset.
+2017:03:30 20:57:55	load data.
+2017:03:30 20:57:55	load context for further preprocessing.
+2017:03:30 20:57:56	clean data.
+2017:03:30 20:57:56	...mask and pad the sentence.
+2017:03:30 20:57:56	......max len:359, median len:22.0, min len:2
+2017:03:30 20:57:56	......filter sentence and bound them in the range of 25.
+2017:03:30 20:57:56	build a vocabulary.
+2017:03:30 20:57:56	...flatmap a list of sentence list to a list of sentence.
+2017:03:30 20:57:56	...mapping from index to word.
+2017:03:30 20:57:56	...mapping from word to index.
+2017:03:30 20:57:57	...map word to index.
+2017:03:30 20:57:57	...save processed data to file.
+2017:03:30 20:57:58	get data info.
+2017:03:30 20:57:58	init batch data.
+2017:03:30 20:57:58	...number of batches: 3
+2017:03:30 20:57:58	num of sentence: 150, sentence length: 25, vocab size: 25278
+2017:03:30 20:57:58	enter standard seq2seq's generator mode.
+2017:03:30 20:57:59	enter GAN's generator mode.
+2017:03:30 20:58:14	save 1-th bestmodel to path: /home/tlin/notebooks/code/demo3_v/data/training/runs/DataLoaderBBC/code.model.textGANV3.TextGANV3/1490907485/checkpoints/bestmodel.
+
+2017:03:30 20:58:14	------ pretraining ------ 
+
+2017:03:30 20:58:14	pretrain epoch 0
+2017:03:30 20:58:21	pretrain loss d: 1.04224300385, pretrain loss g: 10.1359138489, execution speed: 2.33 seconds/batch
+
+2017:03:30 20:58:23	save 2-th bestmodel to path: /home/tlin/notebooks/code/demo3_v/data/training/runs/DataLoaderBBC/code.model.textGANV3.TextGANV3/1490907485/checkpoints/bestmodel.
+
+2017:03:30 20:58:23	pretrain epoch 1
+2017:03:30 20:58:28	pretrain loss d: 0.939968466759, pretrain loss g: 10.1257781982, execution speed: 1.33 seconds/batch
+
+2017:03:30 20:58:28	pretrain epoch 2
+2017:03:30 20:58:33	pretrain loss d: 0.846003651619, pretrain loss g: 10.114771843, execution speed: 1.67 seconds/batch
+
+2017:03:30 20:58:33	pretrain epoch 3
+2017:03:30 20:58:39	pretrain loss d: 0.758222579956, pretrain loss g: 10.1023845673, execution speed: 1.67 seconds/batch
+
+2017:03:30 20:58:39	pretrain epoch 4
+2017:03:30 20:58:44	pretrain loss d: 0.674439370632, pretrain loss g: 10.0880146027, execution speed: 1.33 seconds/batch
+
+2017:03:30 20:58:44	------ training ------ 
+
+2017:03:30 20:58:44	train epoch 5
+2017:03:30 20:59:32	use DataLoaderBBC to init data.
+2017:03:30 20:59:32	reading and processing the text file.
+2017:03:30 20:59:32	preprocess the dataset.
+2017:03:30 20:59:32	load data.
+2017:03:30 20:59:32	load context for further preprocessing.
+2017:03:30 20:59:32	clean data.
+2017:03:30 20:59:32	...mask and pad the sentence.
+2017:03:30 20:59:32	......max len:359, median len:22.0, min len:2
+2017:03:30 20:59:33	......filter sentence and bound them in the range of 25.
+2017:03:30 20:59:33	build a vocabulary.
+2017:03:30 20:59:33	...flatmap a list of sentence list to a list of sentence.
+2017:03:30 20:59:33	...mapping from index to word.
+2017:03:30 20:59:33	...mapping from word to index.
+2017:03:30 20:59:33	...map word to index.
+2017:03:30 20:59:33	...save processed data to file.
+2017:03:30 20:59:34	get data info.
+2017:03:30 20:59:34	init batch data.
+2017:03:30 20:59:34	...number of batches: 3
+2017:03:30 20:59:34	num of sentence: 150, sentence length: 25, vocab size: 25278
+2017:03:30 20:59:35	enter standard seq2seq's generator mode.
+2017:03:30 20:59:36	enter GAN's generator mode.
+2017:03:30 20:59:51	save 1-th bestmodel to path: /home/tlin/notebooks/code/demo3_v/data/training/runs/DataLoaderBBC/code.model.textGAN.TextGAN/1490907583/checkpoints/bestmodel.
+
+2017:03:30 20:59:51	------ pretraining ------ 
+
+2017:03:30 20:59:51	pretrain epoch 0
+2017:03:30 20:59:57	pretrain loss d: 2.12652826309, pretrain loss g: 10.1360826492, execution speed: 1.67 seconds/batch
+
+2017:03:30 20:59:59	save 2-th bestmodel to path: /home/tlin/notebooks/code/demo3_v/data/training/runs/DataLoaderBBC/code.model.textGAN.TextGAN/1490907583/checkpoints/bestmodel.
+
+2017:03:30 20:59:59	pretrain epoch 1
+2017:03:30 21:00:05	pretrain loss d: 1.96116268635, pretrain loss g: 10.1200962067, execution speed: 2.00 seconds/batch
+
+2017:03:30 21:00:05	pretrain epoch 2
+2017:03:30 21:00:11	pretrain loss d: 1.8029384613, pretrain loss g: 10.0974617004, execution speed: 1.67 seconds/batch
+
+2017:03:30 21:00:11	pretrain epoch 3
+2017:03:30 21:00:15	pretrain loss d: 1.64693284035, pretrain loss g: 10.0636768341, execution speed: 1.33 seconds/batch
+
+2017:03:30 21:00:15	pretrain epoch 4
+2017:03:30 21:00:21	pretrain loss d: 1.48895359039, pretrain loss g: 10.0129032135, execution speed: 2.00 seconds/batch
+
+2017:03:30 21:00:21	------ training ------ 
+
+2017:03:30 21:00:21	train epoch 5
+2017:03:30 21:00:39	train loss d: 0.84675770998, train loss g: 1.73711037636, execution speed: 5.67 seconds/batch
+2017:03:30 21:00:42	val loss d: 0.704988121986, val loss g: 2.12127232552, execution speed: 0.67 seconds/batch
+
+2017:03:30 21:00:43	save 3-th bestmodel to path: /home/tlin/notebooks/code/demo3_v/data/training/runs/DataLoaderBBC/code.model.textGAN.TextGAN/1490907583/checkpoints/bestmodel.
+
+2017:03:30 21:00:43	train epoch 6
+2017:03:30 21:01:08	use DataLoaderBBC to init data.
+2017:03:30 21:01:08	reading and processing the text file.
+2017:03:30 21:01:08	preprocess the dataset.
+2017:03:30 21:01:08	load data.
+2017:03:30 21:01:08	load context for further preprocessing.
+2017:03:30 21:01:08	clean data.
+2017:03:30 21:01:08	...mask and pad the sentence.
+2017:03:30 21:01:08	......max len:359, median len:22.0, min len:2
+2017:03:30 21:01:09	......filter sentence and bound them in the range of 25.
+2017:03:30 21:01:09	build a vocabulary.
+2017:03:30 21:01:09	...flatmap a list of sentence list to a list of sentence.
+2017:03:30 21:01:09	...mapping from index to word.
+2017:03:30 21:01:09	...mapping from word to index.
+2017:03:30 21:01:09	...map word to index.
+2017:03:30 21:01:09	...save processed data to file.
+2017:03:30 21:01:10	get data info.
+2017:03:30 21:01:10	init batch data.
+2017:03:30 21:01:10	...number of batches: 3
+2017:03:30 21:01:10	num of sentence: 150, sentence length: 25, vocab size: 25278
+2017:03:30 21:01:11	enter standard seq2seq's generator mode.
+2017:03:30 21:01:12	enter GAN's generator mode.
+2017:03:30 21:01:28	save 1-th bestmodel to path: /home/tlin/notebooks/code/demo3_v/data/training/runs/DataLoaderBBC/code.model.textGANV3.TextGANV3/1490907680/checkpoints/bestmodel.
+
+2017:03:30 21:01:28	------ pretraining ------ 
+
+2017:03:30 21:01:29	pretrain epoch 0
+2017:03:30 21:01:34	pretrain loss d: 1.52500414848, pretrain loss g: 10.1337280273, execution speed: 1.67 seconds/batch
+
+2017:03:30 21:01:36	save 2-th bestmodel to path: /home/tlin/notebooks/code/demo3_v/data/training/runs/DataLoaderBBC/code.model.textGANV3.TextGANV3/1490907680/checkpoints/bestmodel.
+
+2017:03:30 21:01:36	pretrain epoch 1
+2017:03:30 21:01:41	pretrain loss d: 1.39398741722, pretrain loss g: 10.1022195816, execution speed: 1.67 seconds/batch
+
+2017:03:30 21:01:41	pretrain epoch 2
+2017:03:30 21:01:46	pretrain loss d: 1.26852083206, pretrain loss g: 10.0481147766, execution speed: 1.33 seconds/batch
+
+2017:03:30 21:01:46	pretrain epoch 3
+2017:03:30 21:01:52	pretrain loss d: 1.14547753334, pretrain loss g: 9.97492980957, execution speed: 1.67 seconds/batch
+
+2017:03:30 21:01:52	pretrain epoch 4
+2017:03:30 21:01:59	pretrain loss d: 1.02298808098, pretrain loss g: 9.88496685028, execution speed: 2.00 seconds/batch
+
+2017:03:30 21:01:59	------ training ------ 
+
+2017:03:30 21:01:59	train epoch 5
+2017:03:30 21:02:28	train loss d: -0.0140457078815, train loss g: 0.0167584381998, execution speed: 9.67 seconds/batch
+2017:03:30 21:02:32	val loss d: -0.0220043305308, val loss g: 0.0238633807749, execution speed: 1.33 seconds/batch
+
+2017:03:30 21:02:34	save 3-th bestmodel to path: /home/tlin/notebooks/code/demo3_v/data/training/runs/DataLoaderBBC/code.model.textGANV3.TextGANV3/1490907680/checkpoints/bestmodel.
+
+2017:03:30 21:02:34	train epoch 6

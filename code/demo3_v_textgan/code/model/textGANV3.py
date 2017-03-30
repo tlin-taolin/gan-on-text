@@ -33,16 +33,17 @@ class TextGANV3(InferenceModel):
                     average_across_batch=True),
                 2)
 
-    def train_step(self, gloabl_step, losses):
+    def train_step(self, global_step, losses):
         """train the model."""
         batch_x, batch_y, batch_ymask, batch_z = self.loader.next_batch()
+        soft_argmax = self.adjust_soft_argmax(global_step)
 
         feed_dict_D = {
-            self.x: batch_x, self.z: batch_z,
-            self.embedding: self.loader.embedding_matrix}
+            self.x: batch_x, self.z: batch_z, self.y: batch_y,
+            self.soft_argmax: soft_argmax}
         feed_dict_G = {
             self.z: batch_z, self.y: batch_y, self.ymask: batch_ymask,
-            self.embedding: self.loader.embedding_matrix}
+            self.soft_argmax: soft_argmax}
 
         # train D
         for _ in range(self.para.D_ITERS_PER_BATCH):
@@ -64,20 +65,21 @@ class TextGANV3(InferenceModel):
         losses['perplexity_G'].append(perplexity_G)
 
         # summary
-        self.train_summary_writer.add_summary(summary_D, gloabl_step)
-        self.train_summary_writer.add_summary(summary_G, gloabl_step)
+        self.train_summary_writer.add_summary(summary_D, global_step)
+        self.train_summary_writer.add_summary(summary_G, global_step)
         return losses
 
-    def val_step(self, gloabl_step, losses):
+    def val_step(self, global_step, losses):
         """validate the model."""
         batch_x, batch_y, batch_ymask, batch_z = self.loader.next_batch()
+        soft_argmax = self.adjust_soft_argmax(global_step)
 
         feed_dict_D = {
-            self.x: batch_x, self.z: batch_z,
-            self.embedding: self.loader.embedding_matrix}
+            self.x: batch_x, self.z: batch_z, self.y: batch_y,
+            self.soft_argmax: soft_argmax}
         feed_dict_G = {
             self.z: batch_z, self.y: batch_y, self.ymask: batch_ymask,
-            self.embedding: self.loader.embedding_matrix}
+            self.soft_argmax: soft_argmax}
 
         # train D
         summary_D, loss_D = self.sess.run(
@@ -94,8 +96,8 @@ class TextGANV3(InferenceModel):
         losses['perplexity_G'].append(perplexity_G)
 
         # summary
-        self.val_summary_writer.add_summary(summary_D, gloabl_step)
-        self.val_summary_writer.add_summary(summary_G, gloabl_step)
+        self.val_summary_writer.add_summary(summary_D, global_step)
+        self.val_summary_writer.add_summary(summary_G, global_step)
         return losses
 
     def run_epoch(self, stage, c_epoch, show_log=False, verbose=True):

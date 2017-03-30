@@ -34,11 +34,12 @@ class BasicModel(object):
         self.x = tf.placeholder(
             tf.int32,
             [None, self.para.SENTENCE_LENGTH], name="x")
-        self.x_label = tf.placeholder(
-            tf.float32, [None, 1], name="x_label")
         self.y = tf.placeholder(
             tf.int32,
             [None, self.para.SENTENCE_LENGTH], name="y")
+        self.y_label = tf.placeholder(
+            tf.float32,
+            [None, 1], name="y_label")
         self.ymask = tf.placeholder(
             tf.float32,
             [None, self.para.SENTENCE_LENGTH], name="ymask")
@@ -258,11 +259,11 @@ class BasicModel(object):
         batch_x, batch_y, batch_ymask, batch_z = self.loader.next_batch()
 
         feed_dict_D_pos = {
-            self.x: batch_x,
-            self.x_label: np.ones((self.para.BATCH_SIZE, 1), dtype=np.float32)}
+            self.y: batch_y,
+            self.y_label: np.ones((self.para.BATCH_SIZE, 1), dtype=np.float32)}
         feed_dict_D_neg = {
-            self.x: self.loader.swap_x(batch_x),
-            self.x_label: np.ones((self.para.BATCH_SIZE, 1), dtype=np.float32)}
+            self.y: self.loader.swap_random_pos(batch_y),
+            self.y_label: np.ones((self.para.BATCH_SIZE, 1), dtype=np.float32)}
         feed_dict_G = {
             self.x: batch_x, self.y: batch_y, self.ymask: batch_ymask}
 

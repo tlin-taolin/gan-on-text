@@ -152,6 +152,28 @@ class InferenceModel(BasicModel):
             self.logits_D_fake, self.D_fake = self.define_discriminator(
                 self.embedded_G, reuse=True)
 
+    def define_pretrain_loss(self):
+        """define the pretrain loss.
+
+        For `sigmoid_cross_entropy_with_logits`, where z is label, x is data.
+        we have z * -log(sigmoid(x)) + (1 - z) * -log(1 - sigmoid(x)).
+        """
+        with tf.name_scope("pretrain_loss"):
+            # deal with discriminator.
+            self.loss_D_pretrain = tf.reduce_mean(
+                tf.nn.sigmoid_cross_entropy_with_logits(
+                    logits=self.logits_D_real,
+                    labels=self.y_label
+                )
+            )
+
+            self.loss_G_pretrain = tf.contrib.seq2seq.sequence_loss(
+                logits=self.logits_G_pretrain,
+                targets=self.y,
+                weights=self.ymask,
+                average_across_timesteps=True,
+                average_across_batch=True)
+
     """define method related to language model/word embedding."""
     def language_model(self, output=None, reuse=False):
         with tf.variable_scope('lm') as scope:
@@ -199,25 +221,3 @@ class InferenceModel(BasicModel):
             scope.reuse_variables()
             embedding = tf.get_variable("embedding")
         return tf.matmul(soft_prob, embedding)
-
-    def define_pretrain_loss(self):
-        """define the pretrain loss.
-
-        For `sigmoid_cross_entropy_with_logits`, where z is label, x is data.
-        we have z * -log(sigmoid(x)) + (1 - z) * -log(1 - sigmoid(x)).
-        """
-        with tf.name_scope("pretrain_loss"):
-            # deal with discriminator.
-            self.loss_D_pretrain = tf.reduce_mean(
-                tf.nn.sigmoid_cross_entropy_with_logits(
-                    logits=self.logits_D_real,
-                    labels=self.x_label
-                )
-            )
-
-            self.loss_G_pretrain = tf.contrib.seq2seq.sequence_loss(
-                logits=self.logits_G_pretrain,
-                targets=self.y,
-                weights=self.ymask,
-                average_across_timesteps=True,
-                average_across_batch=True)
