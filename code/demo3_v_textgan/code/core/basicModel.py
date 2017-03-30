@@ -263,7 +263,9 @@ class BasicModel(object):
             self.y_label: np.ones((self.para.BATCH_SIZE, 1), dtype=np.float32)}
         feed_dict_D_neg = {
             self.y: self.loader.swap_random_pos(batch_y),
-            self.y_label: np.ones((self.para.BATCH_SIZE, 1), dtype=np.float32)}
+            self.y_label: np.zeros((self.para.BATCH_SIZE, 1),
+                                   dtype=np.float32)
+        }
         feed_dict_G = {
             self.x: batch_x, self.y: batch_y, self.ymask: batch_ymask}
 
