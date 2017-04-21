@@ -1,0 +1,7 @@
+version: '2'
+services:
+    torch:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: itamtao/torch
