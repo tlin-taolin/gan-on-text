@@ -1,6 +1,6 @@
 require 'torch'
 require 'nn'
--- require 'cunn'
+require 'cunn'
 require 'optim'
 require 'pl'
 
@@ -214,8 +214,6 @@ function adversarial.train(dataset, N)
       for i = t,math.min(t+dataBatchSize-1,dataset:size()[1]) do
         local idx = math.random(dataset:size()[1])
         local sample = dataset[idx]
-        -- print(sample:size(1), sample:size(2),  sample:size(3))
-        -- print(inputs[k]:size(1), inputs[k]:size(2), inputs[k]:size(3))
         inputs[k] = sample:clone()
         k = k + 1
       end
@@ -224,8 +222,6 @@ function adversarial.train(dataset, N)
       noise_inputs:normal(0, 1)
       local samples = model_G:forward(noise_inputs[{{dataBatchSize+1,opt.batchSize}}])
       for i = 1, dataBatchSize do
-        -- print(samples[i]:size(1), samples[i]:size(2), samples[i]:size(3))
-        -- print(inputs[k]:size(1), inputs[k]:size(2), inputs[k]:size(3))
         inputs[k] = samples[i]:clone()
         k = k + 1
       end
