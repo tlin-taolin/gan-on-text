@@ -17,7 +17,7 @@ _URLS = {
     'deepfunneled': (
         'http://vis-www.cs.umass.edu/lfw/lfw-deepfunneled.tgz',
         '68331da3eb755a505a502b5aacb3c201'
-    ),    
+    ),
 }
 
 
@@ -78,7 +78,7 @@ class LFW(object):
                     name_dict[name].append(img_idx)
                     img_idx += 1
                     if img_idx % 100 == 0:
-                        print img_idx
+                        print(img_idx)
             imgs = np.array(imgs)
             names = sorted(name_dict.keys())
             names_idx = np.empty(len(imgs))

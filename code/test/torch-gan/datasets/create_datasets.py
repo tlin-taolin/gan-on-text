@@ -4,6 +4,7 @@ import lfw
 from skimage.transform import resize
 import h5py
 
+
 def to_bc01(b01c):
     return np.transpose(b01c, (0, 3, 1, 2))
 
@@ -30,7 +31,7 @@ def create_lfw():
     idxs = np.random.permutation(np.arange(len(imgs)))
     imgs = imgs[idxs]
     imgs = to_bc01(imgs)
-    print imgs.shape
+    print(imgs.shape)
     return imgs
 
 
@@ -39,4 +40,3 @@ if __name__ == '__main__':
     f = h5py.File('lfw.hdf5', 'w')
     f.create_dataset('lfw', data=x)
     f.close()
-

@@ -20,6 +20,7 @@ def require_dir(path):
     if not os.path.exists(path):
         os.makedirs(path)
 
+
 def url_filename(url):
     return url.split('/')[-1].split('#')[0].split('?')[0]
 

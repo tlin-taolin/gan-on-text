@@ -3,5 +3,5 @@ services:
     torch:
         build:
             context: .
-            dockerfile: Dockerfile
+            dockerfile: Dockerfile.a
         image: itamtao/torch
