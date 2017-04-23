@@ -40,3 +40,6 @@ RUN apt-get install -y libhdf5-serial-dev hdf5-tools
 RUN git clone https://github.com/deepmind/torch-hdf5 /home/tlin/notebooks/torch-hdf5
 RUN cd /home/tlin/notebooks/torch-hdf5 \
     && luarocks make hdf5-0-0.rockspec LIBHDF5_LIBDIR="/usr/lib/x86_64-linux-gnu/"
+
+
+RUN pip install scikit-image
