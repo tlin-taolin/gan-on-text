@@ -3,3 +3,4 @@ code.egg-info
 *.pyc
 build
 data
+torch-hdf5
