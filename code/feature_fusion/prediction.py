@@ -47,7 +47,7 @@ def write_pickle(data, path):
 def load_data(force):
     """load dataset."""
     # define path.
-    path_root = 'data'
+    path_root = 'data/can_emb'
     path_emb = join(path_root, 'emb', 'total_emb.npy')
     path_candidate = join(path_root, 'candidates')
     path_candidates_argmax = join(path_candidate, 'argmax_list.txt')
@@ -68,10 +68,11 @@ def load_data(force):
     # else:
     #     candidate_argmax = load_pickle(path_candidates_argmax_p)
 
-    if force or not exists(path_candidates_beam_p):
+    if not force or not exists(path_candidates_beam_p):
         candidates_beam = read_txt(path_candidates_beam, size=3)
         write_pickle(candidates_beam, path_candidates_beam_p)
     else:
+        print "Loading existing pickle..."
         candidates_beam = load_pickle(path_candidates_beam_p)
 
     # if force or not exists(path_candidates_pick_p):
@@ -79,6 +80,23 @@ def load_data(force):
     #     write_pickle(candidates_pick, path_candidates_pick_p)
     # else:
     #     candidates_pick = load_pickle(path_candidates_pick_p)
+    ''' Embedding size: 256
+        vocab_size: 20525
+        Totoal beam candidates: 742239
+        None for candidate_argmax, candidates_pick
+    '''
+    '''
+       Form of beam candidates:
+            _________
+                     |
+                     |
+                     |
+           [Q, A, A']| 21 pairs. A is the truth answering.
+                     |
+                     |
+            _________|
+
+    '''
     return embedding, candidate_argmax, candidates_beam, candidates_pick
 
 
@@ -167,7 +185,7 @@ def define_fusion(input, embedding):
     batch_size, candidate_size, candidate_length = input.get_shape().as_list()
 
     print('vocab size:{},embedding size:{}'.format(vocab_size, embedding_size))
-    print('batch size:{},candidate size:{}'.format(vocab_size, candidate_size))
+    print('batch size:{},candidate size:{}'.format(batch_size, candidate_size))
     print('size of embedded_input: {}'.format(embedded_input.get_shape()))
 
     # define CNN architecture:
@@ -178,12 +196,20 @@ def define_fusion(input, embedding):
     pooled_outputs = []
     for i, (conv_spatial, conv_depth) in enumerate(archits):
         with tf.variable_scope("conv-lrelu-pooling-%s" % i):
+
             W = weight_variable(
-                shape=[1, conv_spatial, embedding_size, conv_depth])
+                shape=[1, conv_spatial, embedding_size, conv_depth]
+                )
+
             b = bias_variable(shape=[conv_depth])
 
             conv = conv2d(
-                embedded_input, W, strides=[1, 1, 1, 1], padding='VALID')
+                embedded_input,
+                W,
+                strides=[1, 1, 1, 1],
+                padding='VALID'
+                )
+
             h = leakyrelu(conv, b, alpha=1.0/5.5)
 
             pooled = max_pool(
@@ -228,18 +254,23 @@ def main(force):
 
     # load and prepare data.
     embedding, _, cand_beam, _ = load_data(force)
+    print "Finish loading data."
     candidates, candidate_max_length = build_up_candidates(cand_beam)
-    Q_batches, A_batches, GA_batches = build_batches(candidates,
-                                                     batch_size, num_batches)
+    Q_batches, A_batches, GA_batches = build_batches(candidates, batch_size, num_batches)
+    '''
+    Q_batches: Questions within this batch
+    A_batches: Truth answering
+    GA_batches: candidates
+    print (np.array(GA_batches)).shape -- (1, 64, 21, x) where x is number of words after padding
+    '''
 
     # define placeholder.
-    input_ph, embedding_ph = define_placeholder(
-        batch_size, candidate_size, candidate_max_length, embedding)
+    input_ph, embedding_ph = define_placeholder(batch_size, candidate_size, candidate_max_length, embedding)
 
-    # start inference.
-    define_fusion(input_ph, embedding_ph)
-
+    # # start inference.
+    fused_feature = define_fusion(input_ph, embedding_ph)
 
 if __name__ == '__main__':
-    force = False
+    force = True
     main(force)
+    # load_data(force)
