@@ -6,3 +6,4 @@ data
 torch-hdf5
 torch-gan/datasets/lfw_imgs/
 datasets
+logs512_lfw64

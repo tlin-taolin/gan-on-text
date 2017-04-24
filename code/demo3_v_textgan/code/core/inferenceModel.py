@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
+import numpy as np
 import tensorflow as tf
 
 from code.utils.logger import log
 from code.core.lstm import LSTM
 from code.core.basicModel import BasicModel
+from code.core.wordSearch import WordSearch
 
 
 class InferenceModel(BasicModel):
@@ -221,3 +223,61 @@ class InferenceModel(BasicModel):
             scope.reuse_variables()
             embedding = tf.get_variable("embedding")
         return tf.matmul(soft_prob, embedding)
+
+    # add function to generate sentence.
+    def sample_from_latent_space(self, num=200, prime='go'):
+        """generate sentence from latent space.."""
+        # init.
+        z = np.random.uniform(size=(1, self.para.EMBEDDING_SIZE * 2))
+        state = tf.contrib.rnn.LSTMStateTuple(
+                c=z[:, :self.para.EMBEDDING_SIZE],
+                h=z[:, self.para.EMBEDDING_SIZE:])
+
+        log('generate sentence. beam search:{}.'.format(self.para.BEAM_SEARCH))
+        generated_sentence = prime.split()
+        word_search = WordSearch(self.loader.vocab, self.para)
+
+        word = 'go'
+        if self.para.BEAM_SEARCH:
+            # feed `go` into the generator.
+            input = np.zeros((1, 1))
+            input[0, 0] = self.loader.vocab.get(word, 0)
+            feed = {self.x: input, self.cell_G_init_state: state}
+            probs, state, values, indices = self.sess.run(
+                [self.probs_G, self.state_G,
+                 self.top_value, self.top_index],
+                feed)
+
+            values, indices = values[0][0], indices[0][0]
+            for i in range(len(values)):
+                word_search.beam_candidates.append((values[i], [indices[i]]))
+
+        log('...decide sampling type.')
+        if self.para.SAMPLING_TYPE == 'argmax':
+            basic_sampler = np.argmax
+        else:
+            basic_sampler = word_search.weighted_pick
+
+        log('...start sampling.')
+        for n in range(num):
+            if not self.para.BEAM_SEARCH:
+                input = np.zeros((1, 1))
+                input[0, 0] = self.loader.vocab.get(word, 0)
+                feed = {self.x: input, self.cell_G_init_state: state}
+                [probs, state] = self.sess.run(
+                    [self.probs_G, self.state_G], feed)
+                sample_index = basic_sampler(probs[0, 0])
+                word = self.loader.words[sample_index]
+                generated_sentence.append(word)
+                if word == 'eos':
+                    break
+            else:
+                word_search.beam_search(
+                    self.sess, self.x, self.cell_G_init_state,
+                    self.top_value, self.top_index, state)
+
+                generated_sentence = [
+                    self.loader.words[s] for s in word_search.best_sequence]
+
+        generated_sentence = ' '.join(generated_sentence)
+        return generated_sentence
