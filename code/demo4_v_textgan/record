@@ -9265,3 +9265,140 @@
 2017:04:25 21:18:40	...start sampling.
 2017:04:25 21:18:40	above content is generated from lstm.
 2017:04:25 21:18:40	total execution time: 4
+2017:05:12 10:28:42	use DataLoaderBBT to init data.
+2017:05:12 10:28:42	reading and processing the text file.
+2017:05:12 10:28:42	preprocess the dataset.
+2017:05:12 10:28:42	load data.
+2017:05:12 10:28:42	init content from raw.
+2017:05:12 10:28:42	init data from the raw dataset.
+2017:05:12 10:30:25	use DataLoaderBBT to init data.
+2017:05:12 10:30:25	reading and processing the text file.
+2017:05:12 10:30:25	preprocess the dataset.
+2017:05:12 10:30:25	load data.
+2017:05:12 10:30:25	init content from raw.
+2017:05:12 10:30:25	init data from the raw dataset.
+2017:05:12 10:36:58	use DataLoaderBBT to init data.
+2017:05:12 10:36:58	reading and processing the text file.
+2017:05:12 10:36:58	preprocess the dataset.
+2017:05:12 10:36:58	load data.
+2017:05:12 10:36:58	init content from raw.
+2017:05:12 10:36:58	init data from the raw dataset.
+2017:05:12 10:46:07	use DataLoaderBBT to init data.
+2017:05:12 10:46:07	reading and processing the text file.
+2017:05:12 10:46:07	preprocess the dataset.
+2017:05:12 10:46:07	load data.
+2017:05:12 10:46:07	init content from raw.
+2017:05:12 10:46:07	init data from the raw dataset.
+2017:05:12 10:46:07	...basic initialization
+2017:05:12 10:46:07	...load the mapping dictionary.
+2017:05:12 10:46:30	use DataLoaderBBT to init data.
+2017:05:12 10:46:30	reading and processing the text file.
+2017:05:12 10:46:30	preprocess the dataset.
+2017:05:12 10:46:30	load data.
+2017:05:12 10:46:30	init content from raw.
+2017:05:12 10:46:30	init data from the raw dataset.
+2017:05:12 10:46:30	...basic initialization
+2017:05:12 10:46:30	...load the mapping dictionary.
+2017:05:12 10:49:15	use DataLoaderBBT to init data.
+2017:05:12 10:49:15	reading and processing the text file.
+2017:05:12 10:49:15	preprocess the dataset.
+2017:05:12 10:49:15	load data.
+2017:05:12 10:49:15	init content from raw.
+2017:05:12 10:49:15	init data from the raw dataset.
+2017:05:12 10:49:15	...basic initialization
+2017:05:12 10:49:15	...load the mapping dictionary.
+2017:05:12 10:50:53	use DataLoaderBBT to init data.
+2017:05:12 10:50:53	reading and processing the text file.
+2017:05:12 10:50:53	preprocess the dataset.
+2017:05:12 10:50:53	load data.
+2017:05:12 10:50:53	init content from raw.
+2017:05:12 10:50:53	init data from the raw dataset.
+2017:05:12 10:50:53	...basic initialization
+2017:05:12 10:50:53	...load the mapping dictionary.
+2017:05:12 10:51:50	use DataLoaderBBT to init data.
+2017:05:12 10:51:50	reading and processing the text file.
+2017:05:12 10:51:50	preprocess the dataset.
+2017:05:12 10:51:50	load data.
+2017:05:12 10:51:50	init content from raw.
+2017:05:12 10:51:50	init data from the raw dataset.
+2017:05:12 10:51:50	...basic initialization
+2017:05:12 10:51:50	...load the mapping dictionary.
+2017:05:12 10:51:50	...load data and do mapping.
+2017:05:12 10:53:11	use DataLoaderBBT to init data.
+2017:05:12 10:53:11	reading and processing the text file.
+2017:05:12 10:53:11	preprocess the dataset.
+2017:05:12 10:53:11	load data.
+2017:05:12 10:53:11	init content from raw.
+2017:05:12 10:53:11	init data from the raw dataset.
+2017:05:12 10:53:11	...basic initialization
+2017:05:12 10:53:11	...load the mapping dictionary.
+2017:05:12 10:53:11	...load data and do mapping.
+2017:05:12 10:53:12	...mask and pad the sentence.
+2017:05:12 10:53:12	......max len:28, median len:24.0, min len:10
+2017:05:12 10:53:12	......filter sentence and bound them in the range of 25.
+2017:05:12 10:53:12	build a vocabulary.
+2017:05:12 10:53:12	...flatmap a list of sentence list to a list of sentence.
+2017:05:12 10:53:12	...mapping from index to word.
+2017:05:12 10:53:12	...keep frequent words.
+2017:05:12 10:53:12	...mapping from word to index.
+2017:05:12 10:53:12	...map word to index.
+2017:05:12 10:53:12	...save processed data to file.
+2017:05:12 10:53:12	get data info.
+2017:05:12 10:53:12	init batch data.
+2017:05:12 10:53:12	...number of batches: 0
+2017:05:12 10:53:12	num of sentence: 0, sentence length: 25, vocab size: 36
+2017:05:12 10:53:13	enter standard seq2seq's generator mode.
+2017:05:12 10:53:14	enter GAN's generator mode.
+2017:05:12 10:54:28	use DataLoaderBBT to init data.
+2017:05:12 10:54:28	reading and processing the text file.
+2017:05:12 10:54:28	preprocess the dataset.
+2017:05:12 10:54:28	load data.
+2017:05:12 10:54:28	init content from raw.
+2017:05:12 10:54:28	init data from the raw dataset.
+2017:05:12 10:54:28	...basic initialization
+2017:05:12 10:54:28	...load the mapping dictionary.
+2017:05:12 10:54:28	...load data and do mapping.
+2017:05:12 10:55:46	use DataLoaderBBT to init data.
+2017:05:12 10:55:46	reading and processing the text file.
+2017:05:12 10:55:46	preprocess the dataset.
+2017:05:12 10:55:46	load data.
+2017:05:12 10:55:46	init content from raw.
+2017:05:12 10:55:46	init data from the raw dataset.
+2017:05:12 10:55:46	...basic initialization
+2017:05:12 10:55:46	...load the mapping dictionary.
+2017:05:12 10:55:46	...load data and do mapping.
+2017:05:12 10:55:47	...mask and pad the sentence.
+2017:05:12 10:55:47	......max len:50, median len:42.0, min len:14
+2017:05:12 10:55:47	......filter sentence and bound them in the range of 25.
+2017:05:12 10:55:47	build a vocabulary.
+2017:05:12 10:55:47	...flatmap a list of sentence list to a list of sentence.
+2017:05:12 10:56:25	use DataLoaderBBT to init data.
+2017:05:12 10:56:25	reading and processing the text file.
+2017:05:12 10:56:25	preprocess the dataset.
+2017:05:12 10:56:25	load data.
+2017:05:12 10:56:25	init content from raw.
+2017:05:12 10:56:25	init data from the raw dataset.
+2017:05:12 10:56:25	...basic initialization
+2017:05:12 10:56:25	...load the mapping dictionary.
+2017:05:12 10:56:25	...load data and do mapping.
+2017:05:12 10:56:29	...mask and pad the sentence.
+2017:05:12 10:56:29	......max len:62, median len:25.0, min len:7
+2017:05:12 10:56:29	......filter sentence and bound them in the range of 25.
+2017:05:12 10:56:29	build a vocabulary.
+2017:05:12 10:56:29	...flatmap a list of sentence list to a list of sentence.
+2017:05:12 10:56:29	...mapping from index to word.
+2017:05:12 10:56:29	...keep frequent words.
+2017:05:12 10:56:29	...mapping from word to index.
+2017:05:12 10:56:29	...map word to index.
+2017:05:12 10:56:29	...save processed data to file.
+2017:05:12 10:56:30	get data info.
+2017:05:12 10:56:30	init batch data.
+2017:05:12 10:56:30	...number of batches: 277
+2017:05:12 10:56:30	num of sentence: 13850, sentence length: 25, vocab size: 9253
+2017:05:12 10:56:31	enter standard seq2seq's generator mode.
+2017:05:12 10:56:32	enter GAN's generator mode.
+2017:05:12 10:56:52	save 1-th bestmodel to path: /home/tlin/notebooks/code/demo4_v_textgan/data/training/runs/DataLoaderBBT/code.model.textGANV3.TextGANV3/1494586602/checkpoints/bestmodel.
+
+2017:05:12 10:56:52	------ pretraining ------ 
+
+2017:05:12 10:56:52	pretrain epoch 0

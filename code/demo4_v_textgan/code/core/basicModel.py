@@ -228,8 +228,8 @@ class BasicModel(object):
         batch_scope = self.loader.determine_batch_pointer_pos(stage)
 
         for step in batch_scope:
-            gloabl_step = c_epoch * self.loader.num_batches + step
-            losses = stage(gloabl_step, losses)
+            global_step = c_epoch * self.loader.num_batches + step
+            losses = stage(global_step, losses)
 
             if show_log:
                 sys.stdout.write(
@@ -316,8 +316,8 @@ class BasicModel(object):
         batch_scope = self.loader.determine_batch_pointer_pos(stage)
 
         for step in batch_scope:
-            gloabl_step = c_epoch * self.loader.num_batches + step
-            losses = self.pretrain_step(gloabl_step, losses)
+            global_step = c_epoch * self.loader.num_batches + step
+            losses = self.pretrain_step(global_step, losses)
 
             sys.stdout.write(
                 '\r{}/{}: pretrain: mean loss D = {}; mean loss G = {}'.format(

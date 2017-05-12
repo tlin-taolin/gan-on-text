@@ -9,6 +9,7 @@ from six.moves import cPickle
 import parameters as para
 from code.utils.logger import log
 from code.dataset.dataLoaderBBC import DataLoaderBBC
+from code.dataset.dataLoaderBBT import DataLoaderBBT
 from code.model.textGAN import TextGAN
 from code.model.textGANV3 import TextGANV3
 
@@ -127,6 +128,7 @@ if __name__ == '__main__':
     args = para.get_args()
 
     data_loader_fn = DataLoaderBBC
+    data_loader_fn = DataLoaderBBT
 
     # model = TextGAN
     # model = TextGANV1
