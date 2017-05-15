@@ -53,7 +53,6 @@ def get_args():
     parser.add_argument('--EPOCH_PRETRAIN', type=int, default=5)
     parser.add_argument('--EPOCH_TRAIN', type=int, default=30)
     parser.add_argument('--BATCH_SIZE', type=int, default=64)
-    parser.add_argument('--SENTENCE_LENGTH', type=int, default=25)
     parser.add_argument('-c', '--CLEAN_DATA', action="store_true", default=False)
     parser.add_argument('--MAX_VOCAB_SIZE', type=int, default=10000)
     # when < 1000, it will use default vocabulary without filtering.

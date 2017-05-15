@@ -94,7 +94,7 @@ class TextGANV0(InferenceModel):
             [self.op_val_summary_D, self.loss_D], feed_dict=feed_dict_D)
 
         # train G.
-        summary_G, loss_G, perplexity_G = self.sess.run(
+        summary_G, loss_G = self.sess.run(
             [self.op_val_summary_G, self.loss_G], feed_dict=feed_dict_G)
 
         # record loss.

@@ -114,55 +114,6 @@ class BasicModel(object):
         self.grads_and_vars_D = zip(grads_D, vars_D)
         self.op_train_D = optimizer_D.apply_gradients(self.grads_and_vars_D)
 
-    def run_epoch(self, stage, c_epoch, show_log=False, verbose=True):
-        """run pretrain epoch."""
-        losses = {
-            'losses_D_real': [], 'losses_D_fake': [],
-            'losses_D': [], 'losses_G': [], 'perplexity_G': [],
-            'accuracy_D_real': [], 'accuracy_D_fake': [], 'accuracy_D': []}
-
-        start_epoch_time = datetime.datetime.now()
-        self.loader.reset_batch_pointer()
-
-        # determine start point
-        if self.para.INIT_FROM is None and 'train' in stage.__name__:
-            assign_op = self.batch_pointer.assign(0)
-            self.sess.run(assign_op)
-            assign_op = self.epoch_pointer.assign(c_epoch)
-            self.sess.run(assign_op)
-        if self.para.INIT_FROM is not None:
-            self.loader.pointer = self.batch_pointer.eval()
-            self.para.INIT_FROM = None
-
-        batch_scope = self.loader.determine_batch_pointer_pos(stage)
-
-        for step in batch_scope:
-            global_step = c_epoch * self.loader.num_batches + step
-            losses = stage(global_step, losses)
-
-            if show_log:
-                sys.stdout.write(
-                    "\r{}/{}: mean loss of D: {}, mean accuracy of D: {}, mean loss of G: {}, mean perplexity of G: {}".format(
-                        step + 1,
-                        self.loader.num_batches,
-                        np.mean(losses['losses_D']),
-                        np.mean(losses['accuracy_D']),
-                        np.mean(losses['losses_G']),
-                        np.mean(losses['perplexity_G'])
-                    )
-                )
-                sys.stdout.flush()
-
-        if verbose:
-            sys.stdout.write('\n')
-            sys.stdout.flush()
-
-        end_epoch_time = datetime.datetime.now()
-        duration = 1.0 * (
-            end_epoch_time - start_epoch_time).seconds/self.loader.num_batches
-        return np.mean(losses['losses_D']), \
-            np.mean(losses['losses_G']), duration
-
     def pretrain_step(self, global_step, losses):
         """train the model."""
         batch_x, batch_y, batch_ymask, batch_z = self.loader.next_batch()
@@ -331,14 +282,13 @@ class BasicModel(object):
         # Summaries for loss and accuracy
         loss_summary_D = tf.summary.scalar('loss_D', self.loss_D)
         loss_summary_G = tf.summary.scalar("loss_G", self.loss_G)
-        perplexity_G = tf.summary.scalar("perplexity", self.perplexity_G)
 
         # Summaries
         self.op_train_summary_D = tf.summary.merge(
             [loss_summary_D, grad_summaries_merged_D])
         self.op_val_summary_D = tf.summary.merge([loss_summary_D])
         self.op_train_summary_G = tf.summary.merge(
-            [loss_summary_G, perplexity_G, grad_summaries_merged_G])
+            [loss_summary_G, grad_summaries_merged_G])
         self.op_val_summary_G = tf.summary.merge([loss_summary_G])
 
         # log("writing to {}\n".format(self.out_dir))

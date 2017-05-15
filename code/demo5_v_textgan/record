@@ -10502,3 +10502,129 @@
 2017:05:15 10:36:32	save 2-th bestmodel to path: /home/tlin/notebooks/code/demo4_v_textgan/data/training/runs/DataLoaderBBT/code.model.textGANV0.TextGANV0/1494844574/checkpoints/bestmodel.
 
 2017:05:15 10:36:32	total execution time: 47
+2017:05:15 13:52:28	use DataLoaderBBT to init data.
+2017:05:15 13:52:29	loading preprocessed files.
+2017:05:15 13:52:30	get data info.
+2017:05:15 13:52:42	use DataLoaderBBT to init data.
+2017:05:15 13:52:42	reading and processing the text file.
+2017:05:15 13:52:42	preprocess the dataset.
+2017:05:15 13:52:42	load data.
+2017:05:15 13:52:42	init content from raw.
+2017:05:15 13:52:42	init data from the raw dataset.
+2017:05:15 13:52:42	...basic initialization
+2017:05:15 13:52:42	...load the mapping dictionary.
+2017:05:15 13:52:42	...load data and do mapping.
+2017:05:15 13:52:43	...mask and pad the sentence.
+2017:05:15 13:52:43	...statistics.
+2017:05:15 13:52:43	......left sentence stat: max len:33, median len:12.0, min len:3
+2017:05:15 13:52:43	......right sentence stat: max len:33, median len:12.0, min len:3
+2017:05:15 13:52:43	...build valid sentence and mask.
+2017:05:15 13:52:44	build a vocabulary.
+2017:05:15 13:52:44	...flatmap a list of sentence list to a list of sentence.
+2017:05:15 13:52:45	...mapping from index to word.
+2017:05:15 13:52:45	...keep frequent words.
+2017:05:15 13:52:45	...mapping from word to index.
+2017:05:15 13:52:45	...map word to index.
+2017:05:15 13:52:47	...save processed data to file.
+2017:05:15 13:52:52	get data info.
+2017:05:15 13:52:52	init batch data.
+2017:05:15 13:52:52	...number of batches: 1107
+2017:05:15 13:52:52	# sent: 70857, sentence length: 33, vocab size: 10001
+2017:05:15 13:53:27	save 1-th bestmodel to path: /home/tlin/notebooks/code/demo5_v_textgan/data/training/runs/DataLoaderBBT/code.model.textGANV0.TextGANV0/1494856389/checkpoints/bestmodel.
+
+2017:05:15 13:53:27	------ pretraining ------ 
+
+2017:05:15 13:53:27	------ training ------ 
+
+2017:05:15 13:53:27	train epoch 1
+2017:05:15 13:54:03	use DataLoaderBBT to init data.
+2017:05:15 13:54:03	reading and processing the text file.
+2017:05:15 13:54:03	preprocess the dataset.
+2017:05:15 13:54:03	load data.
+2017:05:15 13:54:03	init content from raw.
+2017:05:15 13:54:03	init data from the raw dataset.
+2017:05:15 13:54:03	...basic initialization
+2017:05:15 13:54:03	...load the mapping dictionary.
+2017:05:15 13:54:03	...load data and do mapping.
+2017:05:15 13:54:04	...mask and pad the sentence.
+2017:05:15 13:54:04	...statistics.
+2017:05:15 13:54:04	......left sentence stat: max len:33, median len:12.0, min len:3
+2017:05:15 13:54:04	......right sentence stat: max len:33, median len:12.0, min len:3
+2017:05:15 13:54:04	...build valid sentence and mask.
+2017:05:15 13:54:05	build a vocabulary.
+2017:05:15 13:54:05	...flatmap a list of sentence list to a list of sentence.
+2017:05:15 13:54:07	...mapping from index to word.
+2017:05:15 13:54:07	...keep frequent words.
+2017:05:15 13:54:07	...mapping from word to index.
+2017:05:15 13:54:07	...map word to index.
+2017:05:15 13:54:08	...save processed data to file.
+2017:05:15 13:54:14	get data info.
+2017:05:15 13:54:14	init batch data.
+2017:05:15 13:54:14	...number of batches: 2
+2017:05:15 13:54:14	# sent: 70857, sentence length: 33, vocab size: 10001
+2017:05:15 13:54:48	save 1-th bestmodel to path: /home/tlin/notebooks/code/demo5_v_textgan/data/training/runs/DataLoaderBBT/code.model.textGANV0.TextGANV0/1494856470/checkpoints/bestmodel.
+
+2017:05:15 13:54:48	------ pretraining ------ 
+
+2017:05:15 13:54:48	------ training ------ 
+
+2017:05:15 13:54:48	train epoch 1
+2017:05:15 13:56:30	use DataLoaderBBT to init data.
+2017:05:15 13:56:30	reading and processing the text file.
+2017:05:15 13:56:30	preprocess the dataset.
+2017:05:15 13:56:30	load data.
+2017:05:15 13:56:30	init content from raw.
+2017:05:15 13:56:30	init data from the raw dataset.
+2017:05:15 13:56:30	...basic initialization
+2017:05:15 13:56:30	...load the mapping dictionary.
+2017:05:15 13:56:30	...load data and do mapping.
+2017:05:15 13:56:31	...mask and pad the sentence.
+2017:05:15 13:56:31	...statistics.
+2017:05:15 13:56:31	......left sentence stat: max len:33, median len:12.0, min len:3
+2017:05:15 13:56:31	......right sentence stat: max len:33, median len:12.0, min len:3
+2017:05:15 13:56:31	...build valid sentence and mask.
+2017:05:15 13:56:32	build a vocabulary.
+2017:05:15 13:56:32	...flatmap a list of sentence list to a list of sentence.
+2017:05:15 13:56:37	use DataLoaderBBT to init data.
+2017:05:15 13:56:37	loading preprocessed files.
+2017:05:15 13:56:43	get data info.
+2017:05:15 13:56:43	init batch data.
+2017:05:15 13:56:43	...number of batches: 2
+2017:05:15 13:56:43	# sent: 70857, sentence length: 33, vocab size: 10001
+2017:05:15 13:57:25	save 1-th bestmodel to path: /home/tlin/notebooks/code/demo5_v_textgan/data/training/runs/DataLoaderBBT/code.model.textGANV0.TextGANV0/1494856624/checkpoints/bestmodel.
+
+2017:05:15 13:57:25	------ pretraining ------ 
+
+2017:05:15 13:57:25	------ training ------ 
+
+2017:05:15 13:57:25	train epoch 1
+2017:05:15 13:58:35	use DataLoaderBBT to init data.
+2017:05:15 13:58:35	loading preprocessed files.
+2017:05:15 13:58:41	get data info.
+2017:05:15 13:58:41	init batch data.
+2017:05:15 13:58:41	...number of batches: 2
+2017:05:15 13:58:41	# sent: 70857, sentence length: 33, vocab size: 10001
+2017:05:15 13:59:12	save 1-th bestmodel to path: /home/tlin/notebooks/code/demo5_v_textgan/data/training/runs/DataLoaderBBT/code.model.textGANV0.TextGANV0/1494856737/checkpoints/bestmodel.
+
+2017:05:15 13:59:12	------ pretraining ------ 
+
+2017:05:15 13:59:12	------ training ------ 
+
+2017:05:15 13:59:12	train epoch 1
+2017:05:15 13:59:22	train loss d: -0.0223626606166, train loss g: 0.0151278208941, execution speed: 4.50 seconds/batch
+2017:05:15 13:59:25	val loss d: -0.0257744193077, val loss g: 0.0132428677753, execution speed: 1.00 seconds/batch
+
+2017:05:15 13:59:25	train epoch 2
+2017:05:15 13:59:31	use DataLoaderBBT to init data.
+2017:05:15 13:59:31	loading preprocessed files.
+2017:05:15 13:59:38	get data info.
+2017:05:15 13:59:38	init batch data.
+2017:05:15 13:59:38	...number of batches: 1107
+2017:05:15 13:59:39	# sent: 70857, sentence length: 33, vocab size: 10001
+2017:05:15 14:00:16	save 1-th bestmodel to path: /home/tlin/notebooks/code/demo5_v_textgan/data/training/runs/DataLoaderBBT/code.model.textGANV0.TextGANV0/1494856798/checkpoints/bestmodel.
+
+2017:05:15 14:00:16	------ pretraining ------ 
+
+2017:05:15 14:00:16	------ training ------ 
+
+2017:05:15 14:00:16	train epoch 1
