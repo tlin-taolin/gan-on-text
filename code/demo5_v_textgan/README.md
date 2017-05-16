@@ -1,5 +1,6 @@
 Clarify the model:
 
-The models below adapt sequence-sequence method. 
+The models below adapt sequence-sequence method.
 
-* textGANV3 -- WGAN.
+* textGANV0 -- WGAN.
+* textGANV1 -- improved WGAN.

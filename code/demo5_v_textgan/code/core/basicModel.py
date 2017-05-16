@@ -22,10 +22,12 @@ class BasicModel(object):
         self.sess = sess
         self.infer = infer
         self.loader = loader
+        self.enc_length = self.loader.sentence_length
+        self.dec_length = self.loader.sentence_length - 1
 
         if infer:
             self.para.BATCH_SIZE = 1
-            self.para.SENTENCE_LENGTH = 1
+            self.dec_length = 1
 
     """define placeholder."""
     # define the basic components of the inference procedure.
@@ -33,22 +35,22 @@ class BasicModel(object):
         """define the placeholders."""
         self.x_enc = tf.placeholder(
             tf.int32,
-            [self.para.BATCH_SIZE, self.loader.sentence_length],
+            [self.para.BATCH_SIZE, None],
             name="x_enc")
         self.x_dec = tf.placeholder(
             tf.int32,
-            [self.para.BATCH_SIZE, self.loader.sentence_length - 1],
+            [self.para.BATCH_SIZE, None],
             name="x_dec")
         self.y = tf.placeholder(
             tf.int32,
-            [self.para.BATCH_SIZE, self.loader.sentence_length - 1],
+            [self.para.BATCH_SIZE, None],
             name="y")
         self.y_label = tf.placeholder(
             tf.float32,
             [self.para.BATCH_SIZE, 1], name="y_label")
         self.ymask = tf.placeholder(
             tf.float32,
-            [self.para.BATCH_SIZE, self.loader.sentence_length - 1],
+            [self.para.BATCH_SIZE, None],
             name="ymask")
         self.z = tf.placeholder(
             tf.float32,

@@ -25,7 +25,7 @@ class InferenceModel(BasicModel):
 
         self.lstm_G_dec = self.lstm(self.para.RNN_SIZE, self.para.BATCH_SIZE)
         self.cell_G_dec = self.lstm_G_dec.cell
-        self.cell_G_dec_init_state = self.lstm_G_dec.init_state()
+        self.cell_G_dec_init_state = None
 
     def define_generator(self, z=None, embedded_x=None, reuse=False):
         # inference for the generator.
@@ -33,14 +33,18 @@ class InferenceModel(BasicModel):
 
         # encoder.
         cell_type = self.lstm_G_enc.standard_lstm_unit
-        state = self.cell_G_enc_init_state
+        enc_state = self.cell_G_enc_init_state
 
         with tf.variable_scope('rnn_enc') as scope_rnn:
-            for time_step in range(self.loader.sentence_length):
+            for time_step in range(self.enc_length):
                 if time_step > 0 or reuse:
                     scope_rnn.reuse_variables()
                 input_enc = embedded_x_enc[:, time_step, :]
-                _, state = self.cell_G_enc(cell_type, input_enc, state, None)
+                _, enc_state = self.cell_G_enc(
+                    cell_type, input_enc, enc_state, None)
+
+        self.cell_G_dec_init_state = enc_state
+        dec_state = self.cell_G_dec_init_state
 
         # decoder.
         if reuse:
@@ -50,7 +54,7 @@ class InferenceModel(BasicModel):
 
         embeddings, logits, probs, words = [], [], [], []
 
-        for time_step in range(self.loader.sentence_length - 1):
+        for time_step in range(self.dec_length):
             with tf.variable_scope('rnn_dec') as scope_rnn:
                 if time_step > 0 or reuse:
                     scope_rnn.reuse_variables()
@@ -59,8 +63,8 @@ class InferenceModel(BasicModel):
                 else:
                     cell_type = self.lstm_G_dec.standard_lstm_unit
 
-                cell_output, state = self.cell_G_dec(
-                    cell_type, input_dec, state, z)
+                cell_output, dec_state = self.cell_G_dec(
+                    cell_type, input_dec, dec_state, z)
 
             # feed the current cell output to a language model.
             logit, prob, soft_prob, word = self.language_model(
@@ -70,7 +74,7 @@ class InferenceModel(BasicModel):
                 input_dec = self.get_approx_embedding(soft_prob)
             else:
                 input_dec = embedded_x_dec[:, time_step + 1, :] \
-                    if time_step < (self.loader.sentence_length-1)-1 else None
+                    if time_step < self.dec_length - 1 else None
 
             # save the middle result.
             embeddings.append(cell_output)
@@ -80,14 +84,14 @@ class InferenceModel(BasicModel):
 
         logits = tf.reshape(
             tf.concat(logits, 0),
-            [-1, self.loader.sentence_length - 1, self.loader.vocab_size])
+            [-1, self.dec_length, self.loader.vocab_size])
         probs = tf.reshape(
             tf.concat(probs, 0),
-            [-1, self.loader.sentence_length - 1, self.loader.vocab_size])
+            [-1, self.dec_length, self.loader.vocab_size])
         embeddings = tf.reshape(
             tf.concat(embeddings, 0),
-            [-1, self.loader.sentence_length - 1, self.para.EMBEDDING_SIZE])
-        return embeddings, logits, probs, words, state
+            [-1, self.dec_length, self.para.EMBEDDING_SIZE])
+        return embeddings, logits, probs, words, enc_state, dec_state
 
     def define_discriminator(self, embedded, reuse=False):
         """define the discriminator."""
@@ -157,11 +161,11 @@ class InferenceModel(BasicModel):
             embedded_y = self.embedding_model(self.y, reuse=True)
             embedded_x = (embedded_x_enc, embedded_x_dec)
 
-            _, self.logits_G_pretrain, _, _, _ = self.define_generator(
+            _, self.logits_G_pretrain, _, _, _, _ = self.define_generator(
                 embedded_x=embedded_x)
 
             self.embedded_G, self.logits_G, self.probs_G, \
-                self.outputs_G, self.state_G = \
+                self.outputs_G, self.enc_state_G, self.dec_state_G = \
                 self.define_generator(
                     z=self.z, embedded_x=embedded_x, reuse=True)
 
@@ -242,16 +246,21 @@ class InferenceModel(BasicModel):
         return tf.matmul(soft_prob, embedding)
 
     # add function to generate sentence.
-    def sample_from_latent_space(self, num=200, prime='go'):
+    def sample_from_latent_space(self, question, max_length=30):
         """generate sentence from latent space.."""
         # init.
-        z = np.random.uniform(size=(1, self.para.EMBEDDING_SIZE))
-        state = self.sess.run(self.cell_G_init_state)
+        state = self.sess.run(self.cell_G_enc_init_state)
+        state = self.sess.run(
+            [self.enc_state_G], feed_dict={
+             self.x_enc: [question],
+             self.cell_G_enc_init_state: state}
+        )
 
         log('generate sentence. beam search:{}.'.format(self.para.BEAM_SEARCH))
-        generated_sentence = prime.split()
-        word_search = WordSearch(self.loader.vocab, self.para)
         word = 'go'
+        generated_sentence = []
+        word_search = WordSearch(self.loader.vocab, self.para)
+        z = np.random.uniform(size=(1, self.para.EMBEDDING_SIZE))
 
         log('...decide sampling type.')
         if self.para.SAMPLING_TYPE == 'argmax':
@@ -260,17 +269,17 @@ class InferenceModel(BasicModel):
             basic_sampler = word_search.weighted_pick
 
         log('...start sampling.')
-        for n in range(num):
+        while True:
             input = np.zeros((1, 1))
             input[0, 0] = self.loader.vocab.get(word, 0)
-            feed = {self.z: z, self.x: input, self.cell_G_init_state: state}
             [probs, state] = self.sess.run(
-                [self.probs_G, self.state_G], feed)
+                [self.probs_G, self.dec_state_G], feed_dict={
+                    self.z: z, self.x_dec: input,
+                    self.cell_G_dec_init_state: state
+                }
+            )
             sample_index = basic_sampler(probs[0, 0])
-            word = self.loader.words[sample_index]
-            generated_sentence.append(word)
-            if word == 'eos':
+            generated_sentence.append(sample_index)
+            if word == 'eos' or len(generated_sentence) > max_length:
                 break
-
-        generated_sentence = ' '.join(generated_sentence)
         return generated_sentence

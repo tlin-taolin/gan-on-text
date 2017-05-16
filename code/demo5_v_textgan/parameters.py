@@ -6,7 +6,6 @@ import argparse
 
 def get_args():
     ROOT_DIRECTORY = '/home/tlin/notebooks/gan'
-    ROOT_DIRECTORY = '/home/tlin/notebooks'
     RAW_DATA_DIRECTORY = join(ROOT_DIRECTORY, 'data')
     WORK_DIRECTORY = join(ROOT_DIRECTORY, 'code', 'demo5_v_textgan')
     DATA_DIRECTORY = join(WORK_DIRECTORY, 'data')

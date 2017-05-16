@@ -11,6 +11,7 @@ from code.utils.logger import log
 from code.dataset.dataLoaderBBC import DataLoaderBBC
 from code.dataset.dataLoaderBBT import DataLoaderBBT
 from code.model.textGANV0 import TextGANV0
+from code.model.textGANV1 import TextGANV1
 
 
 def init(args, data_loader_fn):
@@ -130,5 +131,6 @@ if __name__ == '__main__':
     data_loader_fn = DataLoaderBBT
 
     model = TextGANV0
+    model = TextGANV1
 
     main(args, data_loader_fn, model)

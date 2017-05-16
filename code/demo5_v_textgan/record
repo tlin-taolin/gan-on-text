@@ -10628,3 +10628,300 @@
 2017:05:15 14:00:16	------ training ------ 
 
 2017:05:15 14:00:16	train epoch 1
+2017:05:16 19:51:00	use DataLoaderBBT to init data.
+2017:05:16 19:51:00	reading and processing the text file.
+2017:05:16 19:51:00	preprocess the dataset.
+2017:05:16 19:51:00	load data.
+2017:05:16 19:51:00	init content from raw.
+2017:05:16 19:51:00	init data from the raw dataset.
+2017:05:16 19:51:00	...basic initialization
+2017:05:16 19:51:00	...load the mapping dictionary.
+2017:05:16 19:51:12	use DataLoaderBBT to init data.
+2017:05:16 19:51:12	reading and processing the text file.
+2017:05:16 19:51:12	preprocess the dataset.
+2017:05:16 19:51:12	load data.
+2017:05:16 19:51:12	init content from raw.
+2017:05:16 19:51:12	init data from the raw dataset.
+2017:05:16 19:51:12	...basic initialization
+2017:05:16 19:51:12	...load the mapping dictionary.
+2017:05:16 19:51:22	use DataLoaderBBT to init data.
+2017:05:16 19:51:22	reading and processing the text file.
+2017:05:16 19:51:22	preprocess the dataset.
+2017:05:16 19:51:22	load data.
+2017:05:16 19:51:22	init content from raw.
+2017:05:16 19:51:22	init data from the raw dataset.
+2017:05:16 19:51:22	...basic initialization
+2017:05:16 19:51:22	...load the mapping dictionary.
+2017:05:16 19:51:22	...load data and do mapping.
+2017:05:16 19:51:24	...mask and pad the sentence.
+2017:05:16 19:51:24	...statistics.
+2017:05:16 19:51:24	......left sentence stat: max len:33, median len:12.0, min len:3
+2017:05:16 19:51:24	......right sentence stat: max len:33, median len:12.0, min len:3
+2017:05:16 19:51:24	...build valid sentence and mask.
+2017:05:16 19:51:25	build a vocabulary.
+2017:05:16 19:51:25	...flatmap a list of sentence list to a list of sentence.
+2017:05:16 19:51:26	...mapping from index to word.
+2017:05:16 19:51:26	...keep frequent words.
+2017:05:16 19:51:26	...mapping from word to index.
+2017:05:16 19:51:26	...map word to index.
+2017:05:16 19:51:28	...save processed data to file.
+2017:05:16 19:51:33	get data info.
+2017:05:16 19:51:33	init batch data.
+2017:05:16 19:51:33	...number of batches: 1107
+2017:05:16 19:51:33	# sent: 70857, sentence length: 33, vocab size: 10001
+2017:05:16 19:52:08	save 1-th bestmodel to path: /home/tlin/notebooks/gan/code/demo5_v_textgan/data/training/runs/DataLoaderBBT/code.model.textGANV0.TextGANV0/1494964310/checkpoints/bestmodel.
+
+2017:05:16 19:52:08	------ pretraining ------ 
+
+2017:05:16 19:52:08	pretrain epoch 0
+2017:05:16 19:53:00	use DataLoaderBBT to init data.
+2017:05:16 19:53:00	reading and processing the text file.
+2017:05:16 19:53:00	preprocess the dataset.
+2017:05:16 19:53:00	load data.
+2017:05:16 19:53:00	init content from raw.
+2017:05:16 19:53:00	init data from the raw dataset.
+2017:05:16 19:53:00	...basic initialization
+2017:05:16 19:53:00	...load the mapping dictionary.
+2017:05:16 19:53:00	...load data and do mapping.
+2017:05:16 19:53:01	...mask and pad the sentence.
+2017:05:16 19:53:01	...statistics.
+2017:05:16 19:53:01	......left sentence stat: max len:33, median len:12.0, min len:3
+2017:05:16 19:53:01	......right sentence stat: max len:33, median len:12.0, min len:3
+2017:05:16 19:53:01	...build valid sentence and mask.
+2017:05:16 19:53:02	build a vocabulary.
+2017:05:16 19:53:02	...flatmap a list of sentence list to a list of sentence.
+2017:05:16 19:53:03	...mapping from index to word.
+2017:05:16 19:53:03	...keep frequent words.
+2017:05:16 19:53:03	...mapping from word to index.
+2017:05:16 19:53:03	...map word to index.
+2017:05:16 19:53:05	...save processed data to file.
+2017:05:16 19:53:09	get data info.
+2017:05:16 19:53:09	init batch data.
+2017:05:16 19:53:09	...number of batches: 1107
+2017:05:16 19:53:10	# sent: 70857, sentence length: 33, vocab size: 10001
+2017:05:16 19:53:44	save 1-th bestmodel to path: /home/tlin/notebooks/gan/code/demo5_v_textgan/data/training/runs/DataLoaderBBT/code.model.textGANV0.TextGANV0/1494964408/checkpoints/bestmodel.
+
+2017:05:16 19:53:44	------ pretraining ------ 
+
+2017:05:16 19:53:44	pretrain epoch 0
+2017:05:16 19:54:28	use DataLoaderBBC to init data.
+2017:05:16 19:54:28	loading preprocessed files.
+2017:05:16 19:54:30	get data info.
+2017:05:16 19:54:30	init batch data.
+2017:05:16 19:54:30	...number of batches: 314
+2017:05:16 19:54:30	num of sentence: 20096, sentence length: 25, vocab size: 25278
+2017:05:16 19:54:32	init from the path data/training/runs/DataLoaderBBT/code.model.textGANV0.TextGANV0/1494964408
+2017:05:16 19:54:43	use DataLoaderBBT to init data.
+2017:05:16 19:54:43	loading preprocessed files.
+2017:05:16 19:54:50	get data info.
+2017:05:16 19:54:50	init batch data.
+2017:05:16 19:54:50	...number of batches: 1107
+2017:05:16 19:54:51	# sent: 70857, sentence length: 33, vocab size: 10001
+2017:05:16 19:54:53	init from the path data/training/runs/DataLoaderBBT/code.model.textGANV0.TextGANV0/1494964408
+2017:05:16 20:12:59	use DataLoaderBBT to init data.
+2017:05:16 20:12:59	loading preprocessed files.
+2017:05:16 20:13:05	get data info.
+2017:05:16 20:13:05	init batch data.
+2017:05:16 20:13:05	...number of batches: 1107
+2017:05:16 20:13:06	# sent: 70857, sentence length: 33, vocab size: 10001
+2017:05:16 20:13:08	init from the path data/training/runs/DataLoaderBBT/code.model.textGANV0.TextGANV0/1494964408
+2017:05:16 20:20:06	use DataLoaderBBT to init data.
+2017:05:16 20:20:06	loading preprocessed files.
+2017:05:16 20:20:13	get data info.
+2017:05:16 20:20:13	init batch data.
+2017:05:16 20:20:13	...number of batches: 1107
+2017:05:16 20:20:14	# sent: 70857, sentence length: 33, vocab size: 10001
+2017:05:16 20:20:16	init from the path data/training/runs/DataLoaderBBT/code.model.textGANV0.TextGANV0/1494964408
+2017:05:16 20:20:51	use DataLoaderBBT to init data.
+2017:05:16 20:20:51	loading preprocessed files.
+2017:05:16 20:20:57	get data info.
+2017:05:16 20:20:57	init batch data.
+2017:05:16 20:20:57	...number of batches: 1107
+2017:05:16 20:20:58	# sent: 70857, sentence length: 33, vocab size: 10001
+2017:05:16 20:21:00	init from the path data/training/runs/DataLoaderBBT/code.model.textGANV0.TextGANV0/1494964408
+2017:05:16 20:30:42	use DataLoaderBBT to init data.
+2017:05:16 20:30:42	loading preprocessed files.
+2017:05:16 20:30:48	get data info.
+2017:05:16 20:30:48	init batch data.
+2017:05:16 20:30:48	...number of batches: 1107
+2017:05:16 20:30:49	# sent: 70857, sentence length: 33, vocab size: 10001
+2017:05:16 20:30:51	init from the path data/training/runs/DataLoaderBBT/code.model.textGANV0.TextGANV0/1494964408
+2017:05:16 20:30:52	generate sentence. beam search:False.
+2017:05:16 20:30:52	...decide sampling type.
+2017:05:16 20:30:52	...start sampling.
+2017:05:16 20:31:25	use DataLoaderBBT to init data.
+2017:05:16 20:31:25	loading preprocessed files.
+2017:05:16 20:31:31	get data info.
+2017:05:16 20:31:31	init batch data.
+2017:05:16 20:31:31	...number of batches: 1107
+2017:05:16 20:31:32	# sent: 70857, sentence length: 33, vocab size: 10001
+2017:05:16 20:31:34	init from the path data/training/runs/DataLoaderBBT/code.model.textGANV0.TextGANV0/1494964408
+2017:05:16 20:31:34	generate sentence. beam search:False.
+2017:05:16 20:31:34	...decide sampling type.
+2017:05:16 20:31:34	...start sampling.
+2017:05:16 20:39:49	use DataLoaderBBT to init data.
+2017:05:16 20:39:49	loading preprocessed files.
+2017:05:16 20:39:55	get data info.
+2017:05:16 20:39:55	init batch data.
+2017:05:16 20:39:55	...number of batches: 1107
+2017:05:16 20:39:57	# sent: 70857, sentence length: 33, vocab size: 10001
+2017:05:16 20:39:59	init from the path data/training/runs/DataLoaderBBT/code.model.textGANV0.TextGANV0/1494964408
+2017:05:16 20:40:00	generate sentence. beam search:False.
+2017:05:16 20:40:00	...decide sampling type.
+2017:05:16 20:40:00	...start sampling.
+2017:05:16 20:47:04	use DataLoaderBBT to init data.
+2017:05:16 20:47:04	loading preprocessed files.
+2017:05:16 20:47:11	get data info.
+2017:05:16 20:47:11	init batch data.
+2017:05:16 20:47:11	...number of batches: 1107
+2017:05:16 20:47:13	# sent: 70857, sentence length: 33, vocab size: 10001
+2017:05:16 20:47:14	init from the path data/training/runs/DataLoaderBBT/code.model.textGANV0.TextGANV0/1494964408
+2017:05:16 20:47:15	generate sentence. beam search:False.
+2017:05:16 20:47:15	...decide sampling type.
+2017:05:16 20:47:15	...start sampling.
+2017:05:16 20:48:49	use DataLoaderBBT to init data.
+2017:05:16 20:48:49	loading preprocessed files.
+2017:05:16 20:48:56	get data info.
+2017:05:16 20:48:56	init batch data.
+2017:05:16 20:48:56	...number of batches: 1107
+2017:05:16 20:48:57	# sent: 70857, sentence length: 33, vocab size: 10001
+2017:05:16 20:48:59	init from the path data/training/runs/DataLoaderBBT/code.model.textGANV0.TextGANV0/1494964408
+2017:05:16 20:48:59	generate sentence. beam search:False.
+2017:05:16 20:48:59	...decide sampling type.
+2017:05:16 20:48:59	...start sampling.
+2017:05:16 20:49:38	use DataLoaderBBT to init data.
+2017:05:16 20:49:38	loading preprocessed files.
+2017:05:16 20:49:44	get data info.
+2017:05:16 20:49:44	init batch data.
+2017:05:16 20:49:44	...number of batches: 1107
+2017:05:16 20:49:46	# sent: 70857, sentence length: 33, vocab size: 10001
+2017:05:16 20:49:47	init from the path data/training/runs/DataLoaderBBT/code.model.textGANV0.TextGANV0/1494964408
+2017:05:16 20:49:48	generate sentence. beam search:False.
+2017:05:16 20:49:48	...decide sampling type.
+2017:05:16 20:49:48	...start sampling.
+2017:05:16 20:49:48	true question: None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None
+2017:05:16 20:49:48	true answer: None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None
+2017:05:16 20:49:48	faked answer: None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None
+2017:05:16 20:49:48	total execution time: 9
+2017:05:16 20:50:21	use DataLoaderBBT to init data.
+2017:05:16 20:50:21	loading preprocessed files.
+2017:05:16 20:50:28	get data info.
+2017:05:16 20:50:28	init batch data.
+2017:05:16 20:50:28	...number of batches: 1107
+2017:05:16 20:50:30	# sent: 70857, sentence length: 33, vocab size: 10001
+2017:05:16 20:50:32	init from the path data/training/runs/DataLoaderBBT/code.model.textGANV0.TextGANV0/1494964408
+2017:05:16 20:50:48	use DataLoaderBBT to init data.
+2017:05:16 20:50:48	loading preprocessed files.
+2017:05:16 20:50:55	get data info.
+2017:05:16 20:50:55	init batch data.
+2017:05:16 20:50:55	...number of batches: 1107
+2017:05:16 20:50:56	# sent: 70857, sentence length: 33, vocab size: 10001
+2017:05:16 20:50:57	init from the path data/training/runs/DataLoaderBBT/code.model.textGANV0.TextGANV0/1494964408
+2017:05:16 20:50:58	generate sentence. beam search:False.
+2017:05:16 20:50:58	...decide sampling type.
+2017:05:16 20:50:58	...start sampling.
+2017:05:16 20:50:58	true question: None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None
+2017:05:16 20:50:58	true answer: None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None
+2017:05:16 20:50:58	faked answer: None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None
+2017:05:16 20:50:58	total execution time: 9
+2017:05:16 20:51:23	use DataLoaderBBT to init data.
+2017:05:16 20:51:23	loading preprocessed files.
+2017:05:16 20:51:30	get data info.
+2017:05:16 20:51:30	init batch data.
+2017:05:16 20:51:30	...number of batches: 1107
+2017:05:16 20:51:31	# sent: 70857, sentence length: 33, vocab size: 10001
+2017:05:16 20:51:33	init from the path data/training/runs/DataLoaderBBT/code.model.textGANV0.TextGANV0/1494964408
+2017:05:16 20:51:33	generate sentence. beam search:False.
+2017:05:16 20:51:33	...decide sampling type.
+2017:05:16 20:51:33	...start sampling.
+2017:05:16 20:51:33	true question: None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None
+2017:05:16 20:51:33	true answer: None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None
+2017:05:16 20:51:33	faked answer: None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None
+2017:05:16 20:51:33	total execution time: 9
+2017:05:16 20:51:58	use DataLoaderBBT to init data.
+2017:05:16 20:51:58	loading preprocessed files.
+2017:05:16 20:52:04	get data info.
+2017:05:16 20:52:04	init batch data.
+2017:05:16 20:52:04	...number of batches: 1107
+2017:05:16 20:52:06	# sent: 70857, sentence length: 33, vocab size: 10001
+2017:05:16 20:52:07	init from the path data/training/runs/DataLoaderBBT/code.model.textGANV0.TextGANV0/1494964408
+2017:05:16 20:52:07	generate sentence. beam search:False.
+2017:05:16 20:52:07	...decide sampling type.
+2017:05:16 20:52:07	...start sampling.
+2017:05:16 20:52:07	true question: None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None
+2017:05:16 20:52:07	true answer: None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None
+2017:05:16 20:52:07	faked answer: None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None None
+2017:05:16 20:52:07	total execution time: 9
+2017:05:16 20:52:50	use DataLoaderBBT to init data.
+2017:05:16 20:52:50	loading preprocessed files.
+2017:05:16 20:52:57	get data info.
+2017:05:16 20:52:57	init batch data.
+2017:05:16 20:52:57	...number of batches: 1107
+2017:05:16 20:52:58	# sent: 70857, sentence length: 33, vocab size: 10001
+2017:05:16 20:53:00	init from the path data/training/runs/DataLoaderBBT/code.model.textGANV0.TextGANV0/1494964408
+2017:05:16 20:53:00	generate sentence. beam search:False.
+2017:05:16 20:53:00	...decide sampling type.
+2017:05:16 20:53:00	...start sampling.
+2017:05:16 20:53:00	true question: go uh unk balloons yes latex balloons no water balloons i will jump off the roof and unk for your car eos pad pad pad pad pad pad pad pad pad pad pad
+2017:05:16 20:53:00	true answer: go [Penny] all right , what about music ? eos pad pad pad pad pad pad pad pad pad pad pad pad pad pad pad pad pad pad pad pad pad pad
+2017:05:16 20:53:00	faked answer: willy grisham cern fault fewer non varmints spine illusion scratched walking obviously ornament chirps hulking parched noticing region mathematics indicate virginity secondly yells scientists exaggeratedly prison necessarily kryptonite ashamed collar ant
+2017:05:16 20:53:00	total execution time: 9
+2017:05:16 20:53:20	use DataLoaderBBT to init data.
+2017:05:16 20:53:20	loading preprocessed files.
+2017:05:16 20:53:27	get data info.
+2017:05:16 20:53:27	init batch data.
+2017:05:16 20:53:27	...number of batches: 1107
+2017:05:16 20:53:28	# sent: 70857, sentence length: 33, vocab size: 10001
+2017:05:16 20:54:41	use DataLoaderBBT to init data.
+2017:05:16 20:54:41	loading preprocessed files.
+2017:05:16 20:54:48	get data info.
+2017:05:16 20:54:48	init batch data.
+2017:05:16 20:54:48	...number of batches: 1107
+2017:05:16 20:54:49	# sent: 70857, sentence length: 33, vocab size: 10001
+2017:05:16 20:55:24	save 1-th bestmodel to path: /home/tlin/notebooks/gan/code/demo5_v_textgan/data/training/runs/DataLoaderBBT/code.model.textGANV0.TextGANV0/1494968106/checkpoints/bestmodel.
+
+2017:05:16 20:55:24	------ pretraining ------ 
+
+2017:05:16 20:55:24	pretrain epoch 0
+2017:05:16 21:01:36	use DataLoaderBBT to init data.
+2017:05:16 21:01:36	loading preprocessed files.
+2017:05:16 21:01:44	get data info.
+2017:05:16 21:01:44	init batch data.
+2017:05:16 21:01:44	...number of batches: 2
+2017:05:16 21:01:44	# sent: 70857, sentence length: 33, vocab size: 10001
+2017:05:16 21:01:48	use DataLoaderBBT to init data.
+2017:05:16 21:01:48	loading preprocessed files.
+2017:05:16 21:01:55	get data info.
+2017:05:16 21:01:55	init batch data.
+2017:05:16 21:01:55	...number of batches: 2
+2017:05:16 21:01:55	# sent: 70857, sentence length: 33, vocab size: 10001
+2017:05:16 21:02:31	save 1-th bestmodel to path: /home/tlin/notebooks/gan/code/demo5_v_textgan/data/training/runs/DataLoaderBBT/code.model.textGANV1.TextGANV1/1494968535/checkpoints/bestmodel.
+
+2017:05:16 21:02:31	------ pretraining ------ 
+
+2017:05:16 21:02:32	pretrain epoch 0
+2017:05:16 21:02:36	pretrain loss d: 1.56254172325, pretrain loss g: 9.20998001099, execution speed: 2.00 seconds/batch
+
+2017:05:16 21:02:38	save 2-th bestmodel to path: /home/tlin/notebooks/gan/code/demo5_v_textgan/data/training/runs/DataLoaderBBT/code.model.textGANV1.TextGANV1/1494968535/checkpoints/bestmodel.
+
+2017:05:16 21:02:38	pretrain epoch 1
+2017:05:16 21:02:42	pretrain loss d: 1.54337954521, pretrain loss g: 9.20468902588, execution speed: 1.50 seconds/batch
+
+2017:05:16 21:02:42	pretrain epoch 2
+2017:05:16 21:03:13	use DataLoaderBBT to init data.
+2017:05:16 21:03:13	loading preprocessed files.
+2017:05:16 21:03:20	get data info.
+2017:05:16 21:03:20	init batch data.
+2017:05:16 21:03:20	...number of batches: 2
+2017:05:16 21:03:20	# sent: 70857, sentence length: 33, vocab size: 10001
+2017:05:16 21:03:56	save 1-th bestmodel to path: /home/tlin/notebooks/gan/code/demo5_v_textgan/data/training/runs/DataLoaderBBT/code.model.textGANV1.TextGANV1/1494968618/checkpoints/bestmodel.
+
+2017:05:16 21:03:56	------ pretraining ------ 
+
+2017:05:16 21:03:56	------ training ------ 
+
+2017:05:16 21:03:56	train epoch 1
+2017:05:16 21:04:06	train loss d: 9.78216171265, train loss g: -0.0118994247168, execution speed: 5.00 seconds/batch
+2017:05:16 21:04:08	val loss d: 9.77755832672, val loss g: -0.0140985110775, execution speed: 0.50 seconds/batch
+
+2017:05:16 21:04:08	train epoch 2

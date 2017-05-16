@@ -41,7 +41,7 @@ def get_args():
     parser.add_argument('-d', '--DEBUG', action="store_true", default=False)
     parser.add_argument('--DEBUG_SIZE', type=int, default=150)
     parser.add_argument('-r', '--REBUILD_DATA', action="store_false", default=True)
-    parser.add_argument('--SHUFFLE_DATA', action="store_true", default=True)
+    parser.add_argument('--SHUFFLE_DATA', action="store_true", default=False)
     parser.add_argument('--TRAIN_RATIO', type=float, default=0.8)
 
     """parameters for the model."""

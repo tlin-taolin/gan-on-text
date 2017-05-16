@@ -20,9 +20,9 @@ class TextGANV0(InferenceModel):
     def define_loss(self):
         """define the loss."""
         with tf.name_scope("loss"):
-            self.loss_D = tf.reduce_mean(
+            self.loss_D = - tf.reduce_mean(
                 self.logits_D_real - self.logits_D_fake)
-            self.loss_G = tf.reduce_mean(self.logits_D_fake)
+            self.loss_G = - tf.reduce_mean(self.logits_D_fake)
 
             self.perplexity_G = tf.contrib.seq2seq.sequence_loss(
                 logits=self.logits_G,
