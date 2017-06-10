@@ -10,4 +10,4 @@ ssh_notebook:
 	ssh -L 18888:localhost:8887 ${HOST}
 
 cp_code_gpu:
-	rsync -av -e ssh w5 ${HOST}:~/gan/code
+	rsync -av -e ssh demo6_v_textgan ${HOST}:~/dong/code
